@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const MainPage = (props) => {
   const {movieCard} = props;
@@ -310,6 +311,14 @@ const MainPage = (props) => {
       </div>
     </React.Fragment>
   );
+};
+
+MainPage.propTypes = {
+  movieCard: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    releaseDate: PropTypes.number.isRequired,
+  }).isRequired
 };
 
 export default MainPage;
