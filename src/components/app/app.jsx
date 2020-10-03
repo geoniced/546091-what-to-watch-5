@@ -2,6 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import MainPage from "../main-page/main-page";
+import AuthScreen from "../auth-screen/auth-screen";
+import MyListScreen from "../my-list-screen/my-list-screen";
+import FilmScreen from "../film-screen/film-screen";
+import FilmReviewScreen from "../film-review-screen/film-review-screen";
+import PlayerScreen from "../player-screen/player-screen";
 
 const App = (props) => {
   const {movieCard} = props;
@@ -12,19 +17,19 @@ const App = (props) => {
           <MainPage movieCard={movieCard}/>
         </Route>
         <Route path="/login" exact>
-
+          <AuthScreen />
         </Route>
         <Route path="/mylist" exact>
-
+          <MyListScreen />
         </Route>
-        <Route path="/films/:id" exact>
-
+        <Route path="/films" exact>// /films/:id
+          <FilmScreen />
         </Route>
-        <Route path="/films/:id/review" exact>
-
+        <Route path="/review" exact>// /films/:id/review
+          <FilmReviewScreen />
         </Route>
-        <Route path="/player/:id" exact>
-
+        <Route path="/player" exact> // /player/:id
+          <PlayerScreen />
         </Route>
       </Switch>
     </BrowserRouter>
