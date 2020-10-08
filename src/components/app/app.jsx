@@ -9,12 +9,15 @@ import FilmReviewScreen from "../film-review-screen/film-review-screen";
 import PlayerScreen from "../player-screen/player-screen";
 
 const App = (props) => {
-  const {movieCard} = props;
+  const {movieCard, films} = props;
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/" exact>
-          <MainPage movieCard={movieCard}/>
+          <MainPage
+            movieCard={movieCard}
+            films={films}
+          />
         </Route>
         <Route path="/login" exact>
           <AuthScreen />
