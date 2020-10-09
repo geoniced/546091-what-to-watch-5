@@ -1,6 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const FilmAddReviewScreen = () => {
+const FilmAddReviewScreen = (props) => {
+  const {title, poster} = props.film;
+
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__header">
@@ -22,7 +25,7 @@ const FilmAddReviewScreen = () => {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="movie-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                <a href="movie-page.html" className="breadcrumbs__link">{title}</a>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
@@ -38,7 +41,7 @@ const FilmAddReviewScreen = () => {
         </header>
 
         <div className="movie-card__poster movie-card__poster--small">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+          <img src={poster} alt={title} width="218" height="327" />
         </div>
       </div>
 
@@ -75,6 +78,13 @@ const FilmAddReviewScreen = () => {
 
     </section>
   );
+};
+
+FilmAddReviewScreen.propTypes = {
+  film: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default FilmAddReviewScreen;
