@@ -26,10 +26,11 @@ const App = (props) => {
           <MyListScreen
             films={films}
           />
-          {/* Needs props */}
         </Route>
         <Route path="/films/:id" exact>
-          <FilmScreen />
+          <FilmScreen
+            film={films[1]}
+          />
         </Route>
         <Route path="/films/:id/review" exact>
           <FilmAddReviewScreen

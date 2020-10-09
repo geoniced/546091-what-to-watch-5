@@ -1,12 +1,30 @@
 import React, {Fragment} from "react";
+import PropTypes from "prop-types";
 
-const FilmScreen = () => {
+const FilmScreen = (props) => {
+  const {
+    title,
+    genre,
+    releaseYear,
+    poster,
+    fullSizePoster,
+    description,
+    // rating, // these 3 properties will be added after tabs' logic
+    // ratingDescription,
+    // ratingsCount,
+    director,
+    starring,
+    runtime,
+  } = props.film;
+
+  const starringActorsFormatted = starring.join(`, `);
+
   return (
     <Fragment>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={fullSizePoster} alt={title} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -29,10 +47,10 @@ const FilmScreen = () => {
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="movie-card__title">{title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">Drama</span>
-                <span className="movie-card__year">2014</span>
+                <span className="movie-card__genre">{genre}</span>
+                <span className="movie-card__year">{releaseYear}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -57,7 +75,7 @@ const FilmScreen = () => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={poster} alt={title} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -79,23 +97,12 @@ const FilmScreen = () => {
                 <div className="movie-card__text-col">
                   <p className="movie-card__details-item">
                     <strong className="movie-card__details-name">Director</strong>
-                    <span className="movie-card__details-value">Wes Andreson</span>
+                    <span className="movie-card__details-value">{director}</span>
                   </p>
                   <p className="movie-card__details-item">
                     <strong className="movie-card__details-name">Starring</strong>
                     <span className="movie-card__details-value">
-                      Bill Murray, <br />
-                      Edward Norton, <br />
-                      Jude Law, <br />
-                      Willem Dafoe, <br />
-                      Saoirse Ronan, <br />
-                      Tony Revoloru, <br />
-                      Tilda Swinton, <br />
-                      Tom Wilkinson, <br />
-                      Owen Wilkinson, <br />
-                      Adrien Brody, <br />
-                      Ralph Fiennes, <br />
-                      Jeff Goldblum
+                      {starringActorsFormatted}
                     </span>
                   </p>
                 </div>
@@ -103,15 +110,15 @@ const FilmScreen = () => {
                 <div className="movie-card__text-col">
                   <p className="movie-card__details-item">
                     <strong className="movie-card__details-name">Run Time</strong>
-                    <span className="movie-card__details-value">1h 39m</span>
+                    <span className="movie-card__details-value">{runtime}</span>
                   </p>
                   <p className="movie-card__details-item">
                     <strong className="movie-card__details-name">Genre</strong>
-                    <span className="movie-card__details-value">Comedy</span>
+                    <span className="movie-card__details-value">{genre}</span>
                   </p>
                   <p className="movie-card__details-item">
                     <strong className="movie-card__details-name">Released</strong>
-                    <span className="movie-card__details-value">2014</span>
+                    <span className="movie-card__details-value">{releaseYear}</span>
                   </p>
                 </div>
               </div>
