@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import {filmListProps} from "../../prop-types-validations";
 import FilmCardList from "../film-card-list/film-card-list";
 
 const MyListScreen = (props) => {
@@ -50,8 +50,6 @@ const MyListScreen = (props) => {
   );
 };
 
-MyListScreen.propTypes = {
-  films: PropTypes.array.isRequired,
-};
+MyListScreen.propTypes = filmListProps;
 
 export default MyListScreen;
