@@ -39,7 +39,9 @@ const App = (props) => {
           />
         </Route>
         <Route path="/player/:id" exact>
-          <PlayerScreen />
+          <PlayerScreen
+            film={films[0]}
+          />
         </Route>
       </Switch>
     </BrowserRouter>
