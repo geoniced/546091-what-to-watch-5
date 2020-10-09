@@ -141,7 +141,8 @@ MainPage.propTypes = {
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     releaseDate: PropTypes.number.isRequired,
-  }).isRequired
+  }).isRequired,
+  films: PropTypes.array.isRequired,
 };
 
 export default MainPage;
