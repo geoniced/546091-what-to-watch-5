@@ -24,12 +24,14 @@ const App = (props) => {
         </Route>
         <Route path="/mylist" exact>
           <MyListScreen />
+          {/* Needs props */}
         </Route>
         <Route path="/films/:id" exact>
           <FilmScreen />
         </Route>
         <Route path="/films/:id/review" exact>
           <FilmReviewScreen />
+          {/* It needs another block to render */}
         </Route>
         <Route path="/player/:id" exact>
           <PlayerScreen />
