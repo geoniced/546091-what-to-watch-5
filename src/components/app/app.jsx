@@ -23,7 +23,9 @@ const App = (props) => {
           <AuthScreen />
         </Route>
         <Route path="/mylist" exact>
-          <MyListScreen />
+          <MyListScreen
+            films={films}
+          />
           {/* Needs props */}
         </Route>
         <Route path="/films/:id" exact>
@@ -33,7 +35,6 @@ const App = (props) => {
           <FilmAddReviewScreen
             film={films[0]}
           />
-          {/* It needs another block to render */}
         </Route>
         <Route path="/player/:id" exact>
           <PlayerScreen />
