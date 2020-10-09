@@ -8,8 +8,8 @@ const FilmScreen = (props) => {
     releaseYear,
     poster,
     fullSizePoster,
-    description,
-    // rating, // these 3 properties will be added after tabs' logic
+    // description, // these 4 commented properties will be added after tabs' logic
+    // rating,
     // ratingDescription,
     // ratingsCount,
     director,
@@ -17,7 +17,15 @@ const FilmScreen = (props) => {
     runtime,
   } = props.film;
 
-  const starringActorsFormatted = starring.join(`, `);
+  const starringActorsFormatted = (
+    <Fragment>
+      {starring.map((actor, i, actors) => (
+        <Fragment key={`actor-${i}`} >
+          {actor} {i < actors.length - 1 ? <br /> : ``}
+        </Fragment>
+      ))}
+    </Fragment>
+  );
 
   return (
     <Fragment>
@@ -186,6 +194,23 @@ const FilmScreen = (props) => {
       </div>
     </Fragment>
   );
+};
+
+FilmScreen.propTypes = {
+  film: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    releaseYear: PropTypes.number.isRequired,
+    poster: PropTypes.string.isRequired,
+    fullSizePoster: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    ratingDescription: PropTypes.string.isRequired,
+    ratingsCount: PropTypes.number.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    runtime: PropTypes.string.isRequired,
+  }),
 };
 
 export default FilmScreen;
