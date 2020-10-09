@@ -5,7 +5,7 @@ import MainPage from "../main-page/main-page";
 import AuthScreen from "../auth-screen/auth-screen";
 import MyListScreen from "../my-list-screen/my-list-screen";
 import FilmScreen from "../film-screen/film-screen";
-import FilmReviewScreen from "../film-review-screen/film-review-screen";
+import FilmAddReviewScreen from "../film-add-review-screen/film-add-review-screen";
 import PlayerScreen from "../player-screen/player-screen";
 
 const App = (props) => {
@@ -30,7 +30,7 @@ const App = (props) => {
           <FilmScreen />
         </Route>
         <Route path="/films/:id/review" exact>
-          <FilmReviewScreen />
+          <FilmAddReviewScreen />
           {/* It needs another block to render */}
         </Route>
         <Route path="/player/:id" exact>
