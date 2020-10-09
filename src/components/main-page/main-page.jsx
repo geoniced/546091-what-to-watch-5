@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FilmCard from "../film-card/film-card";
+import FilmCardList from "../film-card-list/film-card-list";
 
 const MainPage = (props) => {
   const {movieCard, films} = props;
@@ -104,14 +104,9 @@ const MainPage = (props) => {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            {films.map((film, i) => (
-              <FilmCard
-                key={`film-${i}`}
-                film={film}
-              />
-            ))}
-          </div>
+          <FilmCardList
+            films={films}
+          />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
