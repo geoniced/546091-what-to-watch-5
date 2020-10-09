@@ -5,12 +5,13 @@ const PlayerScreen = (props) => {
   const {
     video,
     runtime,
+    fullSizePoster, // Я даже не знаю нужно ли это, постер к фильму у тега video
     title,
   } = props.film;
 
   return (
     <div className="player">
-      <video src={video} className="player__video" poster="img/player-poster.jpg"></video>
+      <video src={video} className="player__video" poster={fullSizePoster}></video>
 
       <button type="button" className="player__exit">Exit</button>
 
@@ -42,6 +43,15 @@ const PlayerScreen = (props) => {
       </div>
     </div>
   );
+};
+
+PlayerScreen.propTypes = {
+  film: PropTypes.shape({
+    video: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    fullSizePoster: PropTypes.string.isRequired,
+    runtime: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default PlayerScreen;
