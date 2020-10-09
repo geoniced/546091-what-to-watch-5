@@ -210,7 +210,13 @@ FilmScreen.propTypes = {
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     runtime: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.shape({
+    reviewText: PropTypes.string.isRequired,
+    filmRating: PropTypes.number.isRequired,
+    userName: PropTypes.string.isRequired,
+    reviewDate: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default FilmScreen;

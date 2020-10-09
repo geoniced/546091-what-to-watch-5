@@ -9,7 +9,7 @@ import FilmAddReviewScreen from "../film-add-review-screen/film-add-review-scree
 import PlayerScreen from "../player-screen/player-screen";
 
 const App = (props) => {
-  const {movieCard, films} = props;
+  const {movieCard, films, reviews} = props;
   return (
     <BrowserRouter>
       <Switch>
@@ -30,6 +30,7 @@ const App = (props) => {
         <Route path="/films/:id" exact>
           <FilmScreen
             film={films[1]}
+            reviews={reviews}
           />
         </Route>
         <Route path="/films/:id/review" exact>
