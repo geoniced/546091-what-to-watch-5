@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 const FilmCard = (props) => {
   const {
@@ -13,7 +14,7 @@ const FilmCard = (props) => {
         <img src={fullSizePoster} alt={title} width="280" height="175" />
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+        <Link to="/films/id" className="small-movie-card__link">{title}</Link>
       </h3>
     </article>
   );
