@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import UserBlock from "../user-block/user-block";
 
@@ -17,6 +18,8 @@ const FilmScreen = (props) => {
     starring,
     runtime,
   } = props.film;
+
+  const {onPlayButtonClick} = props;
 
   const starringActorsFormatted = (
     <Fragment>
@@ -40,11 +43,11 @@ const FilmScreen = (props) => {
 
           <header className="page-header movie-card__head">
             <div className="logo">
-              <a href="main.html" className="logo__link">
+              <Link to="/" className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
-              </a>
+              </Link>
             </div>
 
             <UserBlock />
@@ -59,7 +62,11 @@ const FilmScreen = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button
+                  className="btn btn--play movie-card__button"
+                  type="button"
+                  onClick={onPlayButtonClick}
+                >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -177,11 +184,11 @@ const FilmScreen = (props) => {
 
         <footer className="page-footer">
           <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
+            <Link to="/" className="logo__link logo__link--light">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <div className="copyright">
@@ -214,6 +221,7 @@ FilmScreen.propTypes = {
     userName: PropTypes.string.isRequired,
     reviewDate: PropTypes.string.isRequired,
   })).isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
 };
 
 export default FilmScreen;
