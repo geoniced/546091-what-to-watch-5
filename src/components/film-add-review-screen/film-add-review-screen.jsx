@@ -6,6 +6,11 @@ import UserBlock from "../user-block/user-block";
 class FilmAddReviewScreen extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      ratingStars: 0,
+      reviewText: ``,
+    };
   }
 
   render() {
