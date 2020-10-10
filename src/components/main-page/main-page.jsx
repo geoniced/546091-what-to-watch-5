@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import FilmCardList from "../film-card-list/film-card-list";
 
 const MainPage = (props) => {
-  const {movieCard, films} = props;
+  const {movieCard, films, onPlayButtonClick} = props;
   const {
     title,
     genre,
@@ -49,7 +49,10 @@ const MainPage = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button
+                  className="btn btn--play movie-card__button"
+                  type="button"
+                  onClick={onPlayButtonClick}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -138,6 +141,7 @@ MainPage.propTypes = {
     releaseDate: PropTypes.number.isRequired,
   }).isRequired,
   films: PropTypes.array.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
 };
 
 export default MainPage;

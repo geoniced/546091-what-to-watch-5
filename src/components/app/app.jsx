@@ -13,12 +13,16 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact>
-          <MainPage
-            movieCard={movieCard}
-            films={films}
-          />
-        </Route>
+        <Route exact
+          path="/"
+          render={({history}) => (
+            <MainPage
+              movieCard={movieCard}
+              films={films}
+              onPlayButtonClick={() => history.push(`/player/0`)}
+            />
+          )}
+        />
         <Route path="/login" exact>
           <AuthScreen />
         </Route>
