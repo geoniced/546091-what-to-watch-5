@@ -1,6 +1,7 @@
 import React from "react";
 import {filmListProps} from "../../prop-types-validations";
 import FilmCardList from "../film-card-list/film-card-list";
+import UserBlock from "../user-block/user-block";
 
 const MyListScreen = (props) => {
   const {films} = props;
@@ -18,11 +19,7 @@ const MyListScreen = (props) => {
 
         <h1 className="page-title user-page__title">My list</h1>
 
-        <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-          </div>
-        </div>
+        <UserBlock />
       </header>
 
       <section className="catalog">

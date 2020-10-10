@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import FilmCardList from "../film-card-list/film-card-list";
+import UserBlock from "../user-block/user-block";
 
 const MainPage = (props) => {
   const {movieCard, films, onPlayButtonClick} = props;
@@ -28,11 +29,8 @@ const MainPage = (props) => {
             </a>
           </div>
 
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
+          <UserBlock />
+
         </header>
 
         <div className="movie-card__wrap">

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import UserBlock from "../user-block/user-block";
 
 const FilmAddReviewScreen = (props) => {
   const {title, poster} = props.film;
@@ -33,11 +34,7 @@ const FilmAddReviewScreen = (props) => {
             </ul>
           </nav>
 
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
+          <UserBlock />
         </header>
 
         <div className="movie-card__poster movie-card__poster--small">

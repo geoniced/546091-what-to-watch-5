@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import PropTypes from "prop-types";
+import UserBlock from "../user-block/user-block";
 
 const FilmScreen = (props) => {
   const {
@@ -46,11 +47,7 @@ const FilmScreen = (props) => {
               </a>
             </div>
 
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </div>
+            <UserBlock />
           </header>
 
           <div className="movie-card__wrap">
