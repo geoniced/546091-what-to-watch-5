@@ -13,6 +13,21 @@ class FilmAddReviewScreen extends PureComponent {
       ratingStars: 1,
       reviewText: ``,
     };
+
+    this._handleRatingChange = this._handleRatingChange.bind(this);
+    this._handleReviewChange = this._handleReviewChange.bind(this);
+  }
+
+  _handleRatingChange(evt) {
+    this.setState({
+      ratingStars: Number(evt.target.value),
+    });
+  }
+
+  _handleReviewChange(evt) {
+    this.setState({
+      reviewText: evt.target.value,
+    });
   }
 
   render() {
@@ -77,14 +92,8 @@ class FilmAddReviewScreen extends PureComponent {
                         type="radio"
                         name="rating"
                         value={currentStarIndex}
-                        checked={(currentStarIndex === ratingStars)}
-                        onChange={(evt) => {
-                          evt.preventDefault();
-
-                          this.setState({
-                            ratingStars: Number(evt.target.value),
-                          });
-                        }}
+                        checked={currentStarIndex === ratingStars}
+                        onChange={this._handleRatingChange}
                       />
                       <label className="rating__label" htmlFor={`star-${currentStarIndex}`}>Rating {currentStarIndex}</label>
                     </Fragment>
@@ -99,12 +108,7 @@ class FilmAddReviewScreen extends PureComponent {
                 name="review-text"
                 id="review-text"
                 placeholder="Review text"
-                onChange={(evt) => {
-                  evt.preventDefault();
-                  this.setState({
-                    reviewText: evt.target.value,
-                  });
-                }}
+                onChange={this._handleReviewChange}
               ></textarea>
               <div className="add-review__submit">
                 <button className="add-review__btn" type="submit">Post</button>
