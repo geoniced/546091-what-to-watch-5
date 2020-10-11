@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import {FilmTypes} from "../../prop-types-validations";
 
 const PlayerScreen = (props) => {
   const {
@@ -46,12 +46,7 @@ const PlayerScreen = (props) => {
 };
 
 PlayerScreen.propTypes = {
-  film: PropTypes.shape({
-    video: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    fullSizePoster: PropTypes.string.isRequired,
-    runtime: PropTypes.string.isRequired,
-  }).isRequired,
+  film: FilmTypes.filmCard,
 };
 
 export default PlayerScreen;

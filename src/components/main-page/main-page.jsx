@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {FilmTypes} from "../../prop-types-validations";
 import FilmCardList from "../film-card-list/film-card-list";
 import UserBlock from "../user-block/user-block";
 
@@ -138,7 +139,7 @@ MainPage.propTypes = {
     genre: PropTypes.string.isRequired,
     releaseDate: PropTypes.number.isRequired,
   }).isRequired,
-  films: PropTypes.array.isRequired,
+  films: FilmTypes.films,
   onPlayButtonClick: PropTypes.func.isRequired,
 };
 

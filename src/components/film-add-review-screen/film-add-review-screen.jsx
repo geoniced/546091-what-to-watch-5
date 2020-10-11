@@ -1,6 +1,6 @@
 import React, {Fragment, PureComponent} from "react";
-import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import {FilmTypes} from "../../prop-types-validations";
 import UserBlock from "../user-block/user-block";
 
 const STARS_COUNT = 5;
@@ -120,11 +120,7 @@ class FilmAddReviewScreen extends PureComponent {
 }
 
 FilmAddReviewScreen.propTypes = {
-  film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    fullSizePoster: PropTypes.string.isRequired,
-  }).isRequired,
+  film: FilmTypes.filmCard,
 };
 
 export default FilmAddReviewScreen;

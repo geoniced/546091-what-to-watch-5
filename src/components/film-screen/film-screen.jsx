@@ -1,6 +1,7 @@
 import React, {Fragment} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
+import {FilmTypes} from "../../prop-types-validations";
 import UserBlock from "../user-block/user-block";
 
 const FilmScreen = (props) => {
@@ -203,20 +204,7 @@ const FilmScreen = (props) => {
 };
 
 FilmScreen.propTypes = {
-  film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseYear: PropTypes.number.isRequired,
-    poster: PropTypes.string.isRequired,
-    fullSizePoster: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    ratingDescription: PropTypes.string.isRequired,
-    ratingsCount: PropTypes.number.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    runtime: PropTypes.string.isRequired,
-  }).isRequired,
+  film: FilmTypes.films,
   reviews: PropTypes.arrayOf(PropTypes.shape({
     reviewText: PropTypes.string.isRequired,
     filmRating: PropTypes.number.isRequired,

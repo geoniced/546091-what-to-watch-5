@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import {FilmTypes} from "../../prop-types-validations";
 
 const FilmCard = (props) => {
   const {
@@ -21,10 +21,7 @@ const FilmCard = (props) => {
 };
 
 FilmCard.propTypes = {
-  film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    fullSizePoster: PropTypes.string.isRequired,
-  }).isRequired,
+  film: FilmTypes.filmCard,
 };
 
 export default FilmCard;
