@@ -204,7 +204,7 @@ const FilmScreen = (props) => {
 };
 
 FilmScreen.propTypes = {
-  film: FilmTypes.films,
+  film: FilmTypes.filmCard,
   reviews: PropTypes.arrayOf(PropTypes.shape({
     reviewText: PropTypes.string.isRequired,
     filmRating: PropTypes.number.isRequired,
