@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {filmListProps} from "../../prop-types-validations";
+import {FilmTypes} from "../../prop-types-validations";
 import FilmCardList from "../film-card-list/film-card-list";
 import UserBlock from "../user-block/user-block";
 
@@ -48,6 +48,6 @@ const MyListScreen = (props) => {
   );
 };
 
-MyListScreen.propTypes = filmListProps;
+MyListScreen.propTypes = FilmTypes.films;
 
 export default MyListScreen;
