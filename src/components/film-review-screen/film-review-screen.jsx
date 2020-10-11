@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import {Link} from "react-router-dom";
+import LogoBlock from "../logo-block/logo-block";
 import UserBlock from "../user-block/user-block";
 
 const FilmReviewScreen = () => {
@@ -14,14 +14,7 @@ const FilmReviewScreen = () => {
           <h1 className="visually-hidden">WTW</h1>
 
           <header className="page-header movie-card__head">
-            <div className="logo">
-              <Link to="/" className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </Link>
-            </div>
-
+            <LogoBlock />
             <UserBlock />
           </header>
 
@@ -204,13 +197,7 @@ const FilmReviewScreen = () => {
         </section>
 
         <footer className="page-footer">
-          <div className="logo">
-            <Link to="/" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
-          </div>
+          <LogoBlock isFooter />
 
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>
