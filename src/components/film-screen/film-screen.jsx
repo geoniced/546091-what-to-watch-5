@@ -4,6 +4,18 @@ import PropTypes from "prop-types";
 import {FilmTypes} from "../../prop-types-validations";
 import UserBlock from "../user-block/user-block";
 
+const getStarringActorsMarkup = (starringActors) => {
+  return (
+    <Fragment>
+      {starringActors.map((actor, i, actors) => (
+        <Fragment key={`actor-${i}`} >
+          {actor} {i < actors.length - 1 ? <br /> : ``}
+        </Fragment>
+      ))}
+    </Fragment>
+  );
+};
+
 const FilmScreen = (props) => {
   const {
     title,
@@ -22,15 +34,7 @@ const FilmScreen = (props) => {
 
   const {onPlayButtonClick} = props;
 
-  const starringActorsFormatted = (
-    <Fragment>
-      {starring.map((actor, i, actors) => (
-        <Fragment key={`actor-${i}`} >
-          {actor} {i < actors.length - 1 ? <br /> : ``}
-        </Fragment>
-      ))}
-    </Fragment>
-  );
+  const starringActorsFormatted = getStarringActorsMarkup(starring);
 
   return (
     <Fragment>
