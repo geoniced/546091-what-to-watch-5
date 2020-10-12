@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app";
+import films from "./mocks/films";
+import reviews from "./mocks/reviews";
 
 const movieCard = {
   title: `The Grand Budapest Hotel`,
@@ -9,6 +11,10 @@ const movieCard = {
 };
 
 ReactDOM.render(
-    <App movieCard={movieCard}/>,
+    <App
+      movieCard={movieCard}
+      films={films}
+      reviews={reviews}
+    />,
     document.querySelector(`#root`)
 );
