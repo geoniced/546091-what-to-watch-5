@@ -26,7 +26,7 @@ export default [
       `Jeff Goldblum`,
     ],
     runtime: `1h 39m`,
-    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `Bohemian Rhapsody`,
     genre: `Drama`,
@@ -50,7 +50,7 @@ export default [
       `Mike Myers`,
     ],
     runtime: `2h 14m`,
-    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4`,
   }, {
     title: `Macbeth`,
     genre: `Drama`,
@@ -72,7 +72,7 @@ export default [
       `David Thewlis`,
     ],
     runtime: `1h 53m`,
-    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4`,
   }, {
     title: `Revenant`,
     genre: `Drama`,
@@ -91,7 +91,7 @@ export default [
       `Will Poulter`,
     ],
     runtime: `2h 36m`,
-    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4`,
   }, {
     title: `No Country For Old Men`,
     genre: `Thriller`,
@@ -109,7 +109,7 @@ export default [
       `Josh Brolin`,
     ],
     runtime: `2h 2m`,
-    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `Snatch`,
     genre: `Comedy`,
@@ -131,7 +131,7 @@ export default [
       `Jason Statham`,
     ],
     runtime: `1h 42m`,
-    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `Moonrise Kingdom`,
     genre: `Comedy-Drama`,
@@ -153,7 +153,7 @@ export default [
       `Bob Balaban`,
     ],
     runtime: `1h 34m`,
-    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `War Of The Worlds`,
     genre: `Action`,
@@ -172,6 +172,6 @@ export default [
       `Tim Robbins`,
     ],
     runtime: `1h 56m`,
-    video: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }
 ];
