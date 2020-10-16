@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
 import {FilmTypes} from "../../prop-types-validations";
-import VideoPlayer from "../video-player/video-player";
 
 const CardVideoSize = {
   WIDTH: 280,
@@ -16,22 +16,30 @@ const VIDEO_STYLES = {
 };
 
 const FilmCard = (props) => {
+  const {renderPlayer, mouseOverHandler, mouseLeaveHandler} = props;
   const {
     title,
     fullSizePoster,
     video,
   } = props.film;
 
+  const videoPlayerSettings = {
+    fullSizePoster,
+    video,
+    width: CardVideoSize.WIDTH,
+    height: CardVideoSize.HEIGHT,
+    videoStyles: VIDEO_STYLES,
+  };
+
   return (
-    <article className="small-movie-card catalog__movies-card">
-      <VideoPlayer
-        src={video}
-        poster={fullSizePoster}
-        width={CardVideoSize.WIDTH}
-        height={CardVideoSize.HEIGHT}
-        videoStyles={VIDEO_STYLES}
-        isMuted
-      />
+    <article
+      className="small-movie-card catalog__movies-card"
+      onMouseOver={mouseOverHandler}
+      onMouseLeave={mouseLeaveHandler}
+    >
+      <div className="small-movie-card__image">
+        {renderPlayer(videoPlayerSettings)}
+      </div>
       <h3 className="small-movie-card__title">
         <Link to="/films/id" className="small-movie-card__link">{title}</Link>
       </h3>
@@ -41,6 +49,9 @@ const FilmCard = (props) => {
 
 FilmCard.propTypes = {
   film: FilmTypes.filmCard,
+  renderPlayer: PropTypes.func.isRequired,
+  mouseOverHandler: PropTypes.func.isRequired,
+  mouseLeaveHandler: PropTypes.func.isRequired,
 };
 
 export default FilmCard;

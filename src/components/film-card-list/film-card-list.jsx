@@ -1,6 +1,9 @@
 import React, {PureComponent} from "react";
 import {FilmTypes} from "../../prop-types-validations";
 import FilmCard from "../film-card/film-card";
+import withVideoPlayer from "../../hocs/with-video-player";
+
+const FilmCardWrapped = withVideoPlayer(FilmCard);
 
 class FilmCardList extends PureComponent {
   constructor(props) {
@@ -17,7 +20,7 @@ class FilmCardList extends PureComponent {
     return (
       <div className="catalog__movies-list">
         {films.map((film, i) => (
-          <FilmCard
+          <FilmCardWrapped
             key={`film-${i}`}
             film={film}
           />
