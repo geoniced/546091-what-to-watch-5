@@ -1,35 +1,29 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-class VideoPlayer extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+const VideoPlayer = (props) => {
+  const {
+    isMuted = false,
+    src,
+    poster,
+    width,
+    height,
+    videoStyles,
+    reference,
+  } = props;
 
-  render() {
-    const {
-      isMuted = false,
-      src,
-      poster,
-      width,
-      height,
-      videoStyles,
-      reference,
-    } = this.props;
-
-    return (
-      <video
-        src={src}
-        poster={poster}
-        muted={isMuted}
-        width={width}
-        height={height}
-        style={videoStyles}
-        ref={reference}
-      />
-    );
-  }
-}
+  return (
+    <video
+      src={src}
+      poster={poster}
+      muted={isMuted}
+      width={width}
+      height={height}
+      style={videoStyles}
+      ref={reference}
+    />
+  );
+};
 
 
 VideoPlayer.propTypes = {
