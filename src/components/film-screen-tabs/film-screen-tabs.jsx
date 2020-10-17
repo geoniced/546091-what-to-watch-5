@@ -1,7 +1,8 @@
-import React, {PureComponent, Fragment} from "react";
+import React, {PureComponent} from "react";
 import {FilmTypes, ReviewTypes} from "../../prop-types-validations";
 import FilmCardDetailsTab from "../film-card-details-tab/film-card-details-tab";
 import FilmCardReviewTab from "../film-card-review-tab/film-card-review-tab";
+import FilmCardOverviewTab from "../film-card-overview-tab/film-card-overview-tab";
 
 const Tab = {
   OVERVIEW: `OVERVIEW`,
@@ -14,28 +15,11 @@ class FilmScreenTabs extends PureComponent {
     super(props);
 
     this.state = {
-      currentTab: Tab.REVIEWS,
+      currentTab: Tab.OVERVIEW,
     };
   }
 
   render() {
-    const {
-      title,
-      genre,
-      releaseYear,
-      poster,
-      fullSizePoster,
-      // description, // these 4 commented properties will be added after tabs' logic
-      // rating,
-      // ratingDescription,
-      // ratingsCount,
-      director,
-      starring,
-      runtime,
-    } = this.props.film;
-
-    // const starringActorsFormatted = getStarringActorsMarkup(starring);
-
     const {currentTab} = this.state;
 
     return (
@@ -62,7 +46,7 @@ class FilmScreenTabs extends PureComponent {
   getTabContentByType(tabType) {
     switch (tabType) {
       case Tab.OVERVIEW:
-        break;
+        return <FilmCardOverviewTab film={this.props.film} />;
       case Tab.DETAILS:
         return <FilmCardDetailsTab film={this.props.film}/>;
       case Tab.REVIEWS:

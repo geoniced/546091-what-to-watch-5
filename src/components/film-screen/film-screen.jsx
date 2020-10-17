@@ -6,18 +6,6 @@ import LogoBlock from "../logo-block/logo-block";
 import UserBlock from "../user-block/user-block";
 import FilmScreenTabs from "../film-screen-tabs/film-screen-tabs";
 
-const getStarringActorsMarkup = (starringActors) => {
-  return (
-    <Fragment>
-      {starringActors.map((actor, i, actors) => (
-        <Fragment key={`actor-${i}`} >
-          {actor} {i < actors.length - 1 ? <br /> : ``}
-        </Fragment>
-      ))}
-    </Fragment>
-  );
-};
-
 const FilmScreen = (props) => {
   const {
     title,
@@ -25,18 +13,9 @@ const FilmScreen = (props) => {
     releaseYear,
     poster,
     fullSizePoster,
-    // description, // these 4 commented properties will be added after tabs' logic
-    // rating,
-    // ratingDescription,
-    // ratingsCount,
-    director,
-    starring,
-    runtime,
   } = props.film;
 
   const {onPlayButtonClick, reviews} = props;
-
-  // const starringActorsFormatted = getStarringActorsMarkup(starring);
 
   return (
     <Fragment>
