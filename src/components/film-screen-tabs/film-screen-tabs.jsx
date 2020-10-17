@@ -1,6 +1,7 @@
 import React, {PureComponent, Fragment} from "react";
-import {FilmTypes} from "../../prop-types-validations";
+import {FilmTypes, ReviewTypes} from "../../prop-types-validations";
 import FilmCardDetailsTab from "../film-card-details-tab/film-card-details-tab";
+import FilmCardReviewTab from "../film-card-review-tab/film-card-review-tab";
 
 const Tab = {
   OVERVIEW: `OVERVIEW`,
@@ -13,7 +14,7 @@ class FilmScreenTabs extends PureComponent {
     super(props);
 
     this.state = {
-      currentTab: Tab.DETAILS,
+      currentTab: Tab.REVIEWS,
     };
   }
 
@@ -65,7 +66,7 @@ class FilmScreenTabs extends PureComponent {
       case Tab.DETAILS:
         return <FilmCardDetailsTab film={this.props.film}/>;
       case Tab.REVIEWS:
-        return;
+        return <FilmCardReviewTab reviews={this.props.reviews}/>;
     }
 
     return null;
@@ -74,6 +75,7 @@ class FilmScreenTabs extends PureComponent {
 
 FilmScreenTabs.propTypes = {
   film: FilmTypes.filmCard,
+  reviews: ReviewTypes.reviewsList,
 };
 
 export default FilmScreenTabs;

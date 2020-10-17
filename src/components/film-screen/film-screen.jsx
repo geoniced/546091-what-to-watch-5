@@ -34,9 +34,9 @@ const FilmScreen = (props) => {
     runtime,
   } = props.film;
 
-  const {onPlayButtonClick} = props;
+  const {onPlayButtonClick, reviews} = props;
 
-  const starringActorsFormatted = getStarringActorsMarkup(starring);
+  // const starringActorsFormatted = getStarringActorsMarkup(starring);
 
   return (
     <Fragment>
@@ -94,6 +94,7 @@ const FilmScreen = (props) => {
 
             <FilmScreenTabs
               film={props.film}
+              reviews={reviews}
             />
           </div>
         </div>
