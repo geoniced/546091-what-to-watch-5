@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import {FilmTypes} from "../../prop-types-validations";
 import LogoBlock from "../logo-block/logo-block";
 import UserBlock from "../user-block/user-block";
+import FilmScreenTabs from "../film-screen-tabs/film-screen-tabs";
 
 const getStarringActorsMarkup = (starringActors) => {
   return (
@@ -91,51 +92,9 @@ const FilmScreen = (props) => {
               <img src={poster} alt={title} width="218" height="327" />
             </div>
 
-            <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Overview</a>
-                  </li>
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Details</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className="movie-card__text movie-card__row">
-                <div className="movie-card__text-col">
-                  <p className="movie-card__details-item">
-                    <strong className="movie-card__details-name">Director</strong>
-                    <span className="movie-card__details-value">{director}</span>
-                  </p>
-                  <p className="movie-card__details-item">
-                    <strong className="movie-card__details-name">Starring</strong>
-                    <span className="movie-card__details-value">
-                      {starringActorsFormatted}
-                    </span>
-                  </p>
-                </div>
-
-                <div className="movie-card__text-col">
-                  <p className="movie-card__details-item">
-                    <strong className="movie-card__details-name">Run Time</strong>
-                    <span className="movie-card__details-value">{runtime}</span>
-                  </p>
-                  <p className="movie-card__details-item">
-                    <strong className="movie-card__details-name">Genre</strong>
-                    <span className="movie-card__details-value">{genre}</span>
-                  </p>
-                  <p className="movie-card__details-item">
-                    <strong className="movie-card__details-name">Released</strong>
-                    <span className="movie-card__details-value">{releaseYear}</span>
-                  </p>
-                </div>
-              </div>
-            </div>
+            <FilmScreenTabs
+              film={props.film}
+            />
           </div>
         </div>
       </section>
