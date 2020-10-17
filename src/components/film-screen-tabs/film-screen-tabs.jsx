@@ -10,6 +10,21 @@ const Tab = {
   REVIEWS: `REVIEWS`,
 };
 
+const TABS = {
+  [Tab.OVERVIEW]: {
+    title: `Overview`,
+    type: Tab.OVERVIEW,
+  },
+  [Tab.DETAILS]: {
+    title: `Details`,
+    type: Tab.DETAILS,
+  },
+  [Tab.REVIEWS]: {
+    title: `Reviews`,
+    type: Tab.REVIEWS,
+  },
+};
+
 class FilmScreenTabs extends PureComponent {
   constructor(props) {
     super(props);
@@ -21,20 +36,21 @@ class FilmScreenTabs extends PureComponent {
 
   render() {
     const {currentTab} = this.state;
+    const tabs = Object.values(TABS);
 
     return (
       <div className="movie-card__desc">
         <nav className="movie-nav movie-card__nav">
           <ul className="movie-nav__list">
-            <li className="movie-nav__item">
-              <a href="#" className="movie-nav__link">Overview</a>
-            </li>
-            <li className="movie-nav__item movie-nav__item--active">
-              <a href="#" className="movie-nav__link">Details</a>
-            </li>
-            <li className="movie-nav__item">
-              <a href="#" className="movie-nav__link">Reviews</a>
-            </li>
+            {tabs.map((tab, i) => (
+              <li key={`tab-${i}`}
+                className={`movie-nav__item ${tab.type === this.state.currentTab ? `movie-nav__item--active` : ``}`}
+              >
+                <a href="#" className="movie-nav__link">
+                  {tab.title}
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
 
