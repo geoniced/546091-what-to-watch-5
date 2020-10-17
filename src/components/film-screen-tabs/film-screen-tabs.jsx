@@ -32,6 +32,17 @@ class FilmScreenTabs extends PureComponent {
     this.state = {
       currentTab: Tab.OVERVIEW,
     };
+
+    this._handleTabClick = this._handleTabClick.bind(this);
+  }
+
+  _handleTabClick(evt) {
+    evt.preventDefault();
+    const tabType = evt.currentTarget.dataset.tabType;
+
+    this.setState({
+      currentTab: tabType,
+    });
   }
 
   render() {
@@ -44,7 +55,9 @@ class FilmScreenTabs extends PureComponent {
           <ul className="movie-nav__list">
             {tabs.map((tab, i) => (
               <li key={`tab-${i}`}
-                className={`movie-nav__item ${tab.type === this.state.currentTab ? `movie-nav__item--active` : ``}`}
+                className={`movie-nav__item ${tab.type === currentTab ? `movie-nav__item--active` : ``}`}
+                onClick={this._handleTabClick}
+                data-tab-type={tab.type}
               >
                 <a href="#" className="movie-nav__link">
                   {tab.title}
