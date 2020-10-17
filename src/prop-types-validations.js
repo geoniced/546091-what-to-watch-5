@@ -30,7 +30,7 @@ const reviewProps = PropTypes.shape({
   date: PropTypes.string.isRequired,
 });
 
-const reviewsListProps = PropTypes.arrayOf(reviewProps);
+const reviewsListProps = PropTypes.arrayOf(reviewProps).isRequired;
 
 export const ReviewTypes = {
   reviewsList: reviewsListProps,

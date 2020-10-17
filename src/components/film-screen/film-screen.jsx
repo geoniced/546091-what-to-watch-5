@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
-import {FilmTypes} from "../../prop-types-validations";
+import {FilmTypes, ReviewTypes} from "../../prop-types-validations";
 import LogoBlock from "../logo-block/logo-block";
 import UserBlock from "../user-block/user-block";
 import FilmScreenTabs from "../film-screen-tabs/film-screen-tabs";
@@ -157,12 +157,7 @@ const FilmScreen = (props) => {
 
 FilmScreen.propTypes = {
   film: FilmTypes.filmCard,
-  reviews: PropTypes.arrayOf(PropTypes.shape({
-    reviewText: PropTypes.string.isRequired,
-    filmRating: PropTypes.number.isRequired,
-    userName: PropTypes.string.isRequired,
-    reviewDate: PropTypes.string.isRequired,
-  })).isRequired,
+  reviews: ReviewTypes.reviewsList,
   onPlayButtonClick: PropTypes.func.isRequired,
 };
 
