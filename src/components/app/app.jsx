@@ -38,6 +38,7 @@ const App = (props) => {
             <FilmScreen
               film={films[1]}
               reviews={reviews}
+              films={films}
               onPlayButtonClick={() => history.push(`/player/1`)}
             />
           )}
