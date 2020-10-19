@@ -1,11 +1,15 @@
+import {ALL_GENRES_FILTER} from "./const";
+
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
-const ALL_GENRES_FILTER = `all`;
+export const getFilmGenres = (films) => {
+  return [...new Set(films.map((film) => film.genre))];
+};
 
 export const getFilmsFilter = (films) => {
-  const filmGenres = new Set(films.map((film) => film.genre));
+  const filmGenres = getFilmGenres(films);
 
   const filmFilter = {
     [ALL_GENRES_FILTER]: (filmCards) => filmCards,

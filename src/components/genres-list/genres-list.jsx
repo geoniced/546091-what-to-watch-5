@@ -1,0 +1,37 @@
+import React from "react";
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
+import {getFilmGenres} from "../../utils";
+import {ALL_GENRES_FILTER} from "../../const";
+import {FilmTypes} from "../../prop-types-validations";
+
+const GenresList = (props) => {
+  const {activeGenre, films} = props;
+  const genres = [ALL_GENRES_FILTER, ...getFilmGenres(films)];
+
+  return (
+    <ul className="catalog__genres-list">
+      {genres.map((genre, i) => (
+        <li key={`genre-${i}`}
+          className={`catalog__genres-item ${activeGenre === genre ? `catalog__genres-item--active` : ``}`}
+          data-genre={genre}
+        >
+          <a href="#" className="catalog__genres-link">{genre}</a>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+GenresList.propTypes = {
+  activeGenre: PropTypes.string.isRequired,
+  films: FilmTypes.films,
+};
+
+const mapStateToProps = (state) => ({
+  activeGenre: state.activeGenre,
+  films: state.initialFilms,
+});
+
+export {GenresList};
+export default connect(mapStateToProps)(GenresList);
