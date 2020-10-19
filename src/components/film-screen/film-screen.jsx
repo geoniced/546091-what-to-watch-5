@@ -1,21 +1,13 @@
 import React, {Fragment} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
-import {FilmTypes} from "../../prop-types-validations";
+import {FilmTypes, ReviewTypes} from "../../prop-types-validations";
 import LogoBlock from "../logo-block/logo-block";
 import UserBlock from "../user-block/user-block";
+import FilmScreenTabs from "../film-screen-tabs/film-screen-tabs";
+import FilmCardList from "../film-card-list/film-card-list";
 
-const getStarringActorsMarkup = (starringActors) => {
-  return (
-    <Fragment>
-      {starringActors.map((actor, i, actors) => (
-        <Fragment key={`actor-${i}`} >
-          {actor} {i < actors.length - 1 ? <br /> : ``}
-        </Fragment>
-      ))}
-    </Fragment>
-  );
-};
+const SIMILIAR_FILMS_COUNT = 4;
 
 const FilmScreen = (props) => {
   const {
@@ -24,18 +16,14 @@ const FilmScreen = (props) => {
     releaseYear,
     poster,
     fullSizePoster,
-    // description, // these 4 commented properties will be added after tabs' logic
-    // rating,
-    // ratingDescription,
-    // ratingsCount,
-    director,
-    starring,
-    runtime,
   } = props.film;
 
-  const {onPlayButtonClick} = props;
+  const {onPlayButtonClick, reviews, films} = props;
 
-  const starringActorsFormatted = getStarringActorsMarkup(starring);
+  const similarFilms = films
+    .filter((film) => film.title !== props.film.title)
+    .filter((film) => film.genre === props.film.genre)
+    .slice(0, SIMILIAR_FILMS_COUNT);
 
   return (
     <Fragment>
@@ -91,51 +79,10 @@ const FilmScreen = (props) => {
               <img src={poster} alt={title} width="218" height="327" />
             </div>
 
-            <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Overview</a>
-                  </li>
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Details</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className="movie-card__text movie-card__row">
-                <div className="movie-card__text-col">
-                  <p className="movie-card__details-item">
-                    <strong className="movie-card__details-name">Director</strong>
-                    <span className="movie-card__details-value">{director}</span>
-                  </p>
-                  <p className="movie-card__details-item">
-                    <strong className="movie-card__details-name">Starring</strong>
-                    <span className="movie-card__details-value">
-                      {starringActorsFormatted}
-                    </span>
-                  </p>
-                </div>
-
-                <div className="movie-card__text-col">
-                  <p className="movie-card__details-item">
-                    <strong className="movie-card__details-name">Run Time</strong>
-                    <span className="movie-card__details-value">{runtime}</span>
-                  </p>
-                  <p className="movie-card__details-item">
-                    <strong className="movie-card__details-name">Genre</strong>
-                    <span className="movie-card__details-value">{genre}</span>
-                  </p>
-                  <p className="movie-card__details-item">
-                    <strong className="movie-card__details-name">Released</strong>
-                    <span className="movie-card__details-value">{releaseYear}</span>
-                  </p>
-                </div>
-              </div>
-            </div>
+            <FilmScreenTabs
+              film={props.film}
+              reviews={reviews}
+            />
           </div>
         </div>
       </section>
@@ -144,43 +91,7 @@ const FilmScreen = (props) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <div className="catalog__movies-list">
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Bohemian Rhapsody</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/macbeth.jpg" alt="Macbeth" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Macbeth</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/aviator.jpg" alt="Aviator" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Aviator</a>
-              </h3>
-            </article>
-          </div>
+          <FilmCardList films={similarFilms}/>
         </section>
 
         <footer className="page-footer">
@@ -196,13 +107,9 @@ const FilmScreen = (props) => {
 };
 
 FilmScreen.propTypes = {
+  films: FilmTypes.films,
   film: FilmTypes.filmCard,
-  reviews: PropTypes.arrayOf(PropTypes.shape({
-    reviewText: PropTypes.string.isRequired,
-    filmRating: PropTypes.number.isRequired,
-    userName: PropTypes.string.isRequired,
-    reviewDate: PropTypes.string.isRequired,
-  })).isRequired,
+  reviews: ReviewTypes.reviewsList,
   onPlayButtonClick: PropTypes.func.isRequired,
 };
 

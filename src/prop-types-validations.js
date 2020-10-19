@@ -22,3 +22,17 @@ export const FilmTypes = {
   films: filmListProps,
   filmCard: filmProps,
 };
+
+const reviewProps = PropTypes.shape({
+  text: PropTypes.string.isRequired,
+  filmRating: PropTypes.number.isRequired,
+  userName: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+});
+
+const reviewsListProps = PropTypes.arrayOf(reviewProps).isRequired;
+
+export const ReviewTypes = {
+  reviewsList: reviewsListProps,
+  review: reviewProps,
+};
