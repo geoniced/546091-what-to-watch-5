@@ -2,15 +2,11 @@ import React, {Fragment} from "react";
 import {FilmTypes} from "../../prop-types-validations";
 
 const getStarringActorsMarkup = (starringActors) => {
-  return (
-    <Fragment>
-      {starringActors.map((actor, i, actors) => (
-        <Fragment key={`actor-${i}`} >
-          {actor} {i < actors.length - 1 ? <br /> : ``}
-        </Fragment>
-      ))}
+  return starringActors.map((actor, i, actors) => (
+    <Fragment key={`actor-${i}`} >
+      {actor} {i < actors.length - 1 ? <br /> : ``}
     </Fragment>
-  );
+  ));
 };
 
 const FilmCardDetailsTab = (props) => {
