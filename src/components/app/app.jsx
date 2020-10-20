@@ -19,7 +19,6 @@ const App = (props) => {
           render={({history}) => (
             <MainPage
               movieCard={movieCard}
-              films={films}
               onPlayButtonClick={() => history.push(`/player/0`)}
             />
           )}

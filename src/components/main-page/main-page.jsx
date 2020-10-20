@@ -1,12 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 import {FilmTypes} from "../../prop-types-validations";
 import FilmCardList from "../film-card-list/film-card-list";
 import LogoBlock from "../logo-block/logo-block";
 import UserBlock from "../user-block/user-block";
+import GenresList from "../genres-list/genres-list";
+import {ActionCreator} from "../../store/actions";
 
 const MainPage = (props) => {
-  const {movieCard, films, onPlayButtonClick} = props;
+  const {
+    movieCard,
+    onPlayButtonClick,
+    films,
+    activeGenre,
+    initialFilms,
+    onGenreChange
+  } = props;
+
   const {
     title,
     genre,
@@ -67,38 +78,12 @@ const MainPage = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="#" className="catalog__genres-link">All genres</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Comedies</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Crime</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Documentary</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Dramas</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Horror</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Kids & Family</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Romance</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Sci-Fi</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Thrillers</a>
-            </li>
-          </ul>
+          <GenresList
+            activeGenre={activeGenre}
+            films={films}
+            initialFilms={initialFilms}
+            onGenreChange={onGenreChange}
+          />
 
           <FilmCardList
             films={films}
@@ -127,8 +112,26 @@ MainPage.propTypes = {
     genre: PropTypes.string.isRequired,
     releaseDate: PropTypes.number.isRequired,
   }).isRequired,
-  films: FilmTypes.films,
   onPlayButtonClick: PropTypes.func.isRequired,
+  activeGenre: PropTypes.string.isRequired,
+  films: FilmTypes.films,
+  initialFilms: FilmTypes.films,
+  onGenreChange: PropTypes.func.isRequired,
 };
 
-export default MainPage;
+const mapStateToProps = (state) => ({
+  activeGenre: state.activeGenre,
+  films: state.films,
+  initialFilms: state.initialFilms,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onGenreChange(evt) {
+    const chosenGenre = evt.currentTarget.dataset.genre;
+    dispatch(ActionCreator.changeGenre(chosenGenre));
+    dispatch(ActionCreator.getFilmsByGenre(chosenGenre));
+  },
+});
+
+export {MainPage};
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
