@@ -20,4 +20,6 @@ export const getFilmsFilter = (films) => {
       return filmCards.filter((film) => film.genre === filmGenre);
     };
   });
+
+  return filmFilter;
 };
