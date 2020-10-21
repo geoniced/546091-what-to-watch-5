@@ -6,6 +6,7 @@ import FilmCardList from "../film-card-list/film-card-list";
 import LogoBlock from "../logo-block/logo-block";
 import UserBlock from "../user-block/user-block";
 import GenresList from "../genres-list/genres-list";
+import ShowMoreButton from "../show-more-button/show-more-button";
 import {ActionCreator} from "../../store/actions";
 
 const MainPage = (props) => {
@@ -15,7 +16,9 @@ const MainPage = (props) => {
     films,
     activeGenre,
     initialFilms,
-    onGenreChange
+    shownFilmsCount,
+    onGenreChange,
+    onShowMoreButtonClick
   } = props;
 
   const {
@@ -23,6 +26,8 @@ const MainPage = (props) => {
     genre,
     releaseDate
   } = movieCard;
+
+  const shownFilms = films.slice(0, shownFilmsCount);
 
   return (
     <React.Fragment>
@@ -86,12 +91,12 @@ const MainPage = (props) => {
           />
 
           <FilmCardList
-            films={films}
+            films={shownFilms}
           />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          {shownFilms.length < films.length
+            ? <ShowMoreButton clickHandler={onShowMoreButtonClick} />
+            : null}
         </section>
 
         <footer className="page-footer">
@@ -116,13 +121,16 @@ MainPage.propTypes = {
   activeGenre: PropTypes.string.isRequired,
   films: FilmTypes.films,
   initialFilms: FilmTypes.films,
+  shownFilmsCount: PropTypes.number.isRequired,
   onGenreChange: PropTypes.func.isRequired,
+  onShowMoreButtonClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   activeGenre: state.activeGenre,
   films: state.films,
   initialFilms: state.initialFilms,
+  shownFilmsCount: state.shownFilmsCount,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -130,6 +138,10 @@ const mapDispatchToProps = (dispatch) => ({
     const chosenGenre = evt.currentTarget.dataset.genre;
     dispatch(ActionCreator.changeGenre(chosenGenre));
     dispatch(ActionCreator.getFilmsByGenre(chosenGenre));
+    dispatch(ActionCreator.resetShownFilmCards());
+  },
+  onShowMoreButtonClick() {
+    dispatch(ActionCreator.increaseShownFilmCards());
   },
 });
 
