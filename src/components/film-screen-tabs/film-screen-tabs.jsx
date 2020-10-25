@@ -5,6 +5,7 @@ import FilmCardDetailsTab from "../film-card-details-tab/film-card-details-tab";
 import FilmCardReviewTab from "../film-card-review-tab/film-card-review-tab";
 import FilmCardOverviewTab from "../film-card-overview-tab/film-card-overview-tab";
 import {Tab} from "../../const";
+import FilmScreenTabItem from "../film-screen-tab-item/film-screen-tab-item";
 
 const TABS = {
   [Tab.OVERVIEW]: {
@@ -43,15 +44,13 @@ const FilmScreenTabs = (props) => {
       <nav className="movie-nav movie-card__nav">
         <ul className="movie-nav__list">
           {tabs.map((tab, i) => (
-            <li key={`tab-${i}`}
-              className={`movie-nav__item ${tab.type === currentTab ? `movie-nav__item--active` : ``}`}
-              onClick={onTabClick}
-              data-tab-type={tab.type}
-            >
-              <a href="#" className="movie-nav__link">
-                {tab.title}
-              </a>
-            </li>
+            <FilmScreenTabItem
+              key={`tab-${i}`}
+              isActive={tab.type === currentTab}
+              type={tab.type}
+              title={tab.title}
+              onTabClick={onTabClick}
+            />
           ))}
         </ul>
       </nav>
