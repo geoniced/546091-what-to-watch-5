@@ -1,7 +1,7 @@
 import React from "react";
 import {FilmTypes} from "../../prop-types-validations";
 import FilmCard from "../film-card/film-card";
-import withVideoPlayer from "../../hocs/with-video-player";
+import withVideoPlayer from "../../hocs/with-video-player/with-video-player";
 
 const FilmCardWrapped = withVideoPlayer(FilmCard);
 

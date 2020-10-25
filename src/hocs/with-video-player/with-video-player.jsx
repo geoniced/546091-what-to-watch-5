@@ -1,5 +1,5 @@
 import React, {PureComponent, createRef} from "react";
-import VideoPlayer from "../components/video-player/video-player";
+import VideoPlayer from "../../components/video-player/video-player";
 
 const HOVER_TIME_TO_PLAY = 1000;
 
