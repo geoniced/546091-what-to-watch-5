@@ -17,12 +17,19 @@ const withVideoPlayer = (Component) => {
 
       this._handleVideoMouseOver = this._handleVideoMouseOver.bind(this);
       this._handleVideoMouseLeave = this._handleVideoMouseLeave.bind(this);
+      this._handleTimeout = this._handleTimeout.bind(this);
+    }
+
+    _handleTimeout() {
+      if (this._hoverTimerId) {
+        this.setState({
+          isPlaying: true,
+        });
+      }
     }
 
     _handleVideoMouseOver() {
-      this._hoverTimerId = setTimeout(() => this.setState({
-        isPlaying: true,
-      }), HOVER_TIME_TO_PLAY);
+      this._hoverTimerId = setTimeout(this._handleTimeout, HOVER_TIME_TO_PLAY);
     }
 
     _handleVideoMouseLeave() {
@@ -48,6 +55,8 @@ const withVideoPlayer = (Component) => {
 
     componentWillUnmount() {
       clearTimeout(this._hoverTimerId);
+      this._hoverTimerId = null;
+
       const video = this._videoRef.current;
 
       video.onplay = null;
