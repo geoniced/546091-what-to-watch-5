@@ -9,10 +9,6 @@ import FilmScreen from "../film-screen/film-screen";
 import FilmAddReviewScreen from "../film-add-review-screen/film-add-review-screen";
 import PlayerScreen from "../player-screen/player-screen";
 
-import withReviewForm from "../../hocs/with-review-form/with-review-form";
-
-const FilmAddReviewScreenWrapped = withReviewForm(FilmAddReviewScreen);
-
 const App = (props) => {
   const {movieCard, films, reviews} = props;
   return (
@@ -47,7 +43,7 @@ const App = (props) => {
           )}
         />
         <Route path="/films/:id/review" exact>
-          <FilmAddReviewScreenWrapped
+          <FilmAddReviewScreen
             film={films[1]}
           />
         </Route>

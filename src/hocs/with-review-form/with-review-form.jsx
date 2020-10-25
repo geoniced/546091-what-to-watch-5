@@ -1,5 +1,4 @@
 import React, {PureComponent} from "react";
-import {FilmTypes} from "../../prop-types-validations";
 
 const withReviewForm = (Component) => {
   class WithReviewForm extends PureComponent {
@@ -45,9 +44,7 @@ const withReviewForm = (Component) => {
     }
   }
 
-  WithReviewForm.propTypes = {
-    film: FilmTypes.filmCard,
-  };
+  WithReviewForm.propTypes = {};
 
   return WithReviewForm;
 };
