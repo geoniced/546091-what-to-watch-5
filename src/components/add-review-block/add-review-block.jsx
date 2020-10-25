@@ -1,5 +1,6 @@
-import React, {Fragment} from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import AddReviewRatingStar from "../add-review-rating-star/add-review-rating-star";
 
 const STARS_COUNT = 5;
 
@@ -19,18 +20,25 @@ const AddReviewBlock = (props) => {
               const currentStarIndex = index + 1;
 
               return (
-                <Fragment key={`star-${currentStarIndex}`}>
-                  <input
-                    className="rating__input"
-                    id={`star-${currentStarIndex}`}
-                    type="radio"
-                    name="rating"
-                    value={currentStarIndex}
-                    checked={currentStarIndex === ratingStars}
-                    onChange={onRatingChange}
-                  />
-                  <label className="rating__label" htmlFor={`star-${currentStarIndex}`}>Rating {currentStarIndex}</label>
-                </Fragment>
+                // оставляю код, чтобы показать скорость отрисовки
+                // <React.Fragment key={`star-${currentStarIndex}`}>
+                //   <input
+                //     className="rating__input"
+                //     id={`star-${currentStarIndex}`}
+                //     type="radio"
+                //     name="rating"
+                //     value={currentStarIndex}
+                //     checked={currentStarIndex === ratingStars}
+                //     onChange={onRatingChange}
+                //   />
+                //   <label className="rating__label" htmlFor={`star-${currentStarIndex}`}>Rating {currentStarIndex}</label>
+                // </React.Fragment>
+                <AddReviewRatingStar
+                  key={`star-${currentStarIndex}`}
+                  starIndex={currentStarIndex}
+                  checked={currentStarIndex === ratingStars}
+                  onRatingChange={onRatingChange}
+                />
               );
             })}
           </div>
