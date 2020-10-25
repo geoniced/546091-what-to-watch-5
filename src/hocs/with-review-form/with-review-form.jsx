@@ -39,6 +39,7 @@ const withReviewForm = (Component) => {
           onRatingChange={this._handleRatingChange}
           onReviewChange={this._handleReviewChange}
           onSubmit={this._handleFormSubmit}
+          ratingStars={this.state.ratingStars}
         />
       );
     }
