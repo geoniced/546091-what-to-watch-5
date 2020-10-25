@@ -7,6 +7,10 @@ import UserBlock from "../user-block/user-block";
 import FilmScreenTabs from "../film-screen-tabs/film-screen-tabs";
 import FilmCardList from "../film-card-list/film-card-list";
 
+import withSwitchableTabs from "../../hocs/with-switchable-tabs/with-switchable-tabs";
+
+const FilmScreenWithSwitchableTabs = withSwitchableTabs(FilmScreenTabs);
+
 const SIMILIAR_FILMS_COUNT = 4;
 
 const FilmScreen = (props) => {
@@ -79,7 +83,7 @@ const FilmScreen = (props) => {
               <img src={poster} alt={title} width="218" height="327" />
             </div>
 
-            <FilmScreenTabs
+            <FilmScreenWithSwitchableTabs
               film={props.film}
               reviews={reviews}
             />
