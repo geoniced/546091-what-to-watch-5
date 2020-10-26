@@ -1,26 +1,24 @@
 import React, {Fragment, PureComponent} from "react";
 import PropTypes from "prop-types";
 
-class AddReviewRatingStar extends PureComponent {
-  render() {
-    const {starIndex, checked, onRatingChange} = this.props;
+const AddReviewRatingStar = (props) => {
+  const {starIndex, checked, onRatingChange} = props;
 
-    return (
-      <Fragment key={`star-${starIndex}`}>
-        <input
-          className="rating__input"
-          id={`star-${starIndex}`}
-          type="radio"
-          name="rating"
-          value={starIndex}
-          checked={checked}
-          onChange={onRatingChange}
-        />
-        <label className="rating__label" htmlFor={`star-${starIndex}`}>Rating {starIndex}</label>
-      </Fragment>
-    );
-  }
-}
+  return (
+    <Fragment key={`star-${starIndex}`}>
+      <input
+        className="rating__input"
+        id={`star-${starIndex}`}
+        type="radio"
+        name="rating"
+        value={starIndex}
+        checked={checked}
+        onChange={onRatingChange}
+      />
+      <label className="rating__label" htmlFor={`star-${starIndex}`}>Rating {starIndex}</label>
+    </Fragment>
+  );
+};
 
 AddReviewRatingStar.propTypes = {
   starIndex: PropTypes.number.isRequired,
@@ -28,4 +26,5 @@ AddReviewRatingStar.propTypes = {
   onRatingChange: PropTypes.func.isRequired,
 };
 
-export default AddReviewRatingStar;
+export {AddReviewRatingStar};
+export default React.memo(AddReviewRatingStar);
