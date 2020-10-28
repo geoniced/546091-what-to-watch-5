@@ -11,7 +11,7 @@ import {ActionCreator} from "../../store/actions";
 
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
 
-const FilmCardListWithActive = withActivePlayer(FilmCardList);
+const FilmCardListWithActiveItem = withActivePlayer(FilmCardList);
 
 const MainPage = (props) => {
   const {
@@ -94,7 +94,7 @@ const MainPage = (props) => {
             onGenreChange={onGenreChange}
           />
 
-          <FilmCardListWithActive
+          <FilmCardListWithActiveItem
             films={shownFilms}
           />
 

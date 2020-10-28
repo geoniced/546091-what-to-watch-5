@@ -11,7 +11,7 @@ import withSwitchableTabs from "../../hocs/with-switchable-tabs/with-switchable-
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
 
 const FilmScreenWithSwitchableTabs = withSwitchableTabs(FilmScreenTabs);
-const FilmCardListWithActive = withActivePlayer(FilmCardList);
+const FilmCardListWithActiveItem = withActivePlayer(FilmCardList);
 
 const SIMILIAR_FILMS_COUNT = 4;
 
@@ -97,7 +97,7 @@ const FilmScreen = (props) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmCardListWithActive films={similarFilms}/>
+          <FilmCardListWithActiveItem films={similarFilms}/>
         </section>
 
         <footer className="page-footer">
