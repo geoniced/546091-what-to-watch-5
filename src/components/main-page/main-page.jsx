@@ -9,6 +9,10 @@ import GenresList from "../genres-list/genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
 import {ActionCreator} from "../../store/actions";
 
+import withActivePlayer from "../../hocs/with-active-player/with-active-player";
+
+const FilmCardListWithActive = withActivePlayer(FilmCardList);
+
 const MainPage = (props) => {
   const {
     movieCard,
@@ -90,7 +94,7 @@ const MainPage = (props) => {
             onGenreChange={onGenreChange}
           />
 
-          <FilmCardList
+          <FilmCardListWithActive
             films={shownFilms}
           />
 
