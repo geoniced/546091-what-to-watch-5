@@ -1,19 +1,20 @@
 import React from "react";
 import {FilmTypes} from "../../prop-types-validations";
 import FilmCard from "../film-card/film-card";
-import withVideoPlayer from "../../hocs/with-video-player";
-
-const FilmCardWrapped = withVideoPlayer(FilmCard);
 
 const FilmCardList = (props) => {
-  const {films} = props;
+  const {films, renderPlayer, mouseOverHandler, mouseLeaveHandler} = props;
 
   return (
     <div className="catalog__movies-list">
       {films.map((film, i) => (
-        <FilmCardWrapped
+        <FilmCard
           key={`film-${i}`}
+          filmId={i}
           film={film}
+          renderPlayer={renderPlayer}
+          mouseOverHandler={mouseOverHandler}
+          mouseLeaveHandler={mouseLeaveHandler}
         />
       ))}
     </div>

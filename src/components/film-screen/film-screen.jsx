@@ -7,6 +7,12 @@ import UserBlock from "../user-block/user-block";
 import FilmScreenTabs from "../film-screen-tabs/film-screen-tabs";
 import FilmCardList from "../film-card-list/film-card-list";
 
+import withSwitchableTabs from "../../hocs/with-switchable-tabs/with-switchable-tabs";
+import withActivePlayer from "../../hocs/with-active-player/with-active-player";
+
+const FilmScreenWithSwitchableTabs = withSwitchableTabs(FilmScreenTabs);
+const FilmCardListWithActiveItem = withActivePlayer(FilmCardList);
+
 const SIMILIAR_FILMS_COUNT = 4;
 
 const FilmScreen = (props) => {
@@ -79,7 +85,7 @@ const FilmScreen = (props) => {
               <img src={poster} alt={title} width="218" height="327" />
             </div>
 
-            <FilmScreenTabs
+            <FilmScreenWithSwitchableTabs
               film={props.film}
               reviews={reviews}
             />
@@ -91,7 +97,7 @@ const FilmScreen = (props) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmCardList films={similarFilms}/>
+          <FilmCardListWithActiveItem films={similarFilms}/>
         </section>
 
         <footer className="page-footer">
