@@ -20,9 +20,11 @@ const withActivePlayer = (Component) => {
 
     _handleMouseOver(itemId) {
       this._timerId = setTimeout(() => {
-        this.setState({
-          activeItem: itemId,
-        });
+        if (this._timerId) {
+          this.setState({
+            activeItem: itemId,
+          });
+        }
       }, HOVER_TIME_TO_ACTIVE);
     }
 
@@ -33,6 +35,11 @@ const withActivePlayer = (Component) => {
       this.setState({
         activeItem: -1,
       });
+    }
+
+    componentWillUnmount() {
+      clearTimeout(this._timerId);
+      this._timerId = null;
     }
 
     render() {
