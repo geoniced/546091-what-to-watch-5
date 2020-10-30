@@ -47,11 +47,15 @@ const App = (props) => {
             film={films[1]}
           />
         </Route>
-        <Route path="/player/:id" exact>
-          <PlayerScreen
-            film={films[0]}
-          />
-        </Route>
+        <Route exact
+          path="/player/:id"
+          render={({history}) => (
+            <PlayerScreen
+              film={films[0]}
+              onExitButtonClick={() => history.push(`/`)}
+            />
+          )}
+        />
       </Switch>
     </BrowserRouter>
   );

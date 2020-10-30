@@ -1,4 +1,5 @@
 import React, {Fragment, PureComponent} from "react";
+import PropTypes from "prop-types";
 import {FilmTypes} from "../../prop-types-validations";
 import VideoPlayer from "../video-player/video-player";
 
@@ -63,6 +64,8 @@ class PlayerScreen extends PureComponent {
       title,
     } = this.props.film;
 
+    const {onExitButtonClick} = this.props;
+
     const {isPlaying} = this.state;
     const playerPlayButtonTemplate = getPlayerPlayButtonTemplate(isPlaying);
 
@@ -75,7 +78,13 @@ class PlayerScreen extends PureComponent {
           poster={fullSizePoster}
         />
 
-        <button type="button" className="player__exit">Exit</button>
+        <button
+          type="button"
+          className="player__exit"
+          onClick={onExitButtonClick}
+        >
+          Exit
+        </button>
 
         <div className="player__controls">
           <div className="player__controls-row">
@@ -111,6 +120,7 @@ class PlayerScreen extends PureComponent {
 
 PlayerScreen.propTypes = {
   film: FilmTypes.filmCard,
+  onExitButtonClick: PropTypes.func.isRequired,
 };
 
 export default PlayerScreen;
