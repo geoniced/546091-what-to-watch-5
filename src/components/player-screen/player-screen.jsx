@@ -1,17 +1,22 @@
 import React from "react";
 import {FilmTypes} from "../../prop-types-validations";
+import VideoPlayer from "../video-player/video-player";
 
 const PlayerScreen = (props) => {
   const {
     video,
     runtime,
-    fullSizePoster, // Я даже не знаю нужно ли это, постер к фильму у тега video
+    fullSizePoster,
     title,
   } = props.film;
 
   return (
     <div className="player">
-      <video src={video} className="player__video" poster={fullSizePoster}></video>
+      <VideoPlayer
+        additionalClasses="player__video"
+        src={video}
+        poster={fullSizePoster}
+      />
 
       <button type="button" className="player__exit">Exit</button>
 

@@ -27,10 +27,12 @@ class VideoPlayer extends PureComponent {
       width,
       height,
       videoStyles,
+      additionalClasses,
     } = this.props;
 
     return (
       <video
+        className={additionalClasses}
         src={src}
         poster={poster}
         muted={isMuted}
@@ -48,9 +50,10 @@ VideoPlayer.propTypes = {
   isMuted: PropTypes.bool,
   src: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
+  width: PropTypes.number,
+  height: PropTypes.number,
   videoStyles: PropTypes.object,
+  additionalClasses: PropTypes.string,
 };
 
 export default VideoPlayer;
