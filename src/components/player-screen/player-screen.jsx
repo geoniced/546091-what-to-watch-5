@@ -32,10 +32,10 @@ class PlayerScreen extends PureComponent {
       isPlaying: false,
     };
 
-    this._handleButtonClick = this._handleButtonClick.bind(this);
+    this._handlePlayerButtonClick = this._handlePlayerButtonClick.bind(this);
   }
 
-  _handleButtonClick() {
+  _handlePlayerButtonClick() {
     if (this.state.isPlaying) {
       this._pauseVideo();
     } else {
@@ -90,7 +90,7 @@ class PlayerScreen extends PureComponent {
             <button
               type="button"
               className="player__play"
-              onClick={this._handleButtonClick}
+              onClick={this._handlePlayerButtonClick}
             >
               {playerPlayButtonTemplate}
             </button>
