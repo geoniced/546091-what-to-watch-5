@@ -5,10 +5,6 @@ class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      currentTime: 0,
-    };
-
     this._videoRef = createRef();
   }
 
@@ -19,14 +15,8 @@ class VideoPlayer extends PureComponent {
     video.ontimeupdate = () => {
       const currentTime = Math.floor(video.currentTime);
 
-      if (this.state.currentTime !== currentTime) {
-        this.setState({
-          currentTime: Math.floor(currentTime),
-        });
-
-        if (onCurrentTimeChange) {
-          onCurrentTimeChange(currentTime);
-        }
+      if (onCurrentTimeChange) {
+        onCurrentTimeChange(currentTime);
       }
     };
   }
