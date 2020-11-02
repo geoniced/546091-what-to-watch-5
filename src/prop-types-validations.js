@@ -12,7 +12,7 @@ const filmProps = PropTypes.shape({
   ratingsCount: PropTypes.number.isRequired,
   director: PropTypes.string.isRequired,
   starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  runtime: PropTypes.string.isRequired,
+  runtime: PropTypes.number.isRequired,
   video: PropTypes.string.isRequired,
 }).isRequired;
 

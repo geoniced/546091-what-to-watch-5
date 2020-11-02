@@ -2,6 +2,7 @@ import React, {createRef, Fragment, PureComponent} from "react";
 import PropTypes from "prop-types";
 import {FilmTypes} from "../../prop-types-validations";
 import VideoPlayer from "../video-player/video-player";
+import PlayerTimeControls from "../player-controls-time/player-controls-time";
 
 const getPlayerPlayButtonTemplate = (isPlaying) => {
   if (isPlaying) {
@@ -32,12 +33,14 @@ class PlayerScreen extends PureComponent {
     this.state = {
       isPlaying: false,
       isFullscreen: false,
+      currentTime: 0,
     };
 
     this._playerRef = createRef();
 
     this._handlePlayerButtonClick = this._handlePlayerButtonClick.bind(this);
     this._handleFullscreenButtonClick = this._handleFullscreenButtonClick.bind(this);
+    this._handleCurrentTimeChange = this._handleCurrentTimeChange.bind(this);
   }
 
   _handlePlayerButtonClick() {
@@ -54,6 +57,12 @@ class PlayerScreen extends PureComponent {
     } else {
       this._openFullscreen();
     }
+  }
+
+  _handleCurrentTimeChange(currentTime) {
+    this.setState({
+      currentTime,
+    });
   }
 
   _playVideo() {
@@ -93,7 +102,7 @@ class PlayerScreen extends PureComponent {
 
     const {onExitButtonClick} = this.props;
 
-    const {isPlaying} = this.state;
+    const {isPlaying, currentTime} = this.state;
     const playerPlayButtonTemplate = getPlayerPlayButtonTemplate(isPlaying);
 
     return (
@@ -106,6 +115,7 @@ class PlayerScreen extends PureComponent {
           additionalClasses="player__video"
           src={video}
           poster={fullSizePoster}
+          onCurrentTimeChange={this._handleCurrentTimeChange}
         />
 
         <button
@@ -117,13 +127,10 @@ class PlayerScreen extends PureComponent {
         </button>
 
         <div className="player__controls">
-          <div className="player__controls-row">
-            <div className="player__time">
-              <progress className="player__progress" value="30" max="100"></progress>
-              <div className="player__toggler" style={{left: `30%`}}>Toggler</div>
-            </div>
-            <div className="player__time-value">{runtime}</div>
-          </div>
+          <PlayerTimeControls
+            runtime={runtime}
+            currentTime={currentTime}
+          />
 
           <div className="player__controls-row">
             <button

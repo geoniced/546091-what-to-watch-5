@@ -5,17 +5,44 @@ class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.state = {
+      currentTime: 0,
+    };
+
     this._videoRef = createRef();
+  }
+
+  componentDidMount() {
+    const video = this._videoRef.current;
+    const {onCurrentTimeChange} = this.props;
+
+    video.ontimeupdate = () => {
+      const currentTime = Math.floor(video.currentTime);
+
+      if (this.state.currentTime !== currentTime) {
+        this.setState({
+          currentTime: Math.floor(currentTime),
+        });
+
+        if (onCurrentTimeChange) {
+          onCurrentTimeChange(currentTime);
+        }
+      }
+    };
   }
 
   componentDidUpdate() {
     const video = this._videoRef.current;
+    const {resetAfterPause} = this.props;
 
     if (this.props.isPlaying) {
       video.play();
     } else {
       video.pause();
-      video.load();
+
+      if (resetAfterPause) {
+        video.load();
+      }
     }
   }
 
@@ -48,12 +75,14 @@ class VideoPlayer extends PureComponent {
 VideoPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
   isMuted: PropTypes.bool,
+  resetAfterPause: PropTypes.bool,
   src: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
   width: PropTypes.number,
   height: PropTypes.number,
   videoStyles: PropTypes.object,
   additionalClasses: PropTypes.string,
+  onCurrentTimeChange: PropTypes.func,
 };
 
 export default VideoPlayer;
