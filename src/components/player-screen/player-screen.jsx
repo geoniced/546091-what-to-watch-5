@@ -2,7 +2,7 @@ import React, {createRef, Fragment, PureComponent} from "react";
 import PropTypes from "prop-types";
 import {FilmTypes} from "../../prop-types-validations";
 import VideoPlayer from "../video-player/video-player";
-import PlayerTimeControls from "../player-controls-time/player-controls-time";
+import PlayerTimeControls from "../player-time-controls/player-time-controls";
 
 const getPlayerPlayButtonTemplate = (isPlaying) => {
   if (isPlaying) {
