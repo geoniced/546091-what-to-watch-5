@@ -25,7 +25,7 @@ const films = [
       `Ralph Fiennes`,
       `Jeff Goldblum`,
     ],
-    runtime: 60,
+    runtime: 1,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `Bohemian Rhapsody`,

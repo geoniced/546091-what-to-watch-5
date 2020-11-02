@@ -33,7 +33,7 @@ class PlayerScreen extends PureComponent {
     this.state = {
       isPlaying: false,
       isFullscreen: false,
-      currentTime: 0,
+      currentTimeSeconds: 0,
     };
 
     this._playerRef = createRef();
@@ -59,9 +59,9 @@ class PlayerScreen extends PureComponent {
     }
   }
 
-  _handleCurrentTimeChange(currentTime) {
+  _handleCurrentTimeChange(currentTimeSeconds) {
     this.setState({
-      currentTime,
+      currentTimeSeconds,
     });
   }
 
@@ -102,7 +102,7 @@ class PlayerScreen extends PureComponent {
 
     const {onExitButtonClick} = this.props;
 
-    const {isPlaying, currentTime} = this.state;
+    const {isPlaying, currentTimeSeconds} = this.state;
     const playerPlayButtonTemplate = getPlayerPlayButtonTemplate(isPlaying);
 
     return (
@@ -129,7 +129,7 @@ class PlayerScreen extends PureComponent {
         <div className="player__controls">
           <PlayerTimeControls
             runtime={runtime}
-            currentTime={currentTime}
+            currentTimeSeconds={currentTimeSeconds}
           />
 
           <div className="player__controls-row">

@@ -1,6 +1,6 @@
 import React, {Fragment} from "react";
 import {FilmTypes} from "../../prop-types-validations";
-import {getDuration} from "../../utils";
+import {getHoursAndMinutesDurationText} from "../../utils";
 
 const getStarringActorsMarkup = (starringActors) => {
   return starringActors.map((actor, i, actors) => (
@@ -20,7 +20,7 @@ const FilmCardDetailsTab = (props) => {
   } = props.film;
 
   const starringActorsFormatted = getStarringActorsMarkup(starring);
-  const runtimeFormatted = getDuration(runtime);
+  const runtimeFormatted = getHoursAndMinutesDurationText(runtime);
 
   return (
     <div className="movie-card__text movie-card__row">
