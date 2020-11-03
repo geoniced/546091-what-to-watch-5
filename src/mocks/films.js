@@ -25,7 +25,7 @@ const films = [
       `Ralph Fiennes`,
       `Jeff Goldblum`,
     ],
-    runtime: `1h 39m`,
+    runtime: 1,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `Bohemian Rhapsody`,
@@ -49,7 +49,7 @@ const films = [
       `Tom Hollander`,
       `Mike Myers`,
     ],
-    runtime: `2h 14m`,
+    runtime: 134,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4`,
   }, {
     title: `Macbeth`,
@@ -71,7 +71,7 @@ const films = [
       `Elizabeth Debicki`,
       `David Thewlis`,
     ],
-    runtime: `1h 53m`,
+    runtime: 113,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4`,
   }, {
     title: `Revenant`,
@@ -90,7 +90,7 @@ const films = [
       `Domhnall Gleeson`,
       `Will Poulter`,
     ],
-    runtime: `2h 36m`,
+    runtime: 156,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4`,
   }, {
     title: `No Country For Old Men`,
@@ -108,7 +108,7 @@ const films = [
       `Javier Bardem`,
       `Josh Brolin`,
     ],
-    runtime: `2h 2m`,
+    runtime: 122,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `Snatch`,
@@ -130,7 +130,7 @@ const films = [
       `Rade Sherbedgia`,
       `Jason Statham`,
     ],
-    runtime: `1h 42m`,
+    runtime: 102,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `Moonrise Kingdom`,
@@ -152,7 +152,7 @@ const films = [
       `Jason Schwartzman`,
       `Bob Balaban`,
     ],
-    runtime: `1h 34m`,
+    runtime: 94,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `War Of The Worlds`,
@@ -171,7 +171,7 @@ const films = [
       `Miranda Otto`,
       `Tim Robbins`,
     ],
-    runtime: `1h 56m`,
+    runtime: 116,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `Bohemian Rhapsody`,
@@ -195,7 +195,7 @@ const films = [
       `Tom Hollander`,
       `Mike Myers`,
     ],
-    runtime: `2h 14m`,
+    runtime: 134,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4`,
   }, {
     title: `Macbeth`,
@@ -217,7 +217,7 @@ const films = [
       `Elizabeth Debicki`,
       `David Thewlis`,
     ],
-    runtime: `1h 53m`,
+    runtime: 113,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4`,
   }, {
     title: `Revenant`,
@@ -236,7 +236,7 @@ const films = [
       `Domhnall Gleeson`,
       `Will Poulter`,
     ],
-    runtime: `2h 36m`,
+    runtime: 156,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4`,
   }, {
     title: `No Country For Old Men`,
@@ -254,7 +254,7 @@ const films = [
       `Javier Bardem`,
       `Josh Brolin`,
     ],
-    runtime: `2h 2m`,
+    runtime: 122,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `Snatch`,
@@ -276,7 +276,7 @@ const films = [
       `Rade Sherbedgia`,
       `Jason Statham`,
     ],
-    runtime: `1h 42m`,
+    runtime: 102,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `Moonrise Kingdom`,
@@ -298,7 +298,7 @@ const films = [
       `Jason Schwartzman`,
       `Bob Balaban`,
     ],
-    runtime: `1h 34m`,
+    runtime: 94,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `War Of The Worlds`,
@@ -317,7 +317,7 @@ const films = [
       `Miranda Otto`,
       `Tim Robbins`,
     ],
-    runtime: `1h 56m`,
+    runtime: 116,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `Revenant`,
@@ -336,7 +336,7 @@ const films = [
       `Domhnall Gleeson`,
       `Will Poulter`,
     ],
-    runtime: `2h 36m`,
+    runtime: 156,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4`,
   }, {
     title: `No Country For Old Men`,
@@ -354,7 +354,7 @@ const films = [
       `Javier Bardem`,
       `Josh Brolin`,
     ],
-    runtime: `2h 2m`,
+    runtime: 122,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `Snatch`,
@@ -376,7 +376,7 @@ const films = [
       `Rade Sherbedgia`,
       `Jason Statham`,
     ],
-    runtime: `1h 42m`,
+    runtime: 102,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `Moonrise Kingdom`,
@@ -398,7 +398,7 @@ const films = [
       `Jason Schwartzman`,
       `Bob Balaban`,
     ],
-    runtime: `1h 34m`,
+    runtime: 94,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `War Of The Worlds`,
@@ -417,7 +417,7 @@ const films = [
       `Miranda Otto`,
       `Tim Robbins`,
     ],
-    runtime: `1h 56m`,
+    runtime: 116,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4`,
   }, {
     title: `Revenant`,
@@ -436,7 +436,7 @@ const films = [
       `Domhnall Gleeson`,
       `Will Poulter`,
     ],
-    runtime: `2h 36m`,
+    runtime: 156,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4`,
   }, {
     title: `Revenant`,
@@ -455,7 +455,7 @@ const films = [
       `Domhnall Gleeson`,
       `Will Poulter`,
     ],
-    runtime: `2h 36m`,
+    runtime: 156,
     video: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4`,
   }
 ];
