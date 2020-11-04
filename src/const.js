@@ -6,3 +6,11 @@ export const Tab = {
   DETAILS: `DETAILS`,
   REVIEWS: `REVIEWS`,
 };
+
+export const Rating = {
+  BAD: `Bad`,
+  NORMAL: `Normal`,
+  GOOD: `Good`,
+  VERY_GOOD: `Very good`,
+  AWESOME: `Awesome`,
+};

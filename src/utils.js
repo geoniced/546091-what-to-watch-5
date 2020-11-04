@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
-import {ALL_GENRES_FILTER} from "./const";
+import {ALL_GENRES_FILTER, Rating} from "./const";
 
 dayjs.extend(duration);
 
@@ -86,4 +86,22 @@ export const adaptFilmToClient = (film) => {
 
 export const getFilmById = (films, id) => {
   return films.find((filmItem) => Number(id) === filmItem.id);
+};
+
+export const getRatingDescription = (rating) => {
+  let ratingDescription = ``;
+
+  if (rating >= 0 && rating < 3) {
+    ratingDescription = Rating.BAD;
+  } else if (rating >= 3 && rating < 5) {
+    ratingDescription = Rating.NORMAL;
+  } else if (rating >= 5 && rating < 8) {
+    ratingDescription = Rating.GOOD;
+  } else if (rating >= 8 && rating < 10) {
+    ratingDescription = Rating.VERY_GOOD;
+  } else if (rating === 10) {
+    ratingDescription = Rating.AWESOME;
+  }
+
+  return ratingDescription;
 };

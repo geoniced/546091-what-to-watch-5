@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import {FilmTypes} from "../../prop-types-validations";
+import {getRatingDescription} from "../../utils";
 
 const ACTORS_TO_HIDE_COUNT = 5;
 
@@ -16,13 +17,13 @@ const FilmCardOverviewTab = (props) => {
   const {
     description,
     rating,
-    ratingDescription,
     ratingsCount,
     director,
     starring,
   } = props.film;
 
   const starringFormatted = getStarringFormatted(starring);
+  const ratingDescription = getRatingDescription(rating);
 
   return (
     <Fragment>
