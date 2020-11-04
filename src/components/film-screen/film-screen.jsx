@@ -16,19 +16,22 @@ const FilmCardListWithActiveItem = withActivePlayer(FilmCardList);
 const SIMILIAR_FILMS_COUNT = 4;
 
 const FilmScreen = (props) => {
+  const {onPlayButtonClick, reviews, films, match} = props;
+
+  const {id} = match.params;
+  const film = films.find((filmItem) => Number(id) === filmItem.id);
+
   const {
     title,
     genre,
     releaseYear,
     posterImage,
     backgroundImage,
-  } = props.film;
-
-  const {onPlayButtonClick, reviews, films} = props;
+  } = film;
 
   const similarFilms = films
-    .filter((film) => film.title !== props.film.title)
-    .filter((film) => film.genre === props.film.genre)
+    .filter((filmItem) => filmItem.title !== film.title)
+    .filter((filmItem) => filmItem.genre === film.genre)
     .slice(0, SIMILIAR_FILMS_COUNT);
 
   return (
@@ -86,7 +89,7 @@ const FilmScreen = (props) => {
             </div>
 
             <FilmScreenWithSwitchableTabs
-              film={props.film}
+              film={film}
               reviews={reviews}
             />
           </div>
@@ -114,9 +117,9 @@ const FilmScreen = (props) => {
 
 FilmScreen.propTypes = {
   films: FilmTypes.films,
-  film: FilmTypes.filmCard,
   reviews: ReviewTypes.reviewsList,
   onPlayButtonClick: PropTypes.func.isRequired,
+  match: PropTypes.object,
 };
 
 export default FilmScreen;
