@@ -83,3 +83,7 @@ export const adaptFilmToClient = (film) => {
 
   return adaptedFilm;
 };
+
+export const getFilmById = (films, id) => {
+  return films.find((filmItem) => Number(id) === filmItem.id);
+};

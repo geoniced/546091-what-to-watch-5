@@ -1,15 +1,20 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {FilmTypes} from "../../prop-types-validations";
 import LogoBlock from "../logo-block/logo-block";
 import UserBlock from "../user-block/user-block";
 import AddReviewBlock from "../add-review-block/add-review-block";
 
 import withReviewForm from "../../hocs/with-review-form/with-review-form";
+import {getFilmById} from "../../utils";
 
 const AddReviewWithForm = withReviewForm(AddReviewBlock);
 
 const FilmAddReviewScreen = (props) => {
-  const {title, posterImage, backgroundImage} = props.film;
+  const {films, filmId} = props;
+
+  const film = getFilmById(films, filmId);
+  const {title, posterImage, backgroundImage} = film;
 
   return (
     <section className="movie-card movie-card--full">
@@ -49,7 +54,8 @@ const FilmAddReviewScreen = (props) => {
 };
 
 FilmAddReviewScreen.propTypes = {
-  film: FilmTypes.filmCard,
+  films: FilmTypes.films,
+  filmId: PropTypes.string.isRequired,
 };
 
 export default FilmAddReviewScreen;

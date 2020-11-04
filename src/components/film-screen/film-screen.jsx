@@ -9,6 +9,7 @@ import FilmCardList from "../film-card-list/film-card-list";
 
 import withSwitchableTabs from "../../hocs/with-switchable-tabs/with-switchable-tabs";
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
+import {getFilmById} from "../../utils";
 
 const FilmScreenWithSwitchableTabs = withSwitchableTabs(FilmScreenTabs);
 const FilmCardListWithActiveItem = withActivePlayer(FilmCardList);
@@ -16,10 +17,9 @@ const FilmCardListWithActiveItem = withActivePlayer(FilmCardList);
 const SIMILIAR_FILMS_COUNT = 4;
 
 const FilmScreen = (props) => {
-  const {onPlayButtonClick, reviews, films, match} = props;
+  const {onPlayButtonClick, reviews, films, filmId} = props;
 
-  const {id} = match.params;
-  const film = films.find((filmItem) => Number(id) === filmItem.id);
+  const film = getFilmById(films, filmId);
 
   const {
     title,
@@ -119,7 +119,7 @@ FilmScreen.propTypes = {
   films: FilmTypes.films,
   reviews: ReviewTypes.reviewsList,
   onPlayButtonClick: PropTypes.func.isRequired,
-  match: PropTypes.object,
+  filmId: PropTypes.string.isRequired,
 };
 
 export default FilmScreen;
