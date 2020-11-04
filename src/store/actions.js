@@ -5,19 +5,20 @@ export const ActionType = {
   RESET_SHOWN_FILM_CARDS: `RESET_SHOWN_FILM_CARDS`,
 };
 
-export const ActionCreator = {
-  changeGenre: (genre) => ({
-    type: ActionType.CHANGE_GENRE,
-    payload: genre,
-  }),
-  getFilmsByGenre: (genre) => ({
-    type: ActionType.GET_FILMS_BY_GENRE,
-    payload: genre,
-  }),
-  increaseShownFilmCards: () => ({
-    type: ActionType.INCREASE_SHOWN_FILM_CARDS,
-  }),
-  resetShownFilmCards: () => ({
-    type: ActionType.RESET_SHOWN_FILM_CARDS,
-  })
-};
+export const changeGenre = (genre) => ({
+  type: ActionType.CHANGE_GENRE,
+  payload: genre,
+});
+
+export const getFilmsByGenre = (genre) => ({
+  type: ActionType.GET_FILMS_BY_GENRE,
+  payload: genre,
+});
+
+export const increaseShownFilmCards = () => ({
+  type: ActionType.INCREASE_SHOWN_FILM_CARDS,
+});
+
+export const resetShownFilmCards = () => ({
+  type: ActionType.RESET_SHOWN_FILM_CARDS,
+});

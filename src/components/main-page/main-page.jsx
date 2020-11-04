@@ -7,7 +7,7 @@ import LogoBlock from "../logo-block/logo-block";
 import UserBlock from "../user-block/user-block";
 import GenresList from "../genres-list/genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
-import {ActionCreator} from "../../store/actions";
+import {changeGenre, getFilmsByGenre, resetShownFilmCards, increaseShownFilmCards} from "../../store/actions";
 
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
 
@@ -140,12 +140,12 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onGenreChange(evt) {
     const chosenGenre = evt.currentTarget.dataset.genre;
-    dispatch(ActionCreator.changeGenre(chosenGenre));
-    dispatch(ActionCreator.getFilmsByGenre(chosenGenre));
-    dispatch(ActionCreator.resetShownFilmCards());
+    dispatch(changeGenre(chosenGenre));
+    dispatch(getFilmsByGenre(chosenGenre));
+    dispatch(resetShownFilmCards());
   },
   onShowMoreButtonClick() {
-    dispatch(ActionCreator.increaseShownFilmCards());
+    dispatch(increaseShownFilmCards());
   },
 });
 
