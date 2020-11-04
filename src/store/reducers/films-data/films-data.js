@@ -1,13 +1,12 @@
 import {ActionType} from "../../actions";
-import films from "../../../mocks/films";
 import {extend, getFilmsFilter} from "../../../utils";
 import {ALL_GENRES_FILTER, FILM_CARDS_PER_STEP} from "../../../const";
 
 const initialState = {
   activeGenre: ALL_GENRES_FILTER,
-  films,
-  initialFilms: films,
-  shownFilmsCount: Math.min(FILM_CARDS_PER_STEP, films.length),
+  films: [],
+  initialFilms: [],
+  shownFilmsCount: 0,
 };
 
 const filmsData = (state = initialState, action) => {
