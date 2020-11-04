@@ -51,10 +51,10 @@ const withActivePlayer = (Component) => {
           mouseOverHandler={this._handleMouseOver}
           mouseLeaveHandler={this._handleMouseLeave}
 
-          renderPlayer={({filmId, poster, videoPreview, width, height, videoStyles}) => (
+          renderPlayer={({filmId, previewImage, videoPreview, width, height, videoStyles}) => (
             <VideoPlayer
               isPlaying={activeItem === filmId}
-              poster={poster}
+              poster={previewImage}
               src={videoPreview}
               width={width}
               height={height}

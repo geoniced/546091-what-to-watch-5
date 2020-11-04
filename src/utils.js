@@ -57,8 +57,8 @@ export const adaptFilmToClient = (film) => {
       {
         title: film.name,
         releaseYear: film.released,
-        poster: film.preview_image,
-        fullSizePoster: film.poster_image,
+        previewImage: film.preview_image,
+        posterImage: film.poster_image,
         ratingsCount: film.scores_count,
         runtime: film.run_time,
         video: film.video_link,

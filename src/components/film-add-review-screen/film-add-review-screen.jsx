@@ -9,13 +9,13 @@ import withReviewForm from "../../hocs/with-review-form/with-review-form";
 const AddReviewWithForm = withReviewForm(AddReviewBlock);
 
 const FilmAddReviewScreen = (props) => {
-  const {title, poster, fullSizePoster} = props.film;
+  const {title, previewImage, posterImage} = props.film;
 
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__header">
         <div className="movie-card__bg">
-          <img src={fullSizePoster} alt={title} />
+          <img src={posterImage} alt={title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -38,7 +38,7 @@ const FilmAddReviewScreen = (props) => {
         </header>
 
         <div className="movie-card__poster movie-card__poster--small">
-          <img src={poster} alt={title} width="218" height="327" />
+          <img src={previewImage} alt={title} width="218" height="327" />
         </div>
       </div>
 

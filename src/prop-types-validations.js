@@ -4,8 +4,8 @@ const filmProps = PropTypes.shape({
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   releaseYear: PropTypes.number.isRequired,
-  poster: PropTypes.string.isRequired,
-  fullSizePoster: PropTypes.string.isRequired,
+  previewImage: PropTypes.string.isRequired,
+  posterImage: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
   ratingsCount: PropTypes.number.isRequired,
@@ -13,6 +13,7 @@ const filmProps = PropTypes.shape({
   starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   runtime: PropTypes.number.isRequired,
   video: PropTypes.string.isRequired,
+  backgroundImage: PropTypes.string.isRequired,
 }).isRequired;
 
 const filmListProps = PropTypes.arrayOf(filmProps).isRequired;

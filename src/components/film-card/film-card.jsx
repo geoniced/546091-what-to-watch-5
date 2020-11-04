@@ -19,12 +19,12 @@ const FilmCard = (props) => {
   const {filmId, renderPlayer, mouseOverHandler, mouseLeaveHandler} = props;
   const {
     title,
-    poster,
+    previewImage,
     videoPreview,
   } = props.film;
 
   const videoPlayerSettings = {
-    poster,
+    previewImage,
     videoPreview,
     width: CardVideoSize.WIDTH,
     height: CardVideoSize.HEIGHT,
