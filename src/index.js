@@ -27,14 +27,17 @@ const store = createStore(
     )
 );
 
-store.dispatch(fetchFilmList());
-
-ReactDOM.render(
-    <Provider store={store}>
-      <App
-        movieCard={movieCard}
-        reviews={reviews}
-      />
-    </Provider>,
-    document.querySelector(`#root`)
-);
+Promise.all([
+  store.dispatch(fetchFilmList())
+])
+.then(() => {
+  ReactDOM.render(
+      <Provider store={store}>
+        <App
+          movieCard={movieCard}
+          reviews={reviews}
+        />
+      </Provider>,
+      document.querySelector(`#root`)
+  );
+});
