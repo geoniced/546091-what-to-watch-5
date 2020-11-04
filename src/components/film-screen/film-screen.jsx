@@ -74,7 +74,7 @@ const FilmScreen = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <Link to="/films/1/review" className="btn movie-card__button">
+                <Link to={`/films/${filmId}/review`} className="btn movie-card__button">
                   Add review
                 </Link>
               </div>
