@@ -3,6 +3,7 @@ export const ActionType = {
   GET_FILMS_BY_GENRE: `GET_FILMS_BY_GENRE`,
   INCREASE_SHOWN_FILM_CARDS: `INCREASE_SHOWN_FILM_CARDS`,
   RESET_SHOWN_FILM_CARDS: `RESET_SHOWN_FILM_CARDS`,
+  LOAD_FILMS: `LOAD_FILMS`,
 };
 
 export const changeGenre = (genre) => ({
@@ -21,4 +22,9 @@ export const increaseShownFilmCards = () => ({
 
 export const resetShownFilmCards = () => ({
   type: ActionType.RESET_SHOWN_FILM_CARDS,
+});
+
+export const loadFilms = (films) => ({
+  type: ActionType.LOAD_FILMS,
+  payload: films,
 });

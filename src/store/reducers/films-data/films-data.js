@@ -1,7 +1,7 @@
-import {ActionType} from "./actions";
-import films from "../mocks/films";
-import {extend, getFilmsFilter} from "../utils";
-import {ALL_GENRES_FILTER, FILM_CARDS_PER_STEP} from "../const";
+import {ActionType} from "../../actions";
+import films from "../../../mocks/films";
+import {extend, getFilmsFilter} from "../../utils";
+import {ALL_GENRES_FILTER, FILM_CARDS_PER_STEP} from "../../../const";
 
 const initialState = {
   activeGenre: ALL_GENRES_FILTER,
@@ -10,7 +10,7 @@ const initialState = {
   shownFilmsCount: Math.min(FILM_CARDS_PER_STEP, films.length),
 };
 
-const reducer = (state = initialState, action) => {
+const filmsData = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_GENRE:
       return extend(state, {
@@ -33,8 +33,14 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         shownFilmsCount: Math.min(FILM_CARDS_PER_STEP, state.initialFilms.length),
       });
+    case ActionType.LOAD_FILMS:
+      return extend(state, {
+        initialFilms: action.payload,
+        films: action.payload,
+      });
   }
+
   return state;
 };
 
-export {reducer};
+export {filmsData};

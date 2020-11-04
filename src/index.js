@@ -5,7 +5,7 @@ import {createStore} from "redux";
 import App from "./components/app/app";
 import films from "./mocks/films";
 import reviews from "./mocks/reviews";
-import {reducer} from "./store/reducer";
+import rootReducer from "./store/reducers/root-reducer";
 
 const movieCard = {
   title: `The Grand Budapest Hotel`,
@@ -14,7 +14,7 @@ const movieCard = {
 };
 
 const store = createStore(
-    reducer,
+    rootReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
 );
 
