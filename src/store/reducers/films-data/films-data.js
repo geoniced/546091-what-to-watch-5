@@ -1,6 +1,6 @@
 import {ActionType} from "../../actions";
 import films from "../../../mocks/films";
-import {extend, getFilmsFilter} from "../../utils";
+import {extend, getFilmsFilter} from "../../../utils";
 import {ALL_GENRES_FILTER, FILM_CARDS_PER_STEP} from "../../../const";
 
 const initialState = {

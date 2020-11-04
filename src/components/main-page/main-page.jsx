@@ -130,11 +130,11 @@ MainPage.propTypes = {
   onShowMoreButtonClick: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  activeGenre: state.activeGenre,
-  films: state.films,
-  initialFilms: state.initialFilms,
-  shownFilmsCount: state.shownFilmsCount,
+const mapStateToProps = ({DATA}) => ({
+  activeGenre: DATA.activeGenre,
+  films: DATA.films,
+  initialFilms: DATA.initialFilms,
+  shownFilmsCount: DATA.shownFilmsCount,
 });
 
 const mapDispatchToProps = (dispatch) => ({
