@@ -49,3 +49,37 @@ export const getDurationWithColons = (timeInMinutes) => {
 
   return `${hoursText}:${minutesText}:${secondsText}`;
 };
+
+export const adaptFilmToClient = (film) => {
+  const adaptedFilm = Object.assign(
+      {},
+      film,
+      {
+        title: film.name,
+        releaseYear: film.released,
+        poster: film.preview_image,
+        fullSizePoster: film.poster_image,
+        ratingsCount: film.scores_count,
+        runtime: film.run_time,
+        video: film.video_link,
+        backgroundColor: film.background_color,
+        backgroundImage: film.background_image,
+        isFavorite: film.is_favorite,
+        videoPreview: film.preview_video_link,
+      }
+  );
+
+  delete adaptedFilm.background_color;
+  delete adaptedFilm.background_image;
+  delete adaptedFilm.is_favorite;
+  delete adaptedFilm.name;
+  delete adaptedFilm.poster_image;
+  delete adaptedFilm.preview_image;
+  delete adaptedFilm.preview_video_link;
+  delete adaptedFilm.released;
+  delete adaptedFilm.run_time;
+  delete adaptedFilm.scores_count;
+  delete adaptedFilm.video_link;
+
+  return adaptedFilm;
+};

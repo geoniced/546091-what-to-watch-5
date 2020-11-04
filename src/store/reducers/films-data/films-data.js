@@ -1,5 +1,5 @@
 import {ActionType} from "../../actions";
-import {extend, getFilmsFilter} from "../../../utils";
+import {extend, getFilmsFilter, adaptFilmToClient} from "../../../utils";
 import {ALL_GENRES_FILTER, FILM_CARDS_PER_STEP} from "../../../const";
 
 const initialState = {
@@ -33,9 +33,14 @@ const filmsData = (state = initialState, action) => {
         shownFilmsCount: Math.min(FILM_CARDS_PER_STEP, state.initialFilms.length),
       });
     case ActionType.LOAD_FILMS:
+      const payloadFilms = action.payload;
+
+      const films = payloadFilms.map((film) => adaptFilmToClient(film));
+
       return extend(state, {
-        initialFilms: action.payload,
-        films: action.payload,
+        initialFilms: films,
+        films,
+        shownFilmsCount: Math.min(FILM_CARDS_PER_STEP, films.length)
       });
   }
 

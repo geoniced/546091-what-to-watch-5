@@ -8,7 +8,6 @@ const filmProps = PropTypes.shape({
   fullSizePoster: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
-  ratingDescription: PropTypes.string.isRequired,
   ratingsCount: PropTypes.number.isRequired,
   director: PropTypes.string.isRequired,
   starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,

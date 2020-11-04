@@ -12,6 +12,7 @@ import {connect} from "react-redux";
 
 const App = (props) => {
   const {movieCard, films, reviews} = props;
+
   return (
     <BrowserRouter>
       <Switch>
