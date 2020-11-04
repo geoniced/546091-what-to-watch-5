@@ -8,6 +8,7 @@ import MyListScreen from "../my-list-screen/my-list-screen";
 import FilmScreen from "../film-screen/film-screen";
 import FilmAddReviewScreen from "../film-add-review-screen/film-add-review-screen";
 import PlayerScreen from "../player-screen/player-screen";
+import {connect} from "react-redux";
 
 const App = (props) => {
   const {movieCard, films, reviews} = props;
@@ -71,4 +72,10 @@ App.propTypes = {
   reviews: ReviewTypes.reviewsList,
 };
 
-export default App;
+const mapStateToProps = ({DATA}) => ({
+  films: DATA.films,
+});
+
+export {App};
+// temporary
+export default connect(mapStateToProps)(App);

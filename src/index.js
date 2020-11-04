@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
 import {createStore} from "redux";
 import App from "./components/app/app";
-import films from "./mocks/films";
 import reviews from "./mocks/reviews";
 import rootReducer from "./store/reducers/root-reducer";
 
@@ -22,7 +21,6 @@ ReactDOM.render(
     <Provider store={store}>
       <App
         movieCard={movieCard}
-        films={films}
         reviews={reviews}
       />
     </Provider>,
