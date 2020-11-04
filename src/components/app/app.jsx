@@ -21,7 +21,7 @@ const App = (props) => {
           render={({history}) => (
             <MainPage
               movieCard={movieCard}
-              onPlayButtonClick={() => history.push(`/player/0`)}
+              onPlayButtonClick={() => history.push(`/player/1`)}
             />
           )}
         />
