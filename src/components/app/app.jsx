@@ -52,12 +52,18 @@ const App = (props) => {
         />
         <Route exact
           path="/films/:id/review"
-          render={({match}) => (
-            <FilmAddReviewScreen
-              filmId={match.params.id}
-              films={films}
-            />
-          )}
+          render={
+            ({match}) => {
+              const filmId = match.params.id;
+              const film = getFilmById(films, filmId);
+
+              return (
+                <FilmAddReviewScreen
+                  film={film}
+                />
+              );
+            }
+          }
         />
         <Route exact
           path="/player/:id"
