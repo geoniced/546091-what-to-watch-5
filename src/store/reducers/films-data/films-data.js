@@ -1,5 +1,5 @@
 import {ActionType} from "../../actions";
-import {extend, getFilmsFilter, adaptFilmToClient} from "../../../utils";
+import {extend, adaptFilmToClient} from "../../../utils";
 import {ALL_GENRES_FILTER, FILM_CARDS_PER_STEP} from "../../../const";
 
 const initialState = {
