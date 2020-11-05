@@ -67,13 +67,19 @@ const App = (props) => {
         />
         <Route exact
           path="/player/:id"
-          render={({history, match}) => (
-            <PlayerScreen
-              filmId={match.params.id}
-              films={films}
-              onExitButtonClick={() => history.push(`/`)}
-            />
-          )}
+          render={
+            ({history, match}) => {
+              const filmId = match.params.id;
+              const film = getFilmById(films, filmId);
+
+              return (
+                <PlayerScreen
+                  film={film}
+                  onExitButtonClick={() => history.push(`/`)}
+                />
+              );
+            }
+          }
         />
       </Switch>
     </BrowserRouter>

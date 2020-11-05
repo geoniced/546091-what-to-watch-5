@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import {FilmTypes} from "../../prop-types-validations";
 import VideoPlayer from "../video-player/video-player";
 import PlayerTimeControls from "../player-time-controls/player-time-controls";
-import {getFilmById} from "../../utils";
 
 const getPlayerPlayButtonTemplate = (isPlaying) => {
   if (isPlaying) {
@@ -94,9 +93,7 @@ class PlayerScreen extends PureComponent {
   }
 
   render() {
-    const {filmId, films, onExitButtonClick} = this.props;
-
-    const film = getFilmById(films, filmId);
+    const {film, onExitButtonClick} = this.props;
 
     const {
       video,
@@ -163,8 +160,7 @@ class PlayerScreen extends PureComponent {
 }
 
 PlayerScreen.propTypes = {
-  films: FilmTypes.films,
-  filmId: PropTypes.string.isRequired,
+  film: FilmTypes.filmCard,
   onExitButtonClick: PropTypes.func.isRequired,
 };
 
