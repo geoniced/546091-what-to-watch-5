@@ -101,7 +101,7 @@ class PlayerScreen extends PureComponent {
     const {
       video,
       runtime,
-      posterImage,
+      backgroundImage,
       title,
     } = film;
 
@@ -117,7 +117,7 @@ class PlayerScreen extends PureComponent {
           isPlaying={isPlaying}
           additionalClasses="player__video"
           src={video}
-          poster={posterImage}
+          poster={backgroundImage}
           onCurrentTimeChange={this._handleCurrentTimeChange}
         />
 
