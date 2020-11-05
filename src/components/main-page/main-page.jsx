@@ -8,7 +8,7 @@ import UserBlock from "../user-block/user-block";
 import GenresList from "../genres-list/genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
 import {changeGenre, resetShownFilmCards, increaseShownFilmCards} from "../../store/actions";
-import {getActiveGenre, getInitialFilms, getShownFilmsCount, getFilmsByGenre} from "../../store/selectors";
+import {getActiveGenre, getShownFilmsCount, getFilmsByGenre} from "../../store/selectors";
 
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
 
@@ -20,7 +20,6 @@ const MainPage = (props) => {
     onPlayButtonClick,
     films,
     activeGenre,
-    initialFilms,
     shownFilmsCount,
     onGenreChange,
     onShowMoreButtonClick
@@ -91,7 +90,6 @@ const MainPage = (props) => {
           <GenresList
             activeGenre={activeGenre}
             films={films}
-            initialFilms={initialFilms}
             onGenreChange={onGenreChange}
           />
 
@@ -125,7 +123,6 @@ MainPage.propTypes = {
   onPlayButtonClick: PropTypes.func.isRequired,
   activeGenre: PropTypes.string.isRequired,
   films: FilmTypes.films,
-  initialFilms: FilmTypes.films,
   shownFilmsCount: PropTypes.number.isRequired,
   onGenreChange: PropTypes.func.isRequired,
   onShowMoreButtonClick: PropTypes.func.isRequired,
@@ -134,7 +131,6 @@ MainPage.propTypes = {
 const mapStateToProps = (state) => ({
   activeGenre: getActiveGenre(state),
   films: getFilmsByGenre(state),
-  initialFilms: getInitialFilms(state),
   shownFilmsCount: getShownFilmsCount(state),
 });
 

@@ -2,7 +2,6 @@ import {createSelector} from "reselect";
 import {getFilmsFilter} from "../utils";
 
 export const getFilms = (state) => state.DATA.films;
-export const getInitialFilms = (state) => state.DATA.initialFilms;
 export const getActiveGenre = (state) => state.DATA.activeGenre;
 export const getShownFilmsCount = (state) => state.DATA.shownFilmsCount;
 
