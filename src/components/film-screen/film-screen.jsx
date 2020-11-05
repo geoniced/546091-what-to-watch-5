@@ -25,6 +25,7 @@ const FilmScreen = (props) => {
     releaseYear,
     posterImage,
     backgroundImage,
+    backgroundColor,
   } = film;
 
   // Может тоже в пропсы выкинуть, чтобы компонент почище был? Надо подумать
@@ -38,7 +39,7 @@ const FilmScreen = (props) => {
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={backgroundImage} alt={title} />
+            <img src={backgroundImage} alt={title} style={{backgroundColor}}/>
           </div>
 
           <h1 className="visually-hidden">WTW</h1>

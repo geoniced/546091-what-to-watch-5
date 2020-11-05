@@ -15,6 +15,7 @@ const filmProps = PropTypes.shape({
   runtime: PropTypes.number.isRequired,
   video: PropTypes.string.isRequired,
   backgroundImage: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string.isRequired,
 }).isRequired;
 
 const filmListProps = PropTypes.arrayOf(filmProps).isRequired;
