@@ -9,7 +9,6 @@ import FilmCardList from "../film-card-list/film-card-list";
 
 import withSwitchableTabs from "../../hocs/with-switchable-tabs/with-switchable-tabs";
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
-import {getFilmById} from "../../utils";
 
 const FilmScreenWithSwitchableTabs = withSwitchableTabs(FilmScreenTabs);
 const FilmCardListWithActiveItem = withActivePlayer(FilmCardList);
@@ -17,11 +16,10 @@ const FilmCardListWithActiveItem = withActivePlayer(FilmCardList);
 const SIMILIAR_FILMS_COUNT = 4;
 
 const FilmScreen = (props) => {
-  const {onPlayButtonClick, reviews, films, filmId} = props;
-
-  const film = getFilmById(films, filmId);
+  const {onPlayButtonClick, reviews, film, films} = props;
 
   const {
+    id,
     title,
     genre,
     releaseYear,
@@ -29,6 +27,7 @@ const FilmScreen = (props) => {
     backgroundImage,
   } = film;
 
+  // Может тоже в пропсы выкинуть, чтобы компонент почище был? Надо подумать
   const similarFilms = films
     .filter((filmItem) => filmItem.title !== film.title)
     .filter((filmItem) => filmItem.genre === film.genre)
@@ -74,7 +73,7 @@ const FilmScreen = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <Link to={`/films/${filmId}/review`} className="btn movie-card__button">
+                <Link to={`/films/${id}/review`} className="btn movie-card__button">
                   Add review
                 </Link>
               </div>
@@ -116,10 +115,10 @@ const FilmScreen = (props) => {
 };
 
 FilmScreen.propTypes = {
+  film: FilmTypes.filmCard,
   films: FilmTypes.films,
   reviews: ReviewTypes.reviewsList,
   onPlayButtonClick: PropTypes.func.isRequired,
-  filmId: PropTypes.string.isRequired,
 };
 
 export default FilmScreen;

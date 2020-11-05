@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 const filmProps = PropTypes.shape({
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   releaseYear: PropTypes.number.isRequired,

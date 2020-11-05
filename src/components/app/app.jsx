@@ -9,6 +9,7 @@ import FilmScreen from "../film-screen/film-screen";
 import FilmAddReviewScreen from "../film-add-review-screen/film-add-review-screen";
 import PlayerScreen from "../player-screen/player-screen";
 import {connect} from "react-redux";
+import {getFilmById} from "../../utils";
 
 const App = (props) => {
   const {movieCard, films, reviews} = props;
@@ -33,14 +34,21 @@ const App = (props) => {
         </Route>
         <Route exact
           path="/films/:id"
-          render={({history, match}) => (
-            <FilmScreen
-              filmId={match.params.id}
-              reviews={reviews}
-              films={films}
-              onPlayButtonClick={() => history.push(`/player/${match.params.id}`)}
-            />
-          )}
+          render={
+            ({history, match}) => {
+              const filmId = match.params.id;
+              const film = getFilmById(films, filmId);
+
+              return (
+                <FilmScreen
+                  film={film}
+                  films={films}
+                  reviews={reviews}
+                  onPlayButtonClick={() => history.push(`/player/${filmId}`)}
+                />
+              );
+            }
+          }
         />
         <Route exact
           path="/films/:id/review"
@@ -81,5 +89,4 @@ const mapStateToProps = ({DATA}) => ({
 });
 
 export {App};
-// temporary
 export default connect(mapStateToProps)(App);
