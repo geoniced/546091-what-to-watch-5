@@ -29,9 +29,7 @@ const App = (props) => {
           <AuthScreen />
         </Route>
         <Route path="/mylist" exact>
-          <MyListScreen
-            films={films}
-          />
+          <MyListScreen />
         </Route>
         <Route exact
           path="/films/:id"
