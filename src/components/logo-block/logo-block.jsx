@@ -1,6 +1,7 @@
 import React, {Fragment} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
+import {AppRoute} from "../../const";
 
 const LogoBlock = (props) => {
   const {isFooter = false, noLink = false} = props;
@@ -24,7 +25,7 @@ const LogoBlock = (props) => {
           </a>
         )
         : (
-          <Link to="/" className={linkClasses}>
+          <Link to={AppRoute.ROOT} className={linkClasses}>
             {linkContent}
           </Link>
         )

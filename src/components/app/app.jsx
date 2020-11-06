@@ -12,6 +12,7 @@ import PlayerScreen from "../player-screen/player-screen";
 import PrivateRoute from "../private-route/private-route";
 import {getFilmById} from "../../utils";
 import browserHistory from "../../browser-history";
+import {AppRoute} from "../../const";
 
 const App = (props) => {
   const {movieCard, films, reviews} = props;
@@ -20,7 +21,7 @@ const App = (props) => {
     <BrowserRouter history={browserHistory}>
       <Switch>
         <Route exact
-          path="/"
+          path={AppRoute.ROOT}
           render={({history}) => (
             <MainPage
               movieCard={movieCard}
@@ -28,11 +29,11 @@ const App = (props) => {
             />
           )}
         />
-        <Route path="/login" exact>
+        <Route path={AppRoute.LOGIN} exact>
           <AuthScreen />
         </Route>
         <PrivateRoute
-          path={`/mylist`}
+          path={AppRoute.MY_LIST}
           exact
           render={() => (
             <MyListScreen />
@@ -81,7 +82,7 @@ const App = (props) => {
               return (
                 <PlayerScreen
                   film={film}
-                  onExitButtonClick={() => history.push(`/`)}
+                  onExitButtonClick={() => history.push(AppRoute.ROOT)}
                 />
               );
             }

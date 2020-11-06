@@ -1,13 +1,13 @@
 import {loadFilms, redirectToRoute, requireAuthorization} from "./actions";
-import {AuthorizationStatus} from "../const";
+import {APIRoute, AppRoute, AuthorizationStatus} from "../const";
 
 export const fetchFilmList = () => (dispatch, _getStore, api) => (
-  api.get(`/films`)
+  api.get(APIRoute.FILMS)
     .then(({data}) => dispatch(loadFilms(data)))
 );
 
 export const checkAuth = () => (dispatch, _getStore, api) => (
-  api.get(`/login`)
+  api.get(APIRoute.LOGIN)
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
     .catch((err) => {
       // throw err; // TODO: REMOVE WHEN ITS TIME
@@ -15,7 +15,7 @@ export const checkAuth = () => (dispatch, _getStore, api) => (
 );
 
 export const login = ({email, password}) => (dispatch, _getStore, api) => (
-  api.post(`/login`, {email, password})
+  api.post(APIRoute.LOGIN, {email, password})
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
-    .then(() => dispatch(redirectToRoute(`/`)))
+    .then(() => dispatch(redirectToRoute(AppRoute.ROOT)))
 );
