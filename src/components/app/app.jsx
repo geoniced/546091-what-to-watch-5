@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {Router as BrowserRouter, Switch, Route} from "react-router-dom";
+import {connect} from "react-redux";
 import {FilmTypes, ReviewTypes} from "../../prop-types-validations";
 import MainPage from "../main-page/main-page";
 import AuthScreen from "../auth-screen/auth-screen";
@@ -9,14 +10,14 @@ import FilmScreen from "../film-screen/film-screen";
 import FilmAddReviewScreen from "../film-add-review-screen/film-add-review-screen";
 import PlayerScreen from "../player-screen/player-screen";
 import PrivateRoute from "../private-route/private-route";
-import {connect} from "react-redux";
 import {getFilmById} from "../../utils";
+import browserHistory from "../../browser-history";
 
 const App = (props) => {
   const {movieCard, films, reviews} = props;
 
   return (
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
         <Route exact
           path="/"
