@@ -55,7 +55,7 @@ const App = (props) => {
             }
           }
         />
-        <Route exact
+        <PrivateRoute exact
           path="/films/:id/review"
           render={
             ({match}) => {
