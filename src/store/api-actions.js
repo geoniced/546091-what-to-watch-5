@@ -1,4 +1,4 @@
-import {loadFilms, requireAuthorization} from "./actions";
+import {loadFilms, redirectToRoute, requireAuthorization} from "./actions";
 import {AuthorizationStatus} from "../const";
 
 export const fetchFilmList = () => (dispatch, _getStore, api) => (
@@ -17,4 +17,5 @@ export const checkAuth = () => (dispatch, _getStore, api) => (
 export const login = ({email, password}) => (dispatch, _getStore, api) => (
   api.post(`/login`, {email, password})
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
+    .then(() => dispatch(redirectToRoute(`/`)))
 );

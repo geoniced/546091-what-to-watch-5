@@ -4,6 +4,7 @@ export const ActionType = {
   RESET_SHOWN_FILM_CARDS: `RESET_SHOWN_FILM_CARDS`,
   LOAD_FILMS: `LOAD_FILMS`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
 };
 
 export const changeGenre = (genre) => ({
@@ -27,4 +28,9 @@ export const loadFilms = (films) => ({
 export const requireAuthorization = (status) => ({
   type: ActionType.REQUIRED_AUTHORIZATION,
   payload: status,
+});
+
+export const redirectToRoute = (url) => ({
+  type: ActionType.REDIRECT_TO_ROUTE,
+  payload: url,
 });
