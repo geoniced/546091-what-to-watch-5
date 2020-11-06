@@ -8,6 +8,7 @@ import MyListScreen from "../my-list-screen/my-list-screen";
 import FilmScreen from "../film-screen/film-screen";
 import FilmAddReviewScreen from "../film-add-review-screen/film-add-review-screen";
 import PlayerScreen from "../player-screen/player-screen";
+import PrivateRoute from "../private-route/private-route";
 import {connect} from "react-redux";
 import {getFilmById} from "../../utils";
 
@@ -29,9 +30,13 @@ const App = (props) => {
         <Route path="/login" exact>
           <AuthScreen />
         </Route>
-        <Route path="/mylist" exact>
-          <MyListScreen />
-        </Route>
+        <PrivateRoute
+          path={`/mylist`}
+          exact
+          render={() => (
+            <MyListScreen />
+          )}
+        />
         <Route exact
           path="/films/:id"
           render={
