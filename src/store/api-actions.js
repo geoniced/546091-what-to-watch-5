@@ -9,9 +9,7 @@ export const fetchFilmList = () => (dispatch, _getStore, api) => (
 export const checkAuth = () => (dispatch, _getStore, api) => (
   api.get(APIRoute.LOGIN)
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
-    .catch((err) => {
-      // throw err; // TODO: REMOVE WHEN ITS TIME
-    })
+    .catch(() => {})
 );
 
 export const login = ({email, password}) => (dispatch, _getStore, api) => (
