@@ -11,6 +11,7 @@ import {createAPI} from "./services/api";
 import {checkAuth, fetchFilmList} from "./store/api-actions";
 import {requireAuthorization} from "./store/actions";
 import {AuthorizationStatus} from "./const";
+import {redirect} from "./store/middlewares/redirect";
 
 const movieCard = {
   title: `The Grand Budapest Hotel`,
@@ -25,7 +26,8 @@ const api = createAPI(
 const store = createStore(
     rootReducer,
     composeWithDevTools(
-        applyMiddleware(thunk.withExtraArgument(api))
+        applyMiddleware(thunk.withExtraArgument(api)),
+        applyMiddleware(redirect)
     )
 );
 
