@@ -16,19 +16,22 @@ const FilmCardListWithActiveItem = withActivePlayer(FilmCardList);
 const SIMILIAR_FILMS_COUNT = 4;
 
 const FilmScreen = (props) => {
+  const {onPlayButtonClick, reviews, film, films} = props;
+
   const {
+    id,
     title,
     genre,
     releaseYear,
-    poster,
-    fullSizePoster,
-  } = props.film;
+    posterImage,
+    backgroundImage,
+    backgroundColor,
+  } = film;
 
-  const {onPlayButtonClick, reviews, films} = props;
-
+  // Может тоже в пропсы выкинуть, чтобы компонент почище был? Надо подумать
   const similarFilms = films
-    .filter((film) => film.title !== props.film.title)
-    .filter((film) => film.genre === props.film.genre)
+    .filter((filmItem) => filmItem.title !== film.title)
+    .filter((filmItem) => filmItem.genre === film.genre)
     .slice(0, SIMILIAR_FILMS_COUNT);
 
   return (
@@ -36,7 +39,7 @@ const FilmScreen = (props) => {
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={fullSizePoster} alt={title} />
+            <img src={backgroundImage} alt={title} style={{backgroundColor}}/>
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -71,7 +74,7 @@ const FilmScreen = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <Link to="/films/1/review" className="btn movie-card__button">
+                <Link to={`/films/${id}/review`} className="btn movie-card__button">
                   Add review
                 </Link>
               </div>
@@ -82,11 +85,11 @@ const FilmScreen = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={poster} alt={title} width="218" height="327" />
+              <img src={posterImage} alt={title} width="218" height="327" />
             </div>
 
             <FilmScreenWithSwitchableTabs
-              film={props.film}
+              film={film}
               reviews={reviews}
             />
           </div>
@@ -113,8 +116,8 @@ const FilmScreen = (props) => {
 };
 
 FilmScreen.propTypes = {
-  films: FilmTypes.films,
   film: FilmTypes.filmCard,
+  films: FilmTypes.films,
   reviews: ReviewTypes.reviewsList,
   onPlayButtonClick: PropTypes.func.isRequired,
 };

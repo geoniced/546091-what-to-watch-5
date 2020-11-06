@@ -1,8 +1,10 @@
 import React from "react";
+import {connect} from "react-redux";
 import {FilmTypes} from "../../prop-types-validations";
 import FilmCardList from "../film-card-list/film-card-list";
 import LogoBlock from "../logo-block/logo-block";
 import UserBlock from "../user-block/user-block";
+import {getFilms} from "../../store/selectors";
 
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
 
@@ -42,4 +44,9 @@ const MyListScreen = (props) => {
 
 MyListScreen.propTypes = FilmTypes.films;
 
-export default MyListScreen;
+const mapStateToProps = (state) => ({
+  films: getFilms(state),
+});
+
+export {MyListScreen};
+export default connect(mapStateToProps)(MyListScreen);

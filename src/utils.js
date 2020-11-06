@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
-import {ALL_GENRES_FILTER} from "./const";
+import {ALL_GENRES_FILTER, Rating} from "./const";
 
 dayjs.extend(duration);
 
@@ -48,4 +48,60 @@ export const getDurationWithColons = (timeInMinutes) => {
   const secondsText = seconds < 10 ? `0${seconds}` : seconds;
 
   return `${hoursText}:${minutesText}:${secondsText}`;
+};
+
+export const adaptFilmToClient = (film) => {
+  const adaptedFilm = Object.assign(
+      {},
+      film,
+      {
+        title: film.name,
+        releaseYear: film.released,
+        previewImage: film.preview_image,
+        posterImage: film.poster_image,
+        ratingsCount: film.scores_count,
+        runtime: film.run_time,
+        video: film.video_link,
+        backgroundColor: film.background_color,
+        backgroundImage: film.background_image,
+        isFavorite: film.is_favorite,
+        videoPreview: film.preview_video_link,
+      }
+  );
+
+  delete adaptedFilm.background_color;
+  delete adaptedFilm.background_image;
+  delete adaptedFilm.is_favorite;
+  delete adaptedFilm.name;
+  delete adaptedFilm.poster_image;
+  delete adaptedFilm.preview_image;
+  delete adaptedFilm.preview_video_link;
+  delete adaptedFilm.released;
+  delete adaptedFilm.run_time;
+  delete adaptedFilm.scores_count;
+  delete adaptedFilm.video_link;
+
+  return adaptedFilm;
+};
+
+export const getFilmById = (films, id) => {
+  return films.find((filmItem) => Number(id) === filmItem.id);
+};
+
+export const getRatingDescription = (rating) => {
+  let ratingDescription = ``;
+
+  if (rating >= 0 && rating < 3) {
+    ratingDescription = Rating.BAD;
+  } else if (rating >= 3 && rating < 5) {
+    ratingDescription = Rating.NORMAL;
+  } else if (rating >= 5 && rating < 8) {
+    ratingDescription = Rating.GOOD;
+  } else if (rating >= 8 && rating < 10) {
+    ratingDescription = Rating.VERY_GOOD;
+  } else if (rating === 10) {
+    ratingDescription = Rating.AWESOME;
+  }
+
+  return ratingDescription;
 };

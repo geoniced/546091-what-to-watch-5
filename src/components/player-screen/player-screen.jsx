@@ -93,14 +93,14 @@ class PlayerScreen extends PureComponent {
   }
 
   render() {
+    const {film, onExitButtonClick} = this.props;
+
     const {
       video,
       runtime,
-      fullSizePoster,
+      backgroundImage,
       title,
-    } = this.props.film;
-
-    const {onExitButtonClick} = this.props;
+    } = film;
 
     const {isPlaying, currentTimeSeconds} = this.state;
     const playerPlayButtonTemplate = getPlayerPlayButtonTemplate(isPlaying);
@@ -114,7 +114,7 @@ class PlayerScreen extends PureComponent {
           isPlaying={isPlaying}
           additionalClasses="player__video"
           src={video}
-          poster={fullSizePoster}
+          poster={backgroundImage}
           onCurrentTimeChange={this._handleCurrentTimeChange}
         />
 

@@ -7,7 +7,8 @@ import LogoBlock from "../logo-block/logo-block";
 import UserBlock from "../user-block/user-block";
 import GenresList from "../genres-list/genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
-import {ActionCreator} from "../../store/actions";
+import {changeGenre, resetShownFilmCards, increaseShownFilmCards} from "../../store/actions";
+import {getActiveGenre, getShownFilmsCount, getFilmsByGenre} from "../../store/selectors";
 
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
 
@@ -19,7 +20,6 @@ const MainPage = (props) => {
     onPlayButtonClick,
     films,
     activeGenre,
-    initialFilms,
     shownFilmsCount,
     onGenreChange,
     onShowMoreButtonClick
@@ -90,7 +90,6 @@ const MainPage = (props) => {
           <GenresList
             activeGenre={activeGenre}
             films={films}
-            initialFilms={initialFilms}
             onGenreChange={onGenreChange}
           />
 
@@ -124,28 +123,25 @@ MainPage.propTypes = {
   onPlayButtonClick: PropTypes.func.isRequired,
   activeGenre: PropTypes.string.isRequired,
   films: FilmTypes.films,
-  initialFilms: FilmTypes.films,
   shownFilmsCount: PropTypes.number.isRequired,
   onGenreChange: PropTypes.func.isRequired,
   onShowMoreButtonClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  activeGenre: state.activeGenre,
-  films: state.films,
-  initialFilms: state.initialFilms,
-  shownFilmsCount: state.shownFilmsCount,
+  activeGenre: getActiveGenre(state),
+  films: getFilmsByGenre(state),
+  shownFilmsCount: getShownFilmsCount(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreChange(evt) {
     const chosenGenre = evt.currentTarget.dataset.genre;
-    dispatch(ActionCreator.changeGenre(chosenGenre));
-    dispatch(ActionCreator.getFilmsByGenre(chosenGenre));
-    dispatch(ActionCreator.resetShownFilmCards());
+    dispatch(changeGenre(chosenGenre));
+    dispatch(resetShownFilmCards());
   },
   onShowMoreButtonClick() {
-    dispatch(ActionCreator.increaseShownFilmCards());
+    dispatch(increaseShownFilmCards());
   },
 });
 

@@ -8,9 +8,12 @@ import MyListScreen from "../my-list-screen/my-list-screen";
 import FilmScreen from "../film-screen/film-screen";
 import FilmAddReviewScreen from "../film-add-review-screen/film-add-review-screen";
 import PlayerScreen from "../player-screen/player-screen";
+import {connect} from "react-redux";
+import {getFilmById} from "../../utils";
 
 const App = (props) => {
   const {movieCard, films, reviews} = props;
+
   return (
     <BrowserRouter>
       <Switch>
@@ -19,7 +22,7 @@ const App = (props) => {
           render={({history}) => (
             <MainPage
               movieCard={movieCard}
-              onPlayButtonClick={() => history.push(`/player/0`)}
+              onPlayButtonClick={() => history.push(`/player/1`)}
             />
           )}
         />
@@ -27,34 +30,56 @@ const App = (props) => {
           <AuthScreen />
         </Route>
         <Route path="/mylist" exact>
-          <MyListScreen
-            films={films}
-          />
+          <MyListScreen />
         </Route>
         <Route exact
           path="/films/:id"
-          render={({history}) => (
-            <FilmScreen
-              film={films[1]}
-              reviews={reviews}
-              films={films}
-              onPlayButtonClick={() => history.push(`/player/1`)}
-            />
-          )}
+          render={
+            ({history, match}) => {
+              const filmId = match.params.id;
+              const film = getFilmById(films, filmId);
+
+              return (
+                <FilmScreen
+                  film={film}
+                  films={films}
+                  reviews={reviews}
+                  onPlayButtonClick={() => history.push(`/player/${filmId}`)}
+                />
+              );
+            }
+          }
         />
-        <Route path="/films/:id/review" exact>
-          <FilmAddReviewScreen
-            film={films[1]}
-          />
-        </Route>
+        <Route exact
+          path="/films/:id/review"
+          render={
+            ({match}) => {
+              const filmId = match.params.id;
+              const film = getFilmById(films, filmId);
+
+              return (
+                <FilmAddReviewScreen
+                  film={film}
+                />
+              );
+            }
+          }
+        />
         <Route exact
           path="/player/:id"
-          render={({history}) => (
-            <PlayerScreen
-              film={films[0]}
-              onExitButtonClick={() => history.push(`/`)}
-            />
-          )}
+          render={
+            ({history, match}) => {
+              const filmId = match.params.id;
+              const film = getFilmById(films, filmId);
+
+              return (
+                <PlayerScreen
+                  film={film}
+                  onExitButtonClick={() => history.push(`/`)}
+                />
+              );
+            }
+          }
         />
       </Switch>
     </BrowserRouter>
@@ -71,4 +96,9 @@ App.propTypes = {
   reviews: ReviewTypes.reviewsList,
 };
 
-export default App;
+const mapStateToProps = ({DATA}) => ({
+  films: DATA.films,
+});
+
+export {App};
+export default connect(mapStateToProps)(App);

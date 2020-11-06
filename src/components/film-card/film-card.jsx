@@ -18,14 +18,15 @@ const VIDEO_STYLES = {
 const FilmCard = (props) => {
   const {filmId, renderPlayer, mouseOverHandler, mouseLeaveHandler} = props;
   const {
+    id,
     title,
-    fullSizePoster,
-    video,
+    previewImage,
+    videoPreview,
   } = props.film;
 
   const videoPlayerSettings = {
-    fullSizePoster,
-    video,
+    previewImage,
+    videoPreview,
     width: CardVideoSize.WIDTH,
     height: CardVideoSize.HEIGHT,
     videoStyles: VIDEO_STYLES,
@@ -44,7 +45,7 @@ const FilmCard = (props) => {
         {renderPlayer(videoPlayerSettings)}
       </div>
       <h3 className="small-movie-card__title">
-        <Link to="/films/id" className="small-movie-card__link">{title}</Link>
+        <Link to={`/films/${id}`} className="small-movie-card__link">{title}</Link>
       </h3>
     </article>
   );
