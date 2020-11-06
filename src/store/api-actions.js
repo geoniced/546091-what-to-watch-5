@@ -10,7 +10,7 @@ export const checkAuth = () => (dispatch, _getStore, api) => (
   api.get(`/login`)
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
     .catch((err) => {
-      throw err;
+      // throw err; // TODO: REMOVE WHEN ITS TIME
     })
 );
 

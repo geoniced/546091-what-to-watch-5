@@ -8,7 +8,9 @@ import App from "./components/app/app";
 import reviews from "./mocks/reviews";
 import rootReducer from "./store/reducers/root-reducer";
 import {createAPI} from "./services/api";
-import {fetchFilmList} from "./store/api-actions";
+import {checkAuth, fetchFilmList} from "./store/api-actions";
+import {requireAuthorization} from "./store/actions";
+import {AuthorizationStatus} from "./const";
 
 const movieCard = {
   title: `The Grand Budapest Hotel`,
@@ -17,7 +19,7 @@ const movieCard = {
 };
 
 const api = createAPI(
-    // сюда передать коллбек при unauthorized
+    () => store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH))
 );
 
 const store = createStore(
@@ -28,7 +30,8 @@ const store = createStore(
 );
 
 Promise.all([
-  store.dispatch(fetchFilmList())
+  store.dispatch(fetchFilmList()),
+  store.dispatch(checkAuth())
 ])
 .then(() => {
   ReactDOM.render(
