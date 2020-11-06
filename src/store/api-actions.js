@@ -14,7 +14,7 @@ export const checkAuth = () => (dispatch, _getStore, api) => (
     })
 );
 
-export const login = ({login: email, password}) => (dispatch, _getStore, api) => (
+export const login = ({email, password}) => (dispatch, _getStore, api) => (
   api.post(`/login`, {email, password})
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
 );
