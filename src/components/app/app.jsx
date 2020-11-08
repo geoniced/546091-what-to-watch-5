@@ -25,7 +25,7 @@ const App = (props) => {
           render={({history}) => (
             <MainPage
               movieCard={movieCard}
-              onPlayButtonClick={() => history.push(`/player/1`)}
+              onPlayButtonClick={() => history.push(`${AppRoute.PLAYER}/1`)}
             />
           )}
         />
@@ -40,7 +40,7 @@ const App = (props) => {
           )}
         />
         <Route exact
-          path="/films/:id"
+          path={`${AppRoute.FILMS}/:id`}
           render={
             ({history, match}) => {
               const filmId = match.params.id;
@@ -51,14 +51,14 @@ const App = (props) => {
                   film={film}
                   films={films}
                   reviews={reviews}
-                  onPlayButtonClick={() => history.push(`/player/${filmId}`)}
+                  onPlayButtonClick={() => history.push(`${AppRoute.PLAYER}/${filmId}`)}
                 />
               );
             }
           }
         />
         <PrivateRoute exact
-          path="/films/:id/review"
+          path={`${AppRoute.FILMS}/:id/review`}
           render={
             ({match}) => {
               const filmId = match.params.id;
@@ -73,7 +73,7 @@ const App = (props) => {
           }
         />
         <Route exact
-          path="/player/:id"
+          path={`${AppRoute.PLAYER}/:id`}
           render={
             ({history, match}) => {
               const filmId = match.params.id;

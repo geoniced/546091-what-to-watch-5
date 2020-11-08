@@ -2,6 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {FilmTypes} from "../../prop-types-validations";
+import {AppRoute} from "../../const";
 
 const CardVideoSize = {
   WIDTH: 280,
@@ -45,7 +46,7 @@ const FilmCard = (props) => {
         {renderPlayer(videoPlayerSettings)}
       </div>
       <h3 className="small-movie-card__title">
-        <Link to={`/films/${id}`} className="small-movie-card__link">{title}</Link>
+        <Link to={`${AppRoute.FILMS}/${id}`} className="small-movie-card__link">{title}</Link>
       </h3>
     </article>
   );
