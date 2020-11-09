@@ -9,6 +9,7 @@ import FilmCardList from "../film-card-list/film-card-list";
 
 import withSwitchableTabs from "../../hocs/with-switchable-tabs/with-switchable-tabs";
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
+import {AppRoute} from "../../const";
 
 const FilmScreenWithSwitchableTabs = withSwitchableTabs(FilmScreenTabs);
 const FilmCardListWithActiveItem = withActivePlayer(FilmCardList);
@@ -74,7 +75,7 @@ const FilmScreen = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <Link to={`/films/${id}/review`} className="btn movie-card__button">
+                <Link to={`${AppRoute.FILMS}/${id}/review`} className="btn movie-card__button">
                   Add review
                 </Link>
               </div>

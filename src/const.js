@@ -14,3 +14,21 @@ export const Rating = {
   VERY_GOOD: `Very good`,
   AWESOME: `Awesome`,
 };
+
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
+export const AppRoute = {
+  ROOT: `/`,
+  MY_LIST: `/mylist`,
+  LOGIN: `/login`,
+  FILMS: `/films`,
+  PLAYER: `/player`,
+};
+
+export const APIRoute = {
+  FILMS: `/films`,
+  LOGIN: `/login`,
+};

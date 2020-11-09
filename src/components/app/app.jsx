@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {Router as BrowserRouter, Switch, Route} from "react-router-dom";
+import {connect} from "react-redux";
 import {FilmTypes, ReviewTypes} from "../../prop-types-validations";
 import MainPage from "../main-page/main-page";
 import AuthScreen from "../auth-screen/auth-screen";
@@ -8,32 +9,38 @@ import MyListScreen from "../my-list-screen/my-list-screen";
 import FilmScreen from "../film-screen/film-screen";
 import FilmAddReviewScreen from "../film-add-review-screen/film-add-review-screen";
 import PlayerScreen from "../player-screen/player-screen";
-import {connect} from "react-redux";
+import PrivateRoute from "../private-route/private-route";
 import {getFilmById} from "../../utils";
+import browserHistory from "../../browser-history";
+import {AppRoute} from "../../const";
 
 const App = (props) => {
   const {movieCard, films, reviews} = props;
 
   return (
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
         <Route exact
-          path="/"
+          path={AppRoute.ROOT}
           render={({history}) => (
             <MainPage
               movieCard={movieCard}
-              onPlayButtonClick={() => history.push(`/player/1`)}
+              onPlayButtonClick={() => history.push(`${AppRoute.PLAYER}/1`)}
             />
           )}
         />
-        <Route path="/login" exact>
+        <Route path={AppRoute.LOGIN} exact>
           <AuthScreen />
         </Route>
-        <Route path="/mylist" exact>
-          <MyListScreen />
-        </Route>
+        <PrivateRoute
+          path={AppRoute.MY_LIST}
+          exact
+          render={() => (
+            <MyListScreen />
+          )}
+        />
         <Route exact
-          path="/films/:id"
+          path={`${AppRoute.FILMS}/:id`}
           render={
             ({history, match}) => {
               const filmId = match.params.id;
@@ -44,14 +51,14 @@ const App = (props) => {
                   film={film}
                   films={films}
                   reviews={reviews}
-                  onPlayButtonClick={() => history.push(`/player/${filmId}`)}
+                  onPlayButtonClick={() => history.push(`${AppRoute.PLAYER}/${filmId}`)}
                 />
               );
             }
           }
         />
-        <Route exact
-          path="/films/:id/review"
+        <PrivateRoute exact
+          path={`${AppRoute.FILMS}/:id/review`}
           render={
             ({match}) => {
               const filmId = match.params.id;
@@ -66,7 +73,7 @@ const App = (props) => {
           }
         />
         <Route exact
-          path="/player/:id"
+          path={`${AppRoute.PLAYER}/:id`}
           render={
             ({history, match}) => {
               const filmId = match.params.id;
@@ -75,7 +82,7 @@ const App = (props) => {
               return (
                 <PlayerScreen
                   film={film}
-                  onExitButtonClick={() => history.push(`/`)}
+                  onExitButtonClick={() => history.push(AppRoute.ROOT)}
                 />
               );
             }
