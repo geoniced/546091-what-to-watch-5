@@ -6,6 +6,7 @@ const initialState = {
   activeGenre: ALL_GENRES_FILTER,
   films: [],
   shownFilmsCount: 0,
+  isLoading: true,
 };
 
 const filmsData = (state = initialState, action) => {
@@ -29,7 +30,8 @@ const filmsData = (state = initialState, action) => {
 
       return extend(state, {
         films,
-        shownFilmsCount: Math.min(FILM_CARDS_PER_STEP, films.length)
+        shownFilmsCount: Math.min(FILM_CARDS_PER_STEP, films.length),
+        isLoading: false,
       });
   }
 

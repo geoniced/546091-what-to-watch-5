@@ -8,7 +8,7 @@ import App from "./components/app/app";
 import reviews from "./mocks/reviews";
 import rootReducer from "./store/reducers/root-reducer";
 import {createAPI} from "./services/api";
-import {checkAuth, fetchFilmList} from "./store/api-actions";
+import {checkAuth} from "./store/api-actions";
 import {requireAuthorization} from "./store/actions";
 import {AuthorizationStatus} from "./const";
 import {redirect} from "./store/middlewares/redirect";
@@ -32,7 +32,6 @@ const store = createStore(
 );
 
 Promise.all([
-  store.dispatch(fetchFilmList()),
   store.dispatch(checkAuth())
 ])
 .then(() => {

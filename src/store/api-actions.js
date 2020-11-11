@@ -6,6 +6,10 @@ export const fetchFilmList = () => (dispatch, _getStore, api) => (
     .then(({data}) => dispatch(loadFilms(data)))
 );
 
+export const fetchFilmCard = (filmId) => (dispatch, _getStore, api) => (
+  api.get(`${APIRoute.FILMS}/${filmId}`)
+);
+
 export const checkAuth = () => (dispatch, _getStore, api) => (
   api.get(APIRoute.LOGIN)
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
