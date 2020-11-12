@@ -26,3 +26,8 @@ export const login = ({email, password}) => (dispatch, _getStore, api) => (
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
     .then(() => dispatch(redirectToRoute(AppRoute.ROOT)))
 );
+
+export const submitReview = ({rating, comment, filmId}) => (dispatch, _getStore, api) => (
+  api.post(`${APIRoute.COMMENTS}/${filmId}`, {rating, comment})
+    .then(() => dispatch(redirectToRoute(`${AppRoute.FILMS}/${filmId}`)))
+);

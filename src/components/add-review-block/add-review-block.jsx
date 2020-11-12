@@ -20,19 +20,6 @@ const AddReviewBlock = (props) => {
               const currentStarIndex = index + 1;
 
               return (
-                // оставляю код, чтобы показать скорость отрисовки
-                // <React.Fragment key={`star-${currentStarIndex}`}>
-                //   <input
-                //     className="rating__input"
-                //     id={`star-${currentStarIndex}`}
-                //     type="radio"
-                //     name="rating"
-                //     value={currentStarIndex}
-                //     checked={currentStarIndex === ratingStars}
-                //     onChange={onRatingChange}
-                //   />
-                //   <label className="rating__label" htmlFor={`star-${currentStarIndex}`}>Rating {currentStarIndex}</label>
-                // </React.Fragment>
                 <AddReviewRatingStar
                   key={`star-${currentStarIndex}`}
                   starIndex={currentStarIndex}

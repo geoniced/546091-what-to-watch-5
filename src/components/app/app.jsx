@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {Router as BrowserRouter, Switch, Route} from "react-router-dom";
 import {connect} from "react-redux";
-import {FilmTypes, ReviewTypes} from "../../prop-types-validations";
+import {FilmTypes} from "../../prop-types-validations";
 import MainPage from "../main-page/main-page";
 import AuthScreen from "../auth-screen/auth-screen";
 import MyListScreen from "../my-list-screen/my-list-screen";
