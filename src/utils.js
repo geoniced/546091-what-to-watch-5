@@ -74,6 +74,19 @@ export const adaptFilmToClient = (film) => {
   return adaptedFilm;
 };
 
+export const adaptReviewToClient = (review) => {
+  const adaptedReview = {
+    id: review.id,
+    text: review.comment,
+    filmRating: review.rating,
+    userName: review.user.name,
+    userId: review.user.id,
+    date: review.date,
+  };
+
+  return adaptedReview;
+};
+
 export const getFilmById = (films, id) => {
   return films.find((filmItem) => Number(id) === filmItem.id);
 };

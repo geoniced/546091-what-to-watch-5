@@ -1,5 +1,5 @@
 import {ActionType} from "../../actions";
-import {extend, adaptFilmToClient} from "../../../utils";
+import {extend, adaptFilmToClient, adaptReviewToClient} from "../../../utils";
 import {ALL_GENRES_FILTER, FILM_CARDS_PER_STEP} from "../../../const";
 
 const initialState = {
@@ -7,6 +7,7 @@ const initialState = {
   films: [],
   shownFilmsCount: 0,
   isLoading: true,
+  currentReviews: [],
 };
 
 const filmsData = (state = initialState, action) => {
@@ -32,6 +33,14 @@ const filmsData = (state = initialState, action) => {
         films,
         shownFilmsCount: Math.min(FILM_CARDS_PER_STEP, films.length),
         isLoading: false,
+      });
+    case ActionType.LOAD_REVIEWS_FOR_FILM:
+      const payloadReviews = action.payload;
+
+      const reviews = payloadReviews.map((review) => adaptReviewToClient(review));
+
+      return extend(state, {
+        currentReviews: reviews,
       });
   }
 

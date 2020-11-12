@@ -1,4 +1,4 @@
-import {loadFilms, redirectToRoute, requireAuthorization} from "./actions";
+import {loadFilms, loadReviewsForFilm, redirectToRoute, requireAuthorization} from "./actions";
 import {APIRoute, AppRoute, AuthorizationStatus} from "../const";
 
 export const fetchFilmList = () => (dispatch, _getStore, api) => (
@@ -8,6 +8,11 @@ export const fetchFilmList = () => (dispatch, _getStore, api) => (
 
 export const fetchFilmCard = (filmId) => (dispatch, _getStore, api) => (
   api.get(`${APIRoute.FILMS}/${filmId}`)
+);
+
+export const fetchReviewsById = (filmId) => (dispatch, _getStore, api) => (
+  api.get(`${APIRoute.COMMENTS}/${filmId}`)
+    .then(({data}) => dispatch(loadReviewsForFilm(data)))
 );
 
 export const checkAuth = () => (dispatch, _getStore, api) => (

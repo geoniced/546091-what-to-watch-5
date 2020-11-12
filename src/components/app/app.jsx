@@ -23,7 +23,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {movieCard, films, reviews, isLoading} = this.props;
+    const {movieCard, films, isLoading} = this.props;
 
     if (isLoading) {
       return <Preloader />;
@@ -62,7 +62,6 @@ class App extends PureComponent {
                   <FilmScreen
                     film={film}
                     films={films}
-                    reviews={reviews}
                     onPlayButtonClick={() => history.push(`${AppRoute.PLAYER}/${filmId}`)}
                   />
                 );
@@ -113,7 +112,6 @@ App.propTypes = {
     releaseDate: PropTypes.number.isRequired,
   }).isRequired,
   films: FilmTypes.films,
-  reviews: ReviewTypes.reviewsList,
   loadFilmList: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
 };
