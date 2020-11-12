@@ -21,7 +21,9 @@ const SIMILIAR_FILMS_COUNT = 4;
 
 class FilmScreen extends PureComponent {
   componentDidMount() {
-    this.props.loadReviews(this.props.film.id);
+    const {loadReviews, film: {id: filmId}} = this.props;
+
+    loadReviews(filmId);
   }
 
   render() {

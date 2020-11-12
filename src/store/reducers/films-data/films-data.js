@@ -7,7 +7,7 @@ const initialState = {
   films: [],
   shownFilmsCount: 0,
   isLoading: true,
-  currentReviews: [],
+  currentFilmReviews: [],
 };
 
 const filmsData = (state = initialState, action) => {
@@ -16,14 +16,17 @@ const filmsData = (state = initialState, action) => {
       return extend(state, {
         activeGenre: action.payload,
       });
+
     case ActionType.INCREASE_SHOWN_FILM_CARDS:
       return extend(state, {
         shownFilmsCount: Math.min(state.shownFilmsCount + FILM_CARDS_PER_STEP, state.films.length),
       });
+
     case ActionType.RESET_SHOWN_FILM_CARDS:
       return extend(state, {
         shownFilmsCount: Math.min(FILM_CARDS_PER_STEP, state.films.length),
       });
+
     case ActionType.LOAD_FILMS:
       const payloadFilms = action.payload;
 
@@ -34,13 +37,28 @@ const filmsData = (state = initialState, action) => {
         shownFilmsCount: Math.min(FILM_CARDS_PER_STEP, films.length),
         isLoading: false,
       });
+
     case ActionType.LOAD_REVIEWS_FOR_FILM:
-      const payloadReviews = action.payload;
+      const payloadReviews = action.payload.reviews;
+      // const filmId = action.payload.filmId;
+
+      // const storeFilms = state.films;
+      // const filmIndex = storeFilms.findIndex((film) => film.id === filmId);
 
       const reviews = payloadReviews.map((review) => adaptReviewToClient(review));
+      // const filmWithReviews = extend(storeFilms[filmIndex], {
+      //   reviews,
+      // });
+
+      // const newFilmListWithReviews = [
+      //   ...storeFilms.slice(0, filmIndex),
+      //   filmWithReviews,
+      //   ...storeFilms.slice(filmIndex + 1)
+      // ];
 
       return extend(state, {
-        currentReviews: reviews,
+        currentFilmReviews: reviews,
+        // films: newFilmListWithReviews,
       });
   }
 

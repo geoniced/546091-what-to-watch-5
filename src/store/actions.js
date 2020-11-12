@@ -26,9 +26,12 @@ export const loadFilms = (films) => ({
   payload: films,
 });
 
-export const loadReviewsForFilm = (reviews) => ({
+export const loadReviewsForFilm = (reviews, filmId) => ({
   type: ActionType.LOAD_REVIEWS_FOR_FILM,
-  payload: reviews,
+  payload: {
+    reviews,
+    filmId,
+  },
 });
 
 export const requireAuthorization = (status) => ({

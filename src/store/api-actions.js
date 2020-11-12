@@ -12,7 +12,7 @@ export const fetchFilmCard = (filmId) => (dispatch, _getStore, api) => (
 
 export const fetchReviewsById = (filmId) => (dispatch, _getStore, api) => (
   api.get(`${APIRoute.COMMENTS}/${filmId}`)
-    .then(({data}) => dispatch(loadReviewsForFilm(data)))
+    .then(({data}) => dispatch(loadReviewsForFilm(data, filmId)))
 );
 
 export const checkAuth = () => (dispatch, _getStore, api) => (
