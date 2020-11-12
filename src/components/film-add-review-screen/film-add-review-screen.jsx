@@ -44,7 +44,7 @@ const FilmAddReviewScreen = (props) => {
         </div>
       </div>
 
-      <AddReviewWithForm filmId={id}/>
+      <AddReviewWithForm filmId={id} />
 
     </section>
   );

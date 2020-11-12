@@ -9,10 +9,10 @@ import FilmCardList from "../film-card-list/film-card-list";
 
 import withSwitchableTabs from "../../hocs/with-switchable-tabs/with-switchable-tabs";
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
-import {AppRoute} from "../../const";
+import {AppRoute, AuthorizationStatus} from "../../const";
 import {connect} from "react-redux";
 import {fetchReviewsById} from "../../store/api-actions";
-import {getReviews} from "../../store/selectors";
+import {getAuthorizationStatus, getReviews} from "../../store/selectors";
 
 const FilmScreenWithSwitchableTabs = withSwitchableTabs(FilmScreenTabs);
 const FilmCardListWithActiveItem = withActivePlayer(FilmCardList);
@@ -25,7 +25,7 @@ class FilmScreen extends PureComponent {
   }
 
   render() {
-    const {onPlayButtonClick, reviews, film, films} = this.props;
+    const {onPlayButtonClick, reviews, film, films, authorizationStatus} = this.props;
 
     const {
       id,
@@ -83,9 +83,11 @@ class FilmScreen extends PureComponent {
                     </svg>
                     <span>My list</span>
                   </button>
-                  <Link to={`${AppRoute.FILMS}/${id}/review`} className="btn movie-card__button">
-                    Add review
-                  </Link>
+                  {authorizationStatus === AuthorizationStatus.AUTH && (
+                    <Link to={`${AppRoute.FILMS}/${id}/review`} className="btn movie-card__button">
+                      Add review
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
@@ -126,6 +128,7 @@ class FilmScreen extends PureComponent {
 }
 
 FilmScreen.propTypes = {
+  authorizationStatus: PropTypes.string,
   film: FilmTypes.filmCard,
   films: FilmTypes.films,
   reviews: ReviewTypes.reviewsList,
@@ -134,6 +137,7 @@ FilmScreen.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
   reviews: getReviews(state),
 });
 
