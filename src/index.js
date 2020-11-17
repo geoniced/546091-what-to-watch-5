@@ -5,7 +5,6 @@ import {applyMiddleware, createStore} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import App from "./components/app/app";
-import reviews from "./mocks/reviews";
 import rootReducer from "./store/reducers/root-reducer";
 import {createAPI} from "./services/api";
 import {checkAuth} from "./store/api-actions";
@@ -39,7 +38,6 @@ Promise.all([
       <Provider store={store}>
         <App
           movieCard={movieCard}
-          reviews={reviews}
         />
       </Provider>,
       document.querySelector(`#root`)
