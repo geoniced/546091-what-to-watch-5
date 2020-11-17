@@ -18,3 +18,9 @@ export const getFilmsByGenre = createSelector(
     }
 );
 
+export const getFavoriteFilms = createSelector(
+    getFilms,
+    (films) => {
+      return films.filter((film) => film.isFavorite);
+    }
+);
