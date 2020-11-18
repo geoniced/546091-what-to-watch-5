@@ -2,17 +2,14 @@ import React from "react";
 import {BrowserRouter} from "react-router-dom";
 import renderer from "react-test-renderer";
 import {filmListMock, noop} from "../../test-data";
-import FilmCard from "./film-card";
+import FilmCardList from "./film-card-list";
 
-const filmMock = filmListMock[0];
-
-it(`renders FilmCard component`, () => {
+it(`renders FilmCardList component`, () => {
   const tree = renderer
     .create(
         <BrowserRouter>
-          <FilmCard
-            film={filmMock}
-            filmId={1}
+          <FilmCardList
+            films={filmListMock}
             renderPlayer={noop}
             mouseOverHandler={noop}
             mouseLeaveHandler={noop}
