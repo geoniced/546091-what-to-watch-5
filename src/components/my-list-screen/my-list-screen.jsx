@@ -4,7 +4,7 @@ import {FilmTypes} from "../../prop-types-validations";
 import FilmCardList from "../film-card-list/film-card-list";
 import LogoBlock from "../logo-block/logo-block";
 import UserBlock from "../user-block/user-block";
-import {getFavoriteFilms, getFilms} from "../../store/selectors";
+import {getFavoriteFilms} from "../../store/selectors";
 
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
 
