@@ -30,39 +30,39 @@ describe(`App render`, () => {
   let store = null;
   let appComponent = null;
 
-  // beforeEach(() => {
-  store = mockStore({
-    [NameSpace.DATA]: {
-      activeGenre: `All genres`,
-      films: filmListMock,
-      shownFilmsCount: 8,
-      isLoading: false,
-    },
-    [NameSpace.USER]: {
-      authorizationStatus: AuthorizationStatus.AUTH,
-    }
-  });
-  // });
-
-  store.dispatch = jest.fn();
-
-  appComponent = renderer.create(
-      <Provider store={store}>
-        <App
-          movieCard={movieCard}
-          isLoading={false}
-          films={[]}
-          loadFilmList={noop}
-        />
-      </Provider>,
-      {
-        createNodeMock: () => {
-          return {};
-        }
+  beforeEach(() => {
+    store = mockStore({
+      [NameSpace.DATA]: {
+        activeGenre: `All genres`,
+        films: filmListMock,
+        shownFilmsCount: 8,
+        isLoading: false,
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.AUTH,
       }
-  );
+    });
+  });
 
   it(`renders App component`, () => {
+    store.dispatch = jest.fn();
+
+    appComponent = renderer.create(
+        <Provider store={store}>
+          <App
+            movieCard={movieCard}
+            isLoading={false}
+            films={[]}
+            loadFilmList={noop}
+          />
+        </Provider>,
+        {
+          createNodeMock: () => {
+            return {};
+          }
+        }
+    );
+
     expect(appComponent.toJSON()).toMatchSnapshot();
   });
 });
