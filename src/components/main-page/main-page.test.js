@@ -61,10 +61,3 @@ describe(`MainPage render`, () => {
     expect(tree).toMatchSnapshot();
   });
 });
-
-/*
-Could not find "store" in the context of "Connect(UserBlock)".
-Either wrap the root component in a <Provider>, or pass a custom React
-context provider to <Provider> and the corresponding React context consumer
-to Connect(UserBlock) in connect options.
-*/

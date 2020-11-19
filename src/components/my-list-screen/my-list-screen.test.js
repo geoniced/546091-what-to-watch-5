@@ -1,22 +1,22 @@
-// import React from "react";
-// import {BrowserRouter} from "react-router-dom";
-// import renderer from "react-test-renderer";
-// import {filmListMock} from "../../test-data/test-data";
-// import {MyListScreen} from "./my-list-screen";
+import React from "react";
+import {BrowserRouter} from "react-router-dom";
+import renderer from "react-test-renderer";
+import {filmListMock} from "../../test-data/test-data";
+import {MyListScreen} from "./my-list-screen";
 
-// it(`renders MyListScreen component`, () => {
-//   const tree = renderer
-//     .create(
-//         <BrowserRouter>
-//           <MyListScreen
-//             films={filmListMock.slice(0, 8)}
-//           />
-//         </BrowserRouter>
-//     )
-//     .toJSON();
+it(`renders MyListScreen component`, () => {
+  const tree = renderer
+    .create(
+        <BrowserRouter>
+          <MyListScreen
+            films={filmListMock.slice(0, 8)}
+          />
+        </BrowserRouter>
+    )
+    .toJSON();
 
-//   expect(tree).toMatchSnapshot();
-// });
+  expect(tree).toMatchSnapshot();
+});
 
 /*
 Could not find "store" in the context of "Connect(UserBlock)".
