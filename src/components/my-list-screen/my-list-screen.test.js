@@ -1,27 +1,51 @@
 import React from "react";
+import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
 import renderer from "react-test-renderer";
+import {mockedStore} from "../../test-data/store";
 import {filmListMock} from "../../test-data/test-data";
 import {MyListScreen} from "./my-list-screen";
 
-it(`renders MyListScreen component`, () => {
-  const tree = renderer
-    .create(
-        <BrowserRouter>
-          <MyListScreen
-            films={filmListMock.slice(0, 8)}
-          />
-        </BrowserRouter>
-    )
-    .toJSON();
+describe(`MyListScreen render`, () => {
+  it(`renders MyListScreen component with 8 items`, () => {
+    const tree = renderer
+      .create(
+          <Provider store={mockedStore}>
+            <BrowserRouter>
+              <MyListScreen
+                films={filmListMock.slice(0, 8)}
+              />
+            </BrowserRouter>
+          </Provider>,
+          {
+            createNodeMock: () => {
+              return {};
+            }
+          }
+      )
+      .toJSON();
 
-  expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`renders MyListScreen component with empty array of films`, () => {
+    const tree = renderer
+      .create(
+          <Provider store={mockedStore}>
+            <BrowserRouter>
+              <MyListScreen
+                films={[]}
+              />
+            </BrowserRouter>
+          </Provider>,
+          {
+            createNodeMock: () => {
+              return {};
+            }
+          }
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });
-
-/*
-Could not find "store" in the context of "Connect(UserBlock)".
-Either wrap the root component in a <Provider>,
-or pass a custom React context provider to <Provider>
-and the corresponding React context consumer to Connect(UserBlock)
-in connect options.
-*/
