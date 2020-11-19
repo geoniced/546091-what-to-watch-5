@@ -8,6 +8,23 @@ import {noop} from "../../test-data";
 import {NameSpace} from "../../store/reducers/root-reducer";
 import {AuthorizationStatus} from "../../const";
 
+describe(`App render without store`, () => {
+  it(`renders App component's preloader (no store here)`, () => {
+    const tree = renderer
+      .create(
+          <AppWithoutStore
+            movieCard={movieCard}
+            films={[]}
+            isLoading={true}
+            loadFilmList={noop}
+          />
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+});
+
 describe(`App render`, () => {
   const mockStore = configureStore([]);
   let store = null;
@@ -46,22 +63,6 @@ describe(`App render`, () => {
   );
 
   it(`renders App component`, () => {
-
     expect(appComponent.toJSON()).toMatchSnapshot();
-  });
-
-  it(`renders App component's preloader (no store here)`, () => {
-    const tree = renderer
-      .create(
-          <AppWithoutStore
-            movieCard={movieCard}
-            films={[]}
-            isLoading={true}
-            loadFilmList={noop}
-          />
-      )
-      .toJSON();
-
-    expect(tree).toMatchSnapshot();
   });
 });

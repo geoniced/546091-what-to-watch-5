@@ -574,7 +574,7 @@ Array [
 ]
 `;
 
-exports[`App render renders App component's preloader (no store here) 1`] = `
+exports[`App render without store renders App component's preloader (no store here) 1`] = `
 <div>
   Loading...
 </div>
