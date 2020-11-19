@@ -2,7 +2,7 @@ import React from "react";
 import {configure, shallow, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import {AddReviewBlock} from "./add-review-block";
-import {noop} from "../../test-data";
+import {noop} from "../../test-data/test-data";
 
 configure({adapter: new Adapter()});
 
@@ -44,7 +44,6 @@ describe(`AddReviewBlock interactions work correctly`, () => {
     const thirdStar = ratingStars.at(2);
     thirdStar.simulate(`change`);
     expect(handleRatingChange).toHaveBeenCalledTimes(1);
-    // HOC changed state test
   });
 });
 

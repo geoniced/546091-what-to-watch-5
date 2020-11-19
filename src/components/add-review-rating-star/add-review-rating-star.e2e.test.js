@@ -19,5 +19,4 @@ it(`should AddReviewRatingStar be clickable`, () => {
   const ratingInput = wrapper.find(`.rating__input`);
   ratingInput.simulate(`change`);
   expect(handleRatingChange).toHaveBeenCalledTimes(1);
-  // HOC changed state test
 });
