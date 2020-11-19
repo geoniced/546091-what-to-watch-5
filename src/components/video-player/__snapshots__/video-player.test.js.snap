@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VideoPlayer render renders VideoPlayer component with not playing video, no styles, no additionalClasses, not muted and not resetAfterPause 1`] = `
+<video
+  height={175}
+  muted={false}
+  poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/bronson.jpg"
+  src="http://media.xiph.org/mango/tears_of_steel_1080p.webm"
+  width={280}
+/>
+`;
+
+exports[`VideoPlayer render renders VideoPlayer component with playing video, styles, additionalClasses, muted and resetAfterPause 1`] = `
+<video
+  className="test--additional"
+  height={175}
+  muted={true}
+  poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/bronson.jpg"
+  src="http://media.xiph.org/mango/tears_of_steel_1080p.webm"
+  style={
+    Object {
+      "height": "100%",
+      "objectFit": "cover",
+      "verticalAlign": "top",
+      "width": "100%",
+    }
+  }
+  width={280}
+/>
+`;
