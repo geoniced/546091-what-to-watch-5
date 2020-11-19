@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {filmListMock} from "../../test-data";
+import {filmListMock} from "../../test-data/test-data";
 import FilmCardOverviewTab from "./film-card-overview-tab";
 
 describe(`FilmCardOverviewTab render`, () => {

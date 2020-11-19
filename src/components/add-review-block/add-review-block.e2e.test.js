@@ -44,6 +44,7 @@ describe(`AddReviewBlock interactions work correctly`, () => {
     const thirdStar = ratingStars.at(2);
     thirdStar.simulate(`change`);
     expect(handleRatingChange).toHaveBeenCalledTimes(1);
+    // HOC changed state test
   });
 });
 

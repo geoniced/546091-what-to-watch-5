@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {filmListMock, noop} from "../../test-data";
+import {filmListMock, noop} from "../../test-data/test-data";
 import GenresList from "./genres-list";
 
 describe(`GenresList render`, () => {

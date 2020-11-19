@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {AddReviewBlock} from "./add-review-block";
-import {noop} from "../../test-data";
+import {noop} from "../../test-data/test-data";
 
 describe(`AddReviewBlock render`, () => {
   it(`renders AddReviewBlock component with 5 stars and no text`, () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {filmListMock, noop} from "../../test-data";
+import {filmListMock, noop} from "../../test-data/test-data";
 import PlayerScreen from "./player-screen";
 
 describe(`PlayerScreen render`, () => {

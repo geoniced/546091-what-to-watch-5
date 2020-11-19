@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {filmListMock} from "../../test-data";
+import {filmListMock} from "../../test-data/test-data";
 // import {MockComponent} from "../../test-data";
 import withActivePlayer from "./with-active-player";
 

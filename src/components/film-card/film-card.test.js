@@ -1,7 +1,7 @@
 import React from "react";
 import {BrowserRouter} from "react-router-dom";
 import renderer from "react-test-renderer";
-import {filmListMock, noop} from "../../test-data";
+import {filmListMock, noop} from "../../test-data/test-data";
 import FilmCard from "./film-card";
 
 const filmMock = filmListMock[0];

@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {Tab} from "../../const";
-import {filmListMock, mockReviews, noop} from "../../test-data";
+import {filmListMock, mockReviews, noop} from "../../test-data/test-data";
 import FilmScreenTabs from "./film-screen-tabs";
 
 describe(`FilmScreenTabs render`, () => {

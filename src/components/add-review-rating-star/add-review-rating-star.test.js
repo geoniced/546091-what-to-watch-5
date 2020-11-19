@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {AddReviewRatingStar} from "./add-review-rating-star";
-import {noop} from "../../test-data";
+import {noop} from "../../test-data/test-data";
 
 describe(`AddReviewRatingStar render`, () => {
   it(`renders AddReviewRatingStar component in checked state`, () => {

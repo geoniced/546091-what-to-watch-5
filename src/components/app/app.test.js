@@ -2,9 +2,9 @@ import React from "react";
 import renderer from "react-test-renderer";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
-import {filmListMock, movieCard} from "../../test-data";
+import {filmListMock, movieCard} from "../../test-data/test-data";
 import App, {App as AppWithoutStore} from "./app";
-import {noop} from "../../test-data";
+import {noop} from "../../test-data/test-data";
 import {NameSpace} from "../../store/reducers/root-reducer";
 import {AuthorizationStatus} from "../../const";
 

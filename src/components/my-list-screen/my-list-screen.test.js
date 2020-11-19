@@ -1,7 +1,7 @@
 // import React from "react";
 // import {BrowserRouter} from "react-router-dom";
 // import renderer from "react-test-renderer";
-// import {filmListMock} from "../../test-data";
+// import {filmListMock} from "../../test-data/test-data";
 // import {MyListScreen} from "./my-list-screen";
 
 // it(`renders MyListScreen component`, () => {

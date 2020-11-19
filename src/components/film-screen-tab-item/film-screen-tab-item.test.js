@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {Tab} from "../../const";
-import {noop} from "../../test-data";
+import {noop} from "../../test-data/test-data";
 import {FilmScreenTabItem} from "./film-screen-tab-item";
 
 describe(`FilmScreenTabItem render`, () => {

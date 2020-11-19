@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {noop} from "../../test-data";
+import {noop} from "../../test-data/test-data";
 import ShowMoreButton from "./show-more-button";
 
 it(`renders ShowMoreButton component`, () => {

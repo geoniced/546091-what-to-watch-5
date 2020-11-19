@@ -1,7 +1,7 @@
 // import React from "react";
 // import {BrowserRouter} from "react-router-dom";
 // import renderer from "react-test-renderer";
-// import {filmListMock, movieCard, noop} from "../../test-data";
+// import {filmListMock, movieCard, noop} from "../../test-data/test-data";
 // import {MainPage} from "./main-page";
 
 // describe(`MainPage render`, () => {

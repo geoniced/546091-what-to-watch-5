@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {mockReviews} from "../../test-data";
+import {mockReviews} from "../../test-data/test-data";
 import FilmCardReviewTab from "./film-card-review-tab";
 
 describe(`FilmCardReviewTab render`, () => {

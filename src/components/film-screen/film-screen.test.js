@@ -2,7 +2,7 @@
 // import {BrowserRouter} from "react-router-dom";
 // import renderer from "react-test-renderer";
 // import {AuthorizationStatus} from "../../const";
-// import {filmListMock, mockReviews, noop} from "../../test-data";
+// import {filmListMock, mockReviews, noop} from "../../test-data/test-data";
 // import {FilmScreen} from "./film-screen";
 
 // it(`renders FilmScreen component`, () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {filmListMock} from "../../test-data";
+import {filmListMock} from "../../test-data/test-data";
 import VideoPlayer from "./video-player";
 
 const mockFilm = filmListMock[0];
