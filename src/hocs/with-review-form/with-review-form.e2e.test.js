@@ -57,5 +57,3 @@ describe(`withReviewForm interactions`, () => {
   });
 });
 
-
-// TODO: Warnings
