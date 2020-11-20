@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import PropTypes from "prop-types";
 import {filmListMock} from "../../test-data/test-data";
-// import {MockComponent} from "../../test-data";
 import withActivePlayer from "./with-active-player";
 
 const {previewImage, videoPreview} = filmListMock[0];
@@ -20,6 +20,10 @@ const MockComponent = (props) => {
       {props.renderPlayer(mockVideoPlayerSettings)}
     </div>
   );
+};
+
+MockComponent.propTypes = {
+  renderPlayer: PropTypes.func.isRequired,
 };
 
 const MockComponentWrapped = withActivePlayer(MockComponent);
