@@ -1,6 +1,3 @@
-import React from "react";
-import PropTypes from "prop-types";
-
 export const noop = () => {};
 
 export const movieCard = {
@@ -8,25 +5,6 @@ export const movieCard = {
   genre: `Drama`,
   releaseDate: 2014,
 };
-
-const MockComponent = (props) => {
-  const {children} = props;
-
-  return (
-    <div>
-      {children}
-    </div>
-  );
-};
-
-MockComponent.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired,
-};
-
-export {MockComponent};
 
 export const filmListMock = [
   {

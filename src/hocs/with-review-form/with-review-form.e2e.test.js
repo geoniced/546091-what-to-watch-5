@@ -1,21 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import withReviewForm from "./with-review-form";
+import {MockComponent} from "../../test-data/components";
 
 configure({adapter: new Adapter()});
-
-const MockComponent = () => {
-  return (
-    <div />
-  );
-};
-
-MockComponent.propTypes = {
-  onRatingChange: PropTypes.func.isRequired,
-  onReviewChange: PropTypes.func.isRequired,
-};
 
 const MockComponentWrapped = withReviewForm(MockComponent);
 

@@ -4,14 +4,9 @@ import Adapter from "enzyme-adapter-react-16";
 import withSwitchableTabs from "./with-switchable-tabs";
 import {Tab} from "../../const";
 import {noop} from "../../test-data/test-data";
+import {MockComponent} from "../../test-data/components";
 
 configure({adapter: new Adapter()});
-
-const MockComponent = () => {
-  return (
-    <div />
-  );
-};
 
 const MockComponentWrapped = withSwitchableTabs(MockComponent);
 

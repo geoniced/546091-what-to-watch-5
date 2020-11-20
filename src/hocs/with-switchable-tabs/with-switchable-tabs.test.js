@@ -1,9 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {MockComponent} from "../../test-data/test-data";
+import {MockComponentWithChildren} from "../../test-data/components";
 import withSwitchableTabs from "./with-switchable-tabs";
 
-const MockComponentWrapped = withSwitchableTabs(MockComponent);
+const MockComponentWrapped = withSwitchableTabs(MockComponentWithChildren);
 
 it(`renders withSwitchableTabs HOC`, () => {
   const tree = renderer

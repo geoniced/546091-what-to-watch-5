@@ -1,9 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {MockComponent} from "../../test-data/test-data";
+import {MockComponentWithChildren} from "../../test-data/components";
 import withReviewForm from "./with-review-form";
 
-const MockComponentWrapped = withReviewForm(MockComponent);
+const MockComponentWrapped = withReviewForm(MockComponentWithChildren);
 
 it(`renders withReviewForm HOC`, () => {
   const tree = renderer
