@@ -9,7 +9,7 @@ import {
   redirectToRoute,
 } from "./actions";
 import {filmListMock, mockReviews} from "../test-data/test-data";
-import { AuthorizationStatus } from "../const";
+import {AuthorizationStatus} from "../const";
 
 describe(`Action creators work correctly`, () => {
   it(`Action creator changeGenre works correctly`, () => {
