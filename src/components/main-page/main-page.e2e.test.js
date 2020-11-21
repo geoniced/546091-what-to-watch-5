@@ -34,30 +34,6 @@ describe(`MainPage interactions`, () => {
     expect(handlePlayButtonClick).toHaveBeenCalledTimes(1);
   });
 
-  it(`should MainPage be able to press on Genre item`, () => {
-    const handleGenreChange = jest.fn();
-
-    const wrapper = mount(
-        <Provider store={mockedStore}>
-          <BrowserRouter>
-            <MainPage
-              onGenreChange={handleGenreChange}
-              movieCard={movieCard}
-              activeGenre={`All genres`}
-              films={filmListMock}
-              shownFilmsCount={8}
-              onShowMoreButtonClick={noop}
-              onPlayButtonClick={noop}
-            />
-          </BrowserRouter>
-        </Provider>
-    );
-
-    const genreItem = wrapper.find(`.catalog__genres-item`).at(1);
-    genreItem.simulate(`click`);
-    expect(handleGenreChange).toHaveBeenCalledTimes(1);
-  });
-
   it(`should MainPage be able to press on Show More Button`, () => {
     const handleShowMoreButtonClick = jest.fn();
 
