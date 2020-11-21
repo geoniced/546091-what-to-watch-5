@@ -41,6 +41,10 @@ const MockComponentWrapped = withActivePlayer(MockComponent);
 
 jest.useFakeTimers();
 
+Object.defineProperty(HTMLMediaElement.prototype, `muted`, {
+  set: () => {},
+});
+
 window.HTMLMediaElement.prototype.load = noop;
 window.HTMLMediaElement.prototype.pause = noop;
 window.HTMLMediaElement.prototype.play = noop;
