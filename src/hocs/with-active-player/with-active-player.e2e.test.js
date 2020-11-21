@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {configure, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import withActivePlayer from "./with-active-player";
-import {filmListMock, noop} from "../../test-data/test-data";
+import {filmListMock} from "../../test-data/test-data";
 
 configure({adapter: new Adapter()});
 
@@ -40,14 +40,6 @@ MockComponent.propTypes = {
 const MockComponentWrapped = withActivePlayer(MockComponent);
 
 jest.useFakeTimers();
-
-Object.defineProperty(HTMLMediaElement.prototype, `muted`, {
-  set: () => {},
-});
-
-window.HTMLMediaElement.prototype.load = noop;
-window.HTMLMediaElement.prototype.pause = noop;
-window.HTMLMediaElement.prototype.play = noop;
 
 describe(`withActivePlayer interactions`, () => {
   it(`should withActivePlayer has its default state eq to -1`, () => {
