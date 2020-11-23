@@ -1,0 +1,506 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyListScreen render renders MyListScreen component with 8 items 1`] = `
+<div
+  className="user-page"
+>
+  <header
+    className="page-header user-page__head"
+  >
+    <div
+      className="logo"
+    >
+      <a
+        className="logo__link "
+        href="/"
+        onClick={[Function]}
+      >
+        <span
+          className="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          className="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          className="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
+    </div>
+    <h1
+      className="page-title user-page__title"
+    >
+      My list
+    </h1>
+    <div
+      className="user-block"
+    >
+      <a
+        href="/mylist"
+        onClick={[Function]}
+      >
+        <div
+          className="user-block__avatar"
+        >
+          <img
+            alt="User avatar"
+            height="63"
+            src="img/avatar.jpg"
+            width="63"
+          />
+        </div>
+      </a>
+    </div>
+  </header>
+  <section
+    className="catalog"
+  >
+    <h2
+      className="catalog__title visually-hidden"
+    >
+      Catalog
+    </h2>
+    <div
+      className="catalog__movies-list"
+    >
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            height={175}
+            muted={true}
+            poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/bronson.jpg"
+            src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+            style={
+              Object {
+                "height": "100%",
+                "objectFit": "cover",
+                "verticalAlign": "top",
+                "width": "100%",
+              }
+            }
+            width={280}
+          />
+        </div>
+        <h3
+          className="small-movie-card__title"
+        >
+          <a
+            className="small-movie-card__link"
+            href="/films/1"
+            onClick={[Function]}
+          >
+            Bronson
+          </a>
+        </h3>
+      </article>
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            height={175}
+            muted={true}
+            poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/pulp-fiction.jpg"
+            src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+            style={
+              Object {
+                "height": "100%",
+                "objectFit": "cover",
+                "verticalAlign": "top",
+                "width": "100%",
+              }
+            }
+            width={280}
+          />
+        </div>
+        <h3
+          className="small-movie-card__title"
+        >
+          <a
+            className="small-movie-card__link"
+            href="/films/2"
+            onClick={[Function]}
+          >
+            Pulp Fiction
+          </a>
+        </h3>
+      </article>
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            height={175}
+            muted={true}
+            poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/midnight-special.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            style={
+              Object {
+                "height": "100%",
+                "objectFit": "cover",
+                "verticalAlign": "top",
+                "width": "100%",
+              }
+            }
+            width={280}
+          />
+        </div>
+        <h3
+          className="small-movie-card__title"
+        >
+          <a
+            className="small-movie-card__link"
+            href="/films/3"
+            onClick={[Function]}
+          >
+            Midnight Special
+          </a>
+        </h3>
+      </article>
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            height={175}
+            muted={true}
+            poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/matrix.jpg"
+            src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+            style={
+              Object {
+                "height": "100%",
+                "objectFit": "cover",
+                "verticalAlign": "top",
+                "width": "100%",
+              }
+            }
+            width={280}
+          />
+        </div>
+        <h3
+          className="small-movie-card__title"
+        >
+          <a
+            className="small-movie-card__link"
+            href="/films/4"
+            onClick={[Function]}
+          >
+            Matrix
+          </a>
+        </h3>
+      </article>
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            height={175}
+            muted={true}
+            poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/legend.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            style={
+              Object {
+                "height": "100%",
+                "objectFit": "cover",
+                "verticalAlign": "top",
+                "width": "100%",
+              }
+            }
+            width={280}
+          />
+        </div>
+        <h3
+          className="small-movie-card__title"
+        >
+          <a
+            className="small-movie-card__link"
+            href="/films/5"
+            onClick={[Function]}
+          >
+            Legend
+          </a>
+        </h3>
+      </article>
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            height={175}
+            muted={true}
+            poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/gangs_of_new_york.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            style={
+              Object {
+                "height": "100%",
+                "objectFit": "cover",
+                "verticalAlign": "top",
+                "width": "100%",
+              }
+            }
+            width={280}
+          />
+        </div>
+        <h3
+          className="small-movie-card__title"
+        >
+          <a
+            className="small-movie-card__link"
+            href="/films/6"
+            onClick={[Function]}
+          >
+            Gangs of new york
+          </a>
+        </h3>
+      </article>
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            height={175}
+            muted={true}
+            poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/A_Star_Is_Born.jpg"
+            src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+            style={
+              Object {
+                "height": "100%",
+                "objectFit": "cover",
+                "verticalAlign": "top",
+                "width": "100%",
+              }
+            }
+            width={280}
+          />
+        </div>
+        <h3
+          className="small-movie-card__title"
+        >
+          <a
+            className="small-movie-card__link"
+            href="/films/7"
+            onClick={[Function]}
+          >
+            A Star Is Born
+          </a>
+        </h3>
+      </article>
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            height={175}
+            muted={true}
+            poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/beach.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            style={
+              Object {
+                "height": "100%",
+                "objectFit": "cover",
+                "verticalAlign": "top",
+                "width": "100%",
+              }
+            }
+            width={280}
+          />
+        </div>
+        <h3
+          className="small-movie-card__title"
+        >
+          <a
+            className="small-movie-card__link"
+            href="/films/8"
+            onClick={[Function]}
+          >
+            Beach
+          </a>
+        </h3>
+      </article>
+    </div>
+  </section>
+  <footer
+    className="page-footer"
+  >
+    <div
+      className="logo"
+    >
+      <a
+        className="logo__link logo__link--light"
+        href="/"
+        onClick={[Function]}
+      >
+        <span
+          className="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          className="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          className="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
+    </div>
+    <div
+      className="copyright"
+    >
+      <p>
+        © 2019 What to watch Ltd.
+      </p>
+    </div>
+  </footer>
+</div>
+`;
+
+exports[`MyListScreen render renders MyListScreen component with empty array of films 1`] = `
+<div
+  className="user-page"
+>
+  <header
+    className="page-header user-page__head"
+  >
+    <div
+      className="logo"
+    >
+      <a
+        className="logo__link "
+        href="/"
+        onClick={[Function]}
+      >
+        <span
+          className="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          className="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          className="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
+    </div>
+    <h1
+      className="page-title user-page__title"
+    >
+      My list
+    </h1>
+    <div
+      className="user-block"
+    >
+      <a
+        href="/mylist"
+        onClick={[Function]}
+      >
+        <div
+          className="user-block__avatar"
+        >
+          <img
+            alt="User avatar"
+            height="63"
+            src="img/avatar.jpg"
+            width="63"
+          />
+        </div>
+      </a>
+    </div>
+  </header>
+  <section
+    className="catalog"
+  >
+    <h2
+      className="catalog__title visually-hidden"
+    >
+      Catalog
+    </h2>
+    <div
+      className="catalog__movies-list"
+    />
+  </section>
+  <footer
+    className="page-footer"
+  >
+    <div
+      className="logo"
+    >
+      <a
+        className="logo__link logo__link--light"
+        href="/"
+        onClick={[Function]}
+      >
+        <span
+          className="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          className="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          className="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
+    </div>
+    <div
+      className="copyright"
+    >
+      <p>
+        © 2019 What to watch Ltd.
+      </p>
+    </div>
+  </footer>
+</div>
+`;

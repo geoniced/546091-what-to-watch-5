@@ -1,0 +1,238 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GenresList render renders GenresList component with activeGenre eq Action 1`] = `
+<ul
+  className="catalog__genres-list"
+>
+  <li
+    className="catalog__genres-item "
+    data-genre="All genres"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      All genres
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item catalog__genres-item--active"
+    data-genre="Action"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Action
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    data-genre="Crime"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Crime
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    data-genre="Drama"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Drama
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    data-genre="Adventure"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Adventure
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    data-genre="Comedy"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Comedy
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`GenresList render renders GenresList component with activeGenre eq All genres 1`] = `
+<ul
+  className="catalog__genres-list"
+>
+  <li
+    className="catalog__genres-item catalog__genres-item--active"
+    data-genre="All genres"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      All genres
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    data-genre="Action"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Action
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    data-genre="Crime"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Crime
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    data-genre="Drama"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Drama
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    data-genre="Adventure"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Adventure
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    data-genre="Comedy"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Comedy
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`GenresList render renders GenresList component with activeGenre eq Crime 1`] = `
+<ul
+  className="catalog__genres-list"
+>
+  <li
+    className="catalog__genres-item "
+    data-genre="All genres"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      All genres
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    data-genre="Action"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Action
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item catalog__genres-item--active"
+    data-genre="Crime"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Crime
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    data-genre="Drama"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Drama
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    data-genre="Adventure"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Adventure
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    data-genre="Comedy"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Comedy
+    </a>
+  </li>
+</ul>
+`;

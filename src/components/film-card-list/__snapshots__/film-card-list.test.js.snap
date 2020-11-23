@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders FilmCardList component 1`] = `
+<div
+  className="catalog__movies-list"
+>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/1"
+        onClick={[Function]}
+      >
+        Bronson
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/2"
+        onClick={[Function]}
+      >
+        Pulp Fiction
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/3"
+        onClick={[Function]}
+      >
+        Midnight Special
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/4"
+        onClick={[Function]}
+      >
+        Matrix
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/5"
+        onClick={[Function]}
+      >
+        Legend
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/6"
+        onClick={[Function]}
+      >
+        Gangs of new york
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/7"
+        onClick={[Function]}
+      >
+        A Star Is Born
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/8"
+        onClick={[Function]}
+      >
+        Beach
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/9"
+        onClick={[Function]}
+      >
+        Aviator
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    />
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/10"
+        onClick={[Function]}
+      >
+        Johnny English
+      </a>
+    </h3>
+  </article>
+</div>
+`;

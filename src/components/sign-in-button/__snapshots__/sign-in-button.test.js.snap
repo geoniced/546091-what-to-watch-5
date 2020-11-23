@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders SignInButton component 1`] = `
+<a
+  className="user-block__link"
+  href="/login"
+  onClick={[Function]}
+>
+  Sign in
+</a>
+`;

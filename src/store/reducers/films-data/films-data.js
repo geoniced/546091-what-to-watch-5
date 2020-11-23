@@ -40,25 +40,11 @@ const filmsData = (state = initialState, action) => {
 
     case ActionType.LOAD_REVIEWS_FOR_FILM:
       const payloadReviews = action.payload.reviews;
-      // const filmId = action.payload.filmId;
-
-      // const storeFilms = state.films;
-      // const filmIndex = storeFilms.findIndex((film) => film.id === filmId);
 
       const reviews = payloadReviews.map((review) => adaptReviewToClient(review));
-      // const filmWithReviews = extend(storeFilms[filmIndex], {
-      //   reviews,
-      // });
-
-      // const newFilmListWithReviews = [
-      //   ...storeFilms.slice(0, filmIndex),
-      //   filmWithReviews,
-      //   ...storeFilms.slice(filmIndex + 1)
-      // ];
 
       return extend(state, {
         currentFilmReviews: reviews,
-        // films: newFilmListWithReviews,
       });
   }
 

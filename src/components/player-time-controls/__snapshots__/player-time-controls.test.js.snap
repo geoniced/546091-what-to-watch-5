@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayerTimeControls render renders PlayerTimeControls component with runtime eq 100 and currentTime eq 0 1`] = `
+<div
+  className="player__controls-row"
+>
+  <div
+    className="player__time"
+  >
+    <progress
+      className="player__progress"
+      max="100"
+      value={2}
+    />
+    <div
+      className="player__toggler"
+      style={
+        Object {
+          "left": "2%",
+        }
+      }
+    >
+      Toggler
+    </div>
+  </div>
+  <div
+    className="player__time-value"
+  >
+    01:38:20
+  </div>
+</div>
+`;
+
+exports[`PlayerTimeControls render renders PlayerTimeControls component with runtime eq 100 and currentTime eq 6000 1`] = `
+<div
+  className="player__controls-row"
+>
+  <div
+    className="player__time"
+  >
+    <progress
+      className="player__progress"
+      max="100"
+      value={100}
+    />
+    <div
+      className="player__toggler"
+      style={
+        Object {
+          "left": "100%",
+        }
+      }
+    >
+      Toggler
+    </div>
+  </div>
+  <div
+    className="player__time-value"
+  >
+    00:00:00
+  </div>
+</div>
+`;
+
+exports[`PlayerTimeControls render renders PlayerTimeControls component with runtime eq 100 and currentTimeSeconds eq 3000 1`] = `
+<div
+  className="player__controls-row"
+>
+  <div
+    className="player__time"
+  >
+    <progress
+      className="player__progress"
+      max="100"
+      value={50}
+    />
+    <div
+      className="player__toggler"
+      style={
+        Object {
+          "left": "50%",
+        }
+      }
+    >
+      Toggler
+    </div>
+  </div>
+  <div
+    className="player__time-value"
+  >
+    00:50:00
+  </div>
+</div>
+`;

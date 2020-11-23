@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmScreenTabItem render renders FilmScreenTabItem component with active status and Details type 1`] = `
+<li
+  className="movie-nav__item movie-nav__item--active"
+  data-tab-type="DETAILS"
+  onClick={[Function]}
+>
+  <a
+    className="movie-nav__link"
+    href="#"
+  >
+    Details
+  </a>
+</li>
+`;
+
+exports[`FilmScreenTabItem render renders FilmScreenTabItem component without active status and Details type 1`] = `
+<li
+  className="movie-nav__item "
+  data-tab-type="DETAILS"
+  onClick={[Function]}
+>
+  <a
+    className="movie-nav__link"
+    href="#"
+  >
+    Details
+  </a>
+</li>
+`;
+
+exports[`FilmScreenTabItem render renders FilmScreenTabItem component without active status and Overview type 1`] = `
+<li
+  className="movie-nav__item "
+  data-tab-type="OVERVIEW"
+  onClick={[Function]}
+>
+  <a
+    className="movie-nav__link"
+    href="#"
+  >
+    Overview
+  </a>
+</li>
+`;
