@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, {useState} from "react";
 import {FilmTypes, ReviewTypes} from "../../prop-types-validations";
 import FilmCardDetailsTab from "../film-card-details-tab/film-card-details-tab";
 import FilmCardReviewTab from "../film-card-review-tab/film-card-review-tab";
