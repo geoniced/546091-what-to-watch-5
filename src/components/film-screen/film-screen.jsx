@@ -7,14 +7,12 @@ import UserBlock from "../user-block/user-block";
 import FilmScreenTabs from "../film-screen-tabs/film-screen-tabs";
 import FilmCardList from "../film-card-list/film-card-list";
 
-import withSwitchableTabs from "../../hocs/with-switchable-tabs/with-switchable-tabs";
 import withActivePlayer from "../../hocs/with-active-player/with-active-player";
 import {AppRoute, AuthorizationStatus} from "../../const";
 import {connect} from "react-redux";
 import {fetchReviewsById} from "../../store/api-actions";
 import {getAuthorizationStatus, getReviews} from "../../store/selectors";
 
-const FilmScreenWithSwitchableTabs = withSwitchableTabs(FilmScreenTabs);
 const FilmCardListWithActiveItem = withActivePlayer(FilmCardList);
 
 const SIMILIAR_FILMS_COUNT = 4;
@@ -109,7 +107,7 @@ const FilmScreen = (props) => {
               <img src={posterImage} alt={title} width="218" height="327" />
             </div>
 
-            <FilmScreenWithSwitchableTabs
+            <FilmScreenTabs
               film={film}
               reviews={reviews}
             />
