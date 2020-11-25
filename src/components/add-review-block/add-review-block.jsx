@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import AddReviewRatingStar from "../add-review-rating-star/add-review-rating-star";
@@ -7,7 +7,21 @@ import {submitReview} from "../../store/api-actions";
 const STARS_COUNT = 5;
 
 const AddReviewBlock = (props) => {
-  const {ratingStars, reviewText, filmId, onRatingChange, onReviewChange, onSubmit} = props;
+  const {
+    filmId,
+    onSubmit
+  } = props;
+
+  const [ratingStars, setRatingStars] = useState(1);
+  const [reviewText, setReviewText] = useState(``);
+
+  const handleRatingChange = (evt) => {
+    setRatingStars(Number(evt.target.value));
+  };
+
+  const handleReviewChange = (evt) => {
+    setReviewText(evt.target.value);
+  };
 
   const onReviewSubmit = (evt) => {
     evt.preventDefault();
@@ -32,7 +46,7 @@ const AddReviewBlock = (props) => {
                   key={`star-${currentStarIndex}`}
                   starIndex={currentStarIndex}
                   checked={currentStarIndex === ratingStars}
-                  onRatingChange={onRatingChange}
+                  onRatingChange={handleRatingChange}
                 />
               );
             })}
@@ -45,7 +59,7 @@ const AddReviewBlock = (props) => {
             name="review-text"
             id="review-text"
             placeholder="Review text"
-            onChange={onReviewChange}
+            onChange={handleReviewChange}
             value={reviewText}
           />
           <div className="add-review__submit">
@@ -59,11 +73,7 @@ const AddReviewBlock = (props) => {
 };
 
 AddReviewBlock.propTypes = {
-  ratingStars: PropTypes.number.isRequired,
-  reviewText: PropTypes.string.isRequired,
   filmId: PropTypes.number.isRequired,
-  onRatingChange: PropTypes.func.isRequired,
-  onReviewChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
