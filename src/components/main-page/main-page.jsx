@@ -10,10 +10,6 @@ import ShowMoreButton from "../show-more-button/show-more-button";
 import {changeGenre, resetShownFilmCards, increaseShownFilmCards} from "../../store/actions";
 import {getActiveGenre, getShownFilmsCount, getFilmsByGenre} from "../../store/selectors";
 
-import withActivePlayer from "../../hocs/with-active-player/with-active-player";
-
-const FilmCardListWithActiveItem = withActivePlayer(FilmCardList);
-
 const MainPage = (props) => {
   const {
     movieCard,
@@ -93,7 +89,7 @@ const MainPage = (props) => {
             onGenreChange={onGenreChange}
           />
 
-          <FilmCardListWithActiveItem
+          <FilmCardList
             films={shownFilms}
           />
 
