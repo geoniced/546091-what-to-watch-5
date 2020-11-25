@@ -1,4 +1,4 @@
-import React, {createRef, Fragment, PureComponent} from "react";
+import React, {createRef, Fragment, PureComponent, useState} from "react";
 import PropTypes from "prop-types";
 import {FilmTypes} from "../../prop-types-validations";
 import VideoPlayer from "../video-player/video-player";
@@ -26,138 +26,114 @@ const getPlayerPlayButtonTemplate = (isPlaying) => {
   );
 };
 
-class PlayerScreen extends PureComponent {
-  constructor(props) {
-    super(props);
+const PlayerScreen = (props) => {
+  const {film, onExitButtonClick} = props;
 
-    this.state = {
-      isPlaying: false,
-      isFullscreen: false,
-      currentTimeSeconds: 0,
-    };
+  const {
+    video,
+    runtime,
+    backgroundImage,
+    title,
+  } = film;
 
-    this._playerRef = createRef();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const [currentTimeSeconds, setCurrentTimeSeconds] = useState(0);
 
-    this._handlePlayerButtonClick = this._handlePlayerButtonClick.bind(this);
-    this._handleFullscreenButtonClick = this._handleFullscreenButtonClick.bind(this);
-    this._handleCurrentTimeChange = this._handleCurrentTimeChange.bind(this);
-  }
+  const playerRef = createRef();
 
-  _handlePlayerButtonClick() {
-    if (this.state.isPlaying) {
-      this._pauseVideo();
+  const handlePlayerButtonClick = () => {
+    if (isPlaying) {
+      pauseVideo();
     } else {
-      this._playVideo();
+      playVideo();
     }
-  }
+  };
 
-  _handleFullscreenButtonClick() {
-    if (this.state.isFullscreen) {
-      this._closeFullscreen();
+  const handleFullscreenButtonClick = () => {
+    if (isFullScreen) {
+      closeFullScreen();
     } else {
-      this._openFullscreen();
+      openFullScreen();
     }
-  }
+  };
 
-  _handleCurrentTimeChange(currentTimeSeconds) {
-    this.setState({
-      currentTimeSeconds,
-    });
-  }
+  const handleCurrentTimeChange = (seconds) => {
+    setCurrentTimeSeconds(seconds);
+  };
 
-  _playVideo() {
-    this.setState({
-      isPlaying: true,
-    });
-  }
+  const playVideo = () => {
+    setIsPlaying(true);
+  };
 
-  _pauseVideo() {
-    this.setState({
-      isPlaying: false,
-    });
-  }
+  const pauseVideo = () => {
+    setIsPlaying(false);
+  };
 
-  _openFullscreen() {
-    this._playerRef.current.requestFullscreen();
+  const openFullScreen = () => {
+    playerRef.current.requestFullscreen();
+    setIsFullScreen(true);
+  };
 
-    this.setState({
-      isFullscreen: true,
-    });
-  }
-
-  _closeFullscreen() {
+  const closeFullScreen = () => {
     document.exitFullscreen();
-    this.setState({
-      isFullscreen: false,
-    });
-  }
+    setIsFullScreen(false);
+  };
 
-  render() {
-    const {film, onExitButtonClick} = this.props;
+  const playerPlayButtonTemplate = getPlayerPlayButtonTemplate(isPlaying);
 
-    const {
-      video,
-      runtime,
-      backgroundImage,
-      title,
-    } = film;
+  return (
+    <div
+      className="player"
+      ref={playerRef}
+    >
+      <VideoPlayer
+        isPlaying={isPlaying}
+        additionalClasses="player__video"
+        src={video}
+        poster={backgroundImage}
+        onCurrentTimeChange={handleCurrentTimeChange}
+      />
 
-    const {isPlaying, currentTimeSeconds} = this.state;
-    const playerPlayButtonTemplate = getPlayerPlayButtonTemplate(isPlaying);
-
-    return (
-      <div
-        className="player"
-        ref={this._playerRef}
+      <button
+        type="button"
+        className="player__exit"
+        onClick={onExitButtonClick}
       >
-        <VideoPlayer
-          isPlaying={isPlaying}
-          additionalClasses="player__video"
-          src={video}
-          poster={backgroundImage}
-          onCurrentTimeChange={this._handleCurrentTimeChange}
+        Exit
+      </button>
+
+      <div className="player__controls">
+        <PlayerTimeControls
+          runtime={runtime}
+          currentTimeSeconds={currentTimeSeconds}
         />
 
-        <button
-          type="button"
-          className="player__exit"
-          onClick={onExitButtonClick}
-        >
-          Exit
-        </button>
+        <div className="player__controls-row">
+          <button
+            type="button"
+            className="player__play"
+            onClick={handlePlayerButtonClick}
+          >
+            {playerPlayButtonTemplate}
+          </button>
+          <div className="player__name">{title}</div>
 
-        <div className="player__controls">
-          <PlayerTimeControls
-            runtime={runtime}
-            currentTimeSeconds={currentTimeSeconds}
-          />
-
-          <div className="player__controls-row">
-            <button
-              type="button"
-              className="player__play"
-              onClick={this._handlePlayerButtonClick}
-            >
-              {playerPlayButtonTemplate}
-            </button>
-            <div className="player__name">{title}</div>
-
-            <button
-              type="button"
-              className="player__full-screen"
-              onClick={this._handleFullscreenButtonClick}
-            >
-              <svg viewBox="0 0 27 27" width="27" height="27">
-                <use xlinkHref="#full-screen"></use>
-              </svg>
-              <span>Full screen</span>
-            </button>
-          </div>
+          <button
+            type="button"
+            className="player__full-screen"
+            onClick={handleFullscreenButtonClick}
+          >
+            <svg viewBox="0 0 27 27" width="27" height="27">
+              <use xlinkHref="#full-screen"></use>
+            </svg>
+            <span>Full screen</span>
+          </button>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 PlayerScreen.propTypes = {
   film: FilmTypes.filmCard,
