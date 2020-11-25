@@ -22,7 +22,7 @@ const SIMILIAR_FILMS_COUNT = 4;
 const useReviewsData = (filmId, loadReviews) => {
   useEffect(() => {
     loadReviews(filmId);
-  }, []);
+  }, [filmId]);
 };
 
 const FilmScreen = (props) => {
