@@ -12,7 +12,7 @@ const AddReviewBlock = (props) => {
     onSubmit
   } = props;
 
-  const [ratingStars, setRatingStars] = useState(1);
+  const [ratingStars, setRatingStars] = useState(0);
   const [reviewText, setReviewText] = useState(``);
 
   const handleRatingChange = (evt) => {
