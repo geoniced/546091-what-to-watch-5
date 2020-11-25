@@ -7,6 +7,7 @@ import {
   loadReviewsForFilm,
   requireAuthorization,
   redirectToRoute,
+  loadPromoFilm,
 } from "./actions";
 import {filmListMock, mockReviews} from "../test-data/test-data";
 import {AuthorizationStatus} from "../const";
@@ -59,6 +60,13 @@ describe(`Action creators work correctly`, () => {
     expect(redirectToRoute(`/test-path`)).toEqual({
       type: ActionType.REDIRECT_TO_ROUTE,
       payload: `/test-path`,
+    });
+  });
+
+  it(`Action creator loadPromoFilm works correctly`, () => {
+    expect(loadPromoFilm(filmListMock[0])).toEqual({
+      type: ActionType.LOAD_PROMO_FILM,
+      payload: filmListMock[0],
     });
   });
 });

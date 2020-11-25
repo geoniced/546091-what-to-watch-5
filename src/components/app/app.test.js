@@ -1,19 +1,17 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
-import {filmListMock, movieCard} from "../../test-data/test-data";
+import {filmListMock} from "../../test-data/test-data";
 import App, {App as AppWithoutStore} from "./app";
 import {noop} from "../../test-data/test-data";
-import {NameSpace} from "../../store/reducers/root-reducer";
-import {AuthorizationStatus} from "../../const";
+import {mockedStore} from "../../test-data/store";
 
 describe(`App render without store`, () => {
   it(`renders App component's preloader (no store here)`, () => {
     const tree = renderer
       .create(
           <AppWithoutStore
-            movieCard={movieCard}
+            promoFilm={filmListMock[0]}
             films={[]}
             isLoading={true}
             loadFilmList={noop}
@@ -26,31 +24,13 @@ describe(`App render without store`, () => {
 });
 
 describe(`App render`, () => {
-  const mockStore = configureStore([]);
-  let store = null;
   let appComponent = null;
 
-  beforeEach(() => {
-    store = mockStore({
-      [NameSpace.DATA]: {
-        activeGenre: `All genres`,
-        films: filmListMock,
-        shownFilmsCount: 8,
-        isLoading: false,
-      },
-      [NameSpace.USER]: {
-        authorizationStatus: AuthorizationStatus.AUTH,
-      }
-    });
-  });
-
   it(`renders App component`, () => {
-    store.dispatch = jest.fn();
-
     appComponent = renderer.create(
-        <Provider store={store}>
+        <Provider store={mockedStore}>
           <App
-            movieCard={movieCard}
+            promoFilm={filmListMock[0]}
             isLoading={false}
             films={[]}
             loadFilmList={noop}

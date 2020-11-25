@@ -3,7 +3,7 @@ import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
 import renderer from "react-test-renderer";
 import {mockedStore} from "../../test-data/store";
-import {filmListMock, movieCard, noop} from "../../test-data/test-data";
+import {filmListMock, noop} from "../../test-data/test-data";
 import {MainPage} from "./main-page";
 
 describe(`MainPage render`, () => {
@@ -13,13 +13,14 @@ describe(`MainPage render`, () => {
           <Provider store={mockedStore}>
             <BrowserRouter>
               <MainPage
-                movieCard={movieCard}
+                promoFilm={filmListMock[0]}
                 activeGenre={`Action`}
                 films={filmListMock}
                 shownFilmsCount={8}
                 onPlayButtonClick={noop}
                 onGenreChange={noop}
                 onShowMoreButtonClick={noop}
+                loadPromoFilm={noop}
               />
             </BrowserRouter>
           </Provider>,
@@ -40,13 +41,14 @@ describe(`MainPage render`, () => {
           <Provider store={mockedStore}>
             <BrowserRouter>
               <MainPage
-                movieCard={movieCard}
+                promoFilm={filmListMock[0]}
                 activeGenre={`All genres`}
                 films={filmListMock}
                 shownFilmsCount={16}
                 onPlayButtonClick={noop}
                 onGenreChange={noop}
                 onShowMoreButtonClick={noop}
+                loadPromoFilm={noop}
               />
             </BrowserRouter>
           </Provider>,

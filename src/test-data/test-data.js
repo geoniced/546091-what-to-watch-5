@@ -1,11 +1,5 @@
 export const noop = () => {};
 
-export const movieCard = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  releaseDate: 2014,
-};
-
 export const filmListMock = [
   {
     backgroundColor: `#73B39A`,

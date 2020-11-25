@@ -1,11 +1,11 @@
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../../services/api";
 import {filmsData} from "./films-data";
-import {ALL_GENRES_FILTER, APIRoute, AppRoute} from "../../../const";
+import {ALL_GENRES_FILTER, APIRoute, AppRoute, EMPTY_FILM} from "../../../const";
 import {ActionType} from "../../actions";
 import {filmListMock, noop} from "../../../test-data/test-data";
 import {filmsFromServer} from "../../../test-data/server-data";
-import {fetchFilmList, fetchReviewsById, submitReview} from "../../api-actions";
+import {fetchFilmList, fetchPromoFilm, fetchReviewsById, submitReview} from "../../api-actions";
 
 const api = createAPI(noop);
 
@@ -30,6 +30,7 @@ describe(`filmsData reducer sync operations`, () => {
       shownFilmsCount: 0,
       isLoading: true,
       currentFilmReviews: [],
+      promoFilm: EMPTY_FILM,
     });
   });
 
@@ -118,6 +119,18 @@ describe(`filmsData reducer sync operations`, () => {
         }],
       });
   });
+
+  it(`filmsData reducer should load promo film`, () => {
+    expect(filmsData({
+      promoFilm: EMPTY_FILM,
+    }, {
+      type: ActionType.LOAD_PROMO_FILM,
+      payload: filmsFromServer[0],
+    }))
+      .toEqual({
+        promoFilm: filmListMock[0],
+      });
+  });
 });
 
 describe(`filmsData reducer async operations`, () => {
@@ -183,6 +196,25 @@ describe(`filmsData reducer async operations`, () => {
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.REDIRECT_TO_ROUTE,
           payload: `${AppRoute.FILMS}/${filmId}`,
+        });
+      });
+  });
+
+  it(`should make a correct API call to /films`, () => {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const promoFilmLoader = fetchPromoFilm();
+
+    apiMock
+      .onGet(`${APIRoute.FILMS}/promo`)
+      .reply(200, filmsFromServer[0]);
+
+    return promoFilmLoader(dispatch, noop, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_PROMO_FILM,
+          payload: filmsFromServer[0],
         });
       });
   });
