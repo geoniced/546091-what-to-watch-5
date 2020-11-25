@@ -1,4 +1,4 @@
-import React, {createRef, Fragment, PureComponent, useState} from "react";
+import React, {createRef, Fragment, useState} from "react";
 import PropTypes from "prop-types";
 import {FilmTypes} from "../../prop-types-validations";
 import VideoPlayer from "../video-player/video-player";
