@@ -12,12 +12,6 @@ import {requireAuthorization} from "./store/actions";
 import {AuthorizationStatus} from "./const";
 import {redirect} from "./store/middlewares/redirect";
 
-const movieCard = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  releaseDate: 2014,
-};
-
 const api = createAPI(
     () => store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH))
 );
@@ -36,9 +30,7 @@ Promise.all([
 .then(() => {
   ReactDOM.render(
       <Provider store={store}>
-        <App
-          movieCard={movieCard}
-        />
+        <App />
       </Provider>,
       document.querySelector(`#root`)
   );

@@ -33,3 +33,23 @@ export const APIRoute = {
   LOGIN: `/login`,
   COMMENTS: `/comments`,
 };
+
+export const EMPTY_FILM = {
+  backgroundColor: ``,
+  backgroundImage: ``,
+  description: ``,
+  director: ``,
+  genre: ``,
+  id: 0,
+  isFavorite: false,
+  posterImage: ``,
+  previewImage: ``,
+  rating: 0,
+  ratingsCount: 0,
+  releaseYear: 1970,
+  runtime: 1,
+  starring: [],
+  title: ``,
+  video: ``,
+  videoPreview: ``,
+};

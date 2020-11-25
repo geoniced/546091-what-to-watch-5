@@ -24,7 +24,7 @@ const useFilmListLoader = (loadFilmList) => {
 };
 
 const App = (props) => {
-  const {movieCard, films, isLoading, loadFilmList} = props;
+  const {films, isLoading, loadFilmList} = props;
 
   useFilmListLoader(loadFilmList);
 
@@ -39,8 +39,7 @@ const App = (props) => {
           path={AppRoute.ROOT}
           render={({history}) => (
             <MainPage
-              movieCard={movieCard}
-              onPlayButtonClick={() => history.push(`${AppRoute.PLAYER}/1`)}
+              onPlayButtonClick={(filmId) => history.push(`${AppRoute.PLAYER}/${filmId}`)}
             />
           )}
         />
@@ -108,11 +107,6 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  movieCard: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseDate: PropTypes.number.isRequired,
-  }).isRequired,
   films: FilmTypes.films,
   loadFilmList: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
@@ -126,7 +120,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   loadFilmList() {
     dispatch(fetchFilmList());
-  }
+  },
 });
 
 export {App};

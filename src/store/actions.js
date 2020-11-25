@@ -4,6 +4,7 @@ export const ActionType = {
   RESET_SHOWN_FILM_CARDS: `RESET_SHOWN_FILM_CARDS`,
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_REVIEWS_FOR_FILM: `LOAD_REVIEWS_FOR_FILM`,
+  LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
 };
@@ -32,6 +33,11 @@ export const loadReviewsForFilm = (reviews, filmId) => ({
     reviews,
     filmId,
   },
+});
+
+export const loadPromoFilm = (promoFilm) => ({
+  type: ActionType.LOAD_PROMO_FILM,
+  payload: promoFilm,
 });
 
 export const requireAuthorization = (status) => ({

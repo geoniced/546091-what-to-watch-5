@@ -1,4 +1,11 @@
-import {loadFilms, loadReviewsForFilm, redirectToRoute, requireAuthorization} from "./actions";
+import {
+  loadFilms,
+  loadPromoFilm,
+  loadReviewsForFilm,
+  redirectToRoute,
+  requireAuthorization
+} from "./actions";
+
 import {APIRoute, AppRoute, AuthorizationStatus} from "../const";
 
 export const fetchFilmList = () => (dispatch, _getStore, api) => (
@@ -13,6 +20,11 @@ export const fetchFilmCard = (filmId) => (dispatch, _getStore, api) => (
 export const fetchReviewsById = (filmId) => (dispatch, _getStore, api) => (
   api.get(`${APIRoute.COMMENTS}/${filmId}`)
     .then(({data}) => dispatch(loadReviewsForFilm(data, filmId)))
+);
+
+export const fetchPromoFilm = () => (dispatch, _getStore, api) => (
+  api.get(`${APIRoute.FILMS}/promo`)
+    .then(({data}) => dispatch(loadPromoFilm(data)))
 );
 
 export const checkAuth = () => (dispatch, _getStore, api) => (

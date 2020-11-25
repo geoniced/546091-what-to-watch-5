@@ -1,6 +1,6 @@
 import {ActionType} from "../../actions";
 import {extend, adaptFilmToClient, adaptReviewToClient} from "../../../utils";
-import {ALL_GENRES_FILTER, FILM_CARDS_PER_STEP} from "../../../const";
+import {ALL_GENRES_FILTER, FILM_CARDS_PER_STEP, EMPTY_FILM} from "../../../const";
 
 const initialState = {
   activeGenre: ALL_GENRES_FILTER,
@@ -8,6 +8,7 @@ const initialState = {
   shownFilmsCount: 0,
   isLoading: true,
   currentFilmReviews: [],
+  promoFilm: EMPTY_FILM,
 };
 
 const filmsData = (state = initialState, action) => {
@@ -45,6 +46,12 @@ const filmsData = (state = initialState, action) => {
 
       return extend(state, {
         currentFilmReviews: reviews,
+      });
+    case ActionType.LOAD_PROMO_FILM:
+      const promoFilm = adaptFilmToClient(action.payload);
+
+      return extend(state, {
+        promoFilm,
       });
   }
 
