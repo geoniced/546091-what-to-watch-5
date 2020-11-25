@@ -4,7 +4,7 @@ import {BrowserRouter} from "react-router-dom";
 import {configure, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import {MainPage} from "./main-page";
-import {filmListMock, movieCard, noop} from "../../test-data/test-data";
+import {filmListMock, noop} from "../../test-data/test-data";
 import {mockedStore} from "../../test-data/store";
 
 configure({adapter: new Adapter()});
@@ -18,12 +18,13 @@ describe(`MainPage interactions`, () => {
           <BrowserRouter>
             <MainPage
               onPlayButtonClick={handlePlayButtonClick}
-              movieCard={movieCard}
+              promoFilm={filmListMock[0]}
               activeGenre={`All genres`}
               films={filmListMock}
               shownFilmsCount={8}
               onGenreChange={noop}
               onShowMoreButtonClick={noop}
+              loadPromoFilm={noop}
             />
           </BrowserRouter>
         </Provider>
@@ -42,12 +43,13 @@ describe(`MainPage interactions`, () => {
           <BrowserRouter>
             <MainPage
               onShowMoreButtonClick={handleShowMoreButtonClick}
-              movieCard={movieCard}
+              promoFilm={filmListMock[0]}
               activeGenre={`All genres`}
               films={filmListMock}
               shownFilmsCount={8}
               onPlayButtonClick={noop}
               onGenreChange={noop}
+              loadPromoFilm={noop}
             />
           </BrowserRouter>
         </Provider>
