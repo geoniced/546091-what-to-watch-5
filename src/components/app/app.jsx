@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {Router as BrowserRouter, Switch, Route} from "react-router-dom";
 import {connect} from "react-redux";
@@ -16,12 +16,7 @@ import {AppRoute} from "../../const";
 import {getFilms, getIsLoading} from "../../store/selectors";
 import {fetchFilmList} from "../../store/api-actions";
 import Preloader from "../preloader/preloader";
-
-const useFilmListLoader = (loadFilmList) => {
-  useEffect(() => {
-    loadFilmList();
-  }, []);
-};
+import {useFilmListLoader} from "../../hooks/use-film-list-loader/use-film-list-loader";
 
 const App = (props) => {
   const {films, isLoading, loadFilmList} = props;

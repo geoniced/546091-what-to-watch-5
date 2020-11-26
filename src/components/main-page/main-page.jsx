@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {FilmTypes} from "../../prop-types-validations";
@@ -11,12 +11,7 @@ import {changeGenre, resetShownFilmCards, increaseShownFilmCards} from "../../st
 import {getActiveGenre, getShownFilmsCount, getFilmsByGenre, getPromoFilm} from "../../store/selectors";
 import {fetchPromoFilm, submitMyListFilmStatus} from "../../store/api-actions";
 import MyListButton from "../my-list-button/my-list-button";
-
-const usePromoFilmLoader = (loadPromoFilm) => {
-  useEffect(() => {
-    loadPromoFilm();
-  }, []);
-};
+import {usePromoFilmLoader} from "../../hooks/use-promo-film-loader/use-promo-film-loader";
 
 const MainPage = (props) => {
   const {

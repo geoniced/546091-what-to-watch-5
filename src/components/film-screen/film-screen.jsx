@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect} from "react";
+import React, {Fragment} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {FilmTypes, ReviewTypes} from "../../prop-types-validations";
@@ -12,14 +12,9 @@ import {AppRoute, AuthorizationStatus} from "../../const";
 import {connect} from "react-redux";
 import {fetchReviewsById, submitMyListFilmStatus} from "../../store/api-actions";
 import {getAuthorizationStatus, getReviews} from "../../store/selectors";
+import {useReviewsData} from "../../hooks/use-reviews-data/use-reviews-data";
 
 const SIMILIAR_FILMS_COUNT = 4;
-
-const useReviewsData = (filmId, loadReviews) => {
-  useEffect(() => {
-    loadReviews(filmId);
-  }, [filmId]);
-};
 
 const FilmScreen = (props) => {
   const {
