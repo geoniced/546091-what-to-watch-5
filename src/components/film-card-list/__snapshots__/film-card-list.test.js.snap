@@ -11,7 +11,23 @@ exports[`renders FilmCardList component 1`] = `
   >
     <div
       className="small-movie-card__image"
-    />
+    >
+      <video
+        height={175}
+        muted={true}
+        poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/bronson.jpg"
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+        style={
+          Object {
+            "height": "100%",
+            "objectFit": "cover",
+            "verticalAlign": "top",
+            "width": "100%",
+          }
+        }
+        width={280}
+      />
+    </div>
     <h3
       className="small-movie-card__title"
     >
@@ -31,7 +47,23 @@ exports[`renders FilmCardList component 1`] = `
   >
     <div
       className="small-movie-card__image"
-    />
+    >
+      <video
+        height={175}
+        muted={true}
+        poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/pulp-fiction.jpg"
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+        style={
+          Object {
+            "height": "100%",
+            "objectFit": "cover",
+            "verticalAlign": "top",
+            "width": "100%",
+          }
+        }
+        width={280}
+      />
+    </div>
     <h3
       className="small-movie-card__title"
     >
@@ -51,7 +83,23 @@ exports[`renders FilmCardList component 1`] = `
   >
     <div
       className="small-movie-card__image"
-    />
+    >
+      <video
+        height={175}
+        muted={true}
+        poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/midnight-special.jpg"
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+        style={
+          Object {
+            "height": "100%",
+            "objectFit": "cover",
+            "verticalAlign": "top",
+            "width": "100%",
+          }
+        }
+        width={280}
+      />
+    </div>
     <h3
       className="small-movie-card__title"
     >
@@ -71,7 +119,23 @@ exports[`renders FilmCardList component 1`] = `
   >
     <div
       className="small-movie-card__image"
-    />
+    >
+      <video
+        height={175}
+        muted={true}
+        poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/matrix.jpg"
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+        style={
+          Object {
+            "height": "100%",
+            "objectFit": "cover",
+            "verticalAlign": "top",
+            "width": "100%",
+          }
+        }
+        width={280}
+      />
+    </div>
     <h3
       className="small-movie-card__title"
     >
@@ -91,7 +155,23 @@ exports[`renders FilmCardList component 1`] = `
   >
     <div
       className="small-movie-card__image"
-    />
+    >
+      <video
+        height={175}
+        muted={true}
+        poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/legend.jpg"
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+        style={
+          Object {
+            "height": "100%",
+            "objectFit": "cover",
+            "verticalAlign": "top",
+            "width": "100%",
+          }
+        }
+        width={280}
+      />
+    </div>
     <h3
       className="small-movie-card__title"
     >
@@ -111,7 +191,23 @@ exports[`renders FilmCardList component 1`] = `
   >
     <div
       className="small-movie-card__image"
-    />
+    >
+      <video
+        height={175}
+        muted={true}
+        poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/gangs_of_new_york.jpg"
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+        style={
+          Object {
+            "height": "100%",
+            "objectFit": "cover",
+            "verticalAlign": "top",
+            "width": "100%",
+          }
+        }
+        width={280}
+      />
+    </div>
     <h3
       className="small-movie-card__title"
     >
@@ -131,7 +227,23 @@ exports[`renders FilmCardList component 1`] = `
   >
     <div
       className="small-movie-card__image"
-    />
+    >
+      <video
+        height={175}
+        muted={true}
+        poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/A_Star_Is_Born.jpg"
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+        style={
+          Object {
+            "height": "100%",
+            "objectFit": "cover",
+            "verticalAlign": "top",
+            "width": "100%",
+          }
+        }
+        width={280}
+      />
+    </div>
     <h3
       className="small-movie-card__title"
     >
@@ -151,7 +263,23 @@ exports[`renders FilmCardList component 1`] = `
   >
     <div
       className="small-movie-card__image"
-    />
+    >
+      <video
+        height={175}
+        muted={true}
+        poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/beach.jpg"
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+        style={
+          Object {
+            "height": "100%",
+            "objectFit": "cover",
+            "verticalAlign": "top",
+            "width": "100%",
+          }
+        }
+        width={280}
+      />
+    </div>
     <h3
       className="small-movie-card__title"
     >
@@ -171,7 +299,23 @@ exports[`renders FilmCardList component 1`] = `
   >
     <div
       className="small-movie-card__image"
-    />
+    >
+      <video
+        height={175}
+        muted={true}
+        poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/aviator.jpg"
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+        style={
+          Object {
+            "height": "100%",
+            "objectFit": "cover",
+            "verticalAlign": "top",
+            "width": "100%",
+          }
+        }
+        width={280}
+      />
+    </div>
     <h3
       className="small-movie-card__title"
     >
@@ -191,7 +335,23 @@ exports[`renders FilmCardList component 1`] = `
   >
     <div
       className="small-movie-card__image"
-    />
+    >
+      <video
+        height={175}
+        muted={true}
+        poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/johnny-english.jpg"
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+        style={
+          Object {
+            "height": "100%",
+            "objectFit": "cover",
+            "verticalAlign": "top",
+            "width": "100%",
+          }
+        }
+        width={280}
+      />
+    </div>
     <h3
       className="small-movie-card__title"
     >

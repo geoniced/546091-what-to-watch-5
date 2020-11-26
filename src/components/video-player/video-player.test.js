@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {filmListMock} from "../../test-data/test-data";
+import {createNodeMockWithVideo, filmListMock} from "../../test-data/test-data";
 import VideoPlayer from "./video-player";
 
 const mockFilm = filmListMock[0];
@@ -26,9 +26,7 @@ describe(`VideoPlayer render`, () => {
             resetAfterPause
           />,
           {
-            createNodeMock: () => {
-              return {};
-            }
+            createNodeMock: createNodeMockWithVideo,
           }
       )
       .toJSON();
@@ -47,9 +45,7 @@ describe(`VideoPlayer render`, () => {
             height={175}
           />,
           {
-            createNodeMock: () => {
-              return {};
-            }
+            createNodeMock: createNodeMockWithVideo,
           }
       )
       .toJSON();

@@ -3,7 +3,7 @@ import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
 import renderer from "react-test-renderer";
 import {mockedStore} from "../../test-data/store";
-import {filmListMock, noop} from "../../test-data/test-data";
+import {createNodeMockWithVideo, filmListMock, noop} from "../../test-data/test-data";
 import {MainPage} from "./main-page";
 
 describe(`MainPage render`, () => {
@@ -25,9 +25,7 @@ describe(`MainPage render`, () => {
             </BrowserRouter>
           </Provider>,
           {
-            createNodeMock: () => {
-              return {};
-            }
+            createNodeMock: createNodeMockWithVideo,
           }
       )
       .toJSON();
@@ -53,9 +51,7 @@ describe(`MainPage render`, () => {
             </BrowserRouter>
           </Provider>,
           {
-            createNodeMock: () => {
-              return {};
-            }
+            createNodeMock: createNodeMockWithVideo,
           }
       )
       .toJSON();

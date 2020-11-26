@@ -1,5 +1,17 @@
 export const noop = () => {};
 
+export const createNodeMockWithVideo = (element) => {
+  if (element.type === `video`) {
+    return {
+      play() {},
+      pause() {},
+      load() {},
+    };
+  }
+
+  return {};
+};
+
 export const filmListMock = [
   {
     backgroundColor: `#73B39A`,

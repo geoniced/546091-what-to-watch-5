@@ -4,7 +4,7 @@ import {BrowserRouter} from "react-router-dom";
 import renderer from "react-test-renderer";
 import {AuthorizationStatus} from "../../const";
 import {mockedStore} from "../../test-data/store";
-import {filmListMock, mockReviews, noop} from "../../test-data/test-data";
+import {createNodeMockWithVideo, filmListMock, mockReviews, noop} from "../../test-data/test-data";
 import {FilmScreen} from "./film-screen";
 
 describe(`FilmScreen render`, () => {
@@ -24,9 +24,7 @@ describe(`FilmScreen render`, () => {
             </BrowserRouter>
           </Provider>,
           {
-            createNodeMock: () => {
-              return {};
-            }
+            createNodeMock: createNodeMockWithVideo,
           }
       )
       .toJSON();
@@ -50,9 +48,7 @@ describe(`FilmScreen render`, () => {
             </BrowserRouter>
           </Provider>,
           {
-            createNodeMock: () => {
-              return {};
-            }
+            createNodeMock: createNodeMockWithVideo,
           }
       )
       .toJSON();

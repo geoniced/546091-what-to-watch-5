@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {filmListMock, noop} from "../../test-data/test-data";
+import {createNodeMockWithVideo, filmListMock, noop} from "../../test-data/test-data";
 import PlayerScreen from "./player-screen";
 
 describe(`PlayerScreen render`, () => {
@@ -12,9 +12,7 @@ describe(`PlayerScreen render`, () => {
             onExitButtonClick={noop}
           />,
           {
-            createNodeMock: () => {
-              return {};
-            }
+            createNodeMock: createNodeMockWithVideo,
           }
       )
       .toJSON();
@@ -30,9 +28,7 @@ describe(`PlayerScreen render`, () => {
             onExitButtonClick={noop}
           />,
           {
-            createNodeMock: () => {
-              return {};
-            }
+            createNodeMock: createNodeMockWithVideo,
           }
       )
       .toJSON();
