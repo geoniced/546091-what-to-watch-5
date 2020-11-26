@@ -91,6 +91,23 @@ export const getFilmById = (films, id) => {
   return films.find((filmItem) => Number(id) === filmItem.id);
 };
 
+export const getFilmIndexById = (films, filmId) => {
+  return films.findIndex((film) => film.id === filmId);
+};
+
+export const setFilmForFilms = (films, updatedFilm) => {
+  const changedFilmIndex = getFilmIndexById(films, updatedFilm.id);
+
+  const copiedFilms = films.slice();
+  const updatedFilms = [
+    ...copiedFilms.slice(0, changedFilmIndex),
+    updatedFilm,
+    ...copiedFilms.slice(changedFilmIndex + 1)
+  ];
+
+  return updatedFilms;
+};
+
 export const getRatingDescription = (rating) => {
   let ratingDescription = ``;
 

@@ -32,6 +32,7 @@ export const APIRoute = {
   FILMS: `/films`,
   LOGIN: `/login`,
   COMMENTS: `/comments`,
+  FAVORITE: `/favorite`,
 };
 
 export const EMPTY_FILM = {

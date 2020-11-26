@@ -1,4 +1,5 @@
 import {
+  changeFilmIsFavorite,
   loadFilms,
   loadPromoFilm,
   loadReviewsForFilm,
@@ -42,4 +43,9 @@ export const login = ({email, password}) => (dispatch, _getStore, api) => (
 export const submitReview = ({rating, comment, filmId}) => (dispatch, _getStore, api) => (
   api.post(`${APIRoute.COMMENTS}/${filmId}`, {rating, comment})
     .then(() => dispatch(redirectToRoute(`${AppRoute.FILMS}/${filmId}`)))
+);
+
+export const submitMyListFilmStatus = (filmId, filmStatus) => (dispatch, _getStore, api) => (
+  api.post(`${APIRoute.FAVORITE}/${filmId}/${filmStatus}`)
+    .then(({data}) => dispatch(changeFilmIsFavorite(filmId, data)))
 );

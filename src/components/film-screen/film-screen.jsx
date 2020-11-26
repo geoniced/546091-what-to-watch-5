@@ -9,7 +9,7 @@ import FilmCardList from "../film-card-list/film-card-list";
 
 import {AppRoute, AuthorizationStatus} from "../../const";
 import {connect} from "react-redux";
-import {fetchReviewsById} from "../../store/api-actions";
+import {fetchReviewsById, submitMyListFilmStatus} from "../../store/api-actions";
 import {getAuthorizationStatus, getReviews} from "../../store/selectors";
 
 const SIMILIAR_FILMS_COUNT = 4;
@@ -20,6 +20,22 @@ const useReviewsData = (filmId, loadReviews) => {
   }, [filmId]);
 };
 
+const getMyListIconTemplate = (isFavorite) => {
+  if (isFavorite) {
+    return (
+      <svg viewBox="0 0 18 14" width="18" height="14">
+        <use xlinkHref="#in-list"></use>
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 19 20" width="19" height="20">
+      <use xlinkHref="#add"></use>
+    </svg>
+  );
+};
+
 const FilmScreen = (props) => {
   const {
     onPlayButtonClick,
@@ -28,6 +44,7 @@ const FilmScreen = (props) => {
     films,
     authorizationStatus,
     loadReviews,
+    setMyListFilmStatus,
   } = props;
 
   const {
@@ -38,9 +55,14 @@ const FilmScreen = (props) => {
     posterImage,
     backgroundImage,
     backgroundColor,
+    isFavorite,
   } = film;
 
   useReviewsData(id, loadReviews);
+
+  const onMyListButtonClick = () => {
+    setMyListFilmStatus(id, Number(!isFavorite));
+  };
 
   // Может тоже в пропсы выкинуть, чтобы компонент почище был? Надо подумать
   const similarFilms = films
@@ -82,10 +104,12 @@ const FilmScreen = (props) => {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
+                <button
+                  className="btn btn--list movie-card__button"
+                  type="button"
+                  onClick={onMyListButtonClick}
+                >
+                  {getMyListIconTemplate(isFavorite)}
                   <span>My list</span>
                 </button>
                 {authorizationStatus === AuthorizationStatus.AUTH && (
@@ -138,6 +162,7 @@ FilmScreen.propTypes = {
   reviews: ReviewTypes.reviewsList,
   onPlayButtonClick: PropTypes.func.isRequired,
   loadReviews: PropTypes.func.isRequired,
+  setMyListFilmStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -148,7 +173,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   loadReviews(filmId) {
     dispatch(fetchReviewsById(filmId));
-  }
+  },
+  setMyListFilmStatus(filmId, status) {
+    dispatch(submitMyListFilmStatus(filmId, status));
+  },
 });
 
 export {FilmScreen};

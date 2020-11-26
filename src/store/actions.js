@@ -1,5 +1,6 @@
 export const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
+  CHANGE_FILM_IS_FAVORITE: `CHANGE_FILM_IS_FAVORITE`,
   INCREASE_SHOWN_FILM_CARDS: `INCREASE_SHOWN_FILM_CARDS`,
   RESET_SHOWN_FILM_CARDS: `RESET_SHOWN_FILM_CARDS`,
   LOAD_FILMS: `LOAD_FILMS`,
@@ -12,6 +13,11 @@ export const ActionType = {
 export const changeGenre = (genre) => ({
   type: ActionType.CHANGE_GENRE,
   payload: genre,
+});
+
+export const changeFilmIsFavorite = (filmId, filmData) => ({
+  type: ActionType.CHANGE_FILM_IS_FAVORITE,
+  payload: filmData,
 });
 
 export const increaseShownFilmCards = () => ({
