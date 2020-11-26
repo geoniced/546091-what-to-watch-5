@@ -121,7 +121,7 @@ exports[`renders FilmAddReviewScreen component 1`] = `
           className="rating__stars"
         >
           <input
-            checked={true}
+            checked={false}
             className="rating__input"
             id="star-1"
             name="rating"
