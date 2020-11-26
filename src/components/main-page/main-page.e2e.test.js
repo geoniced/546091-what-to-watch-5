@@ -25,6 +25,7 @@ describe(`MainPage interactions`, () => {
               onGenreChange={noop}
               onShowMoreButtonClick={noop}
               loadPromoFilm={noop}
+              setMyListFilmStatus={noop}
             />
           </BrowserRouter>
         </Provider>
@@ -33,6 +34,32 @@ describe(`MainPage interactions`, () => {
     const playButtonClick = wrapper.find(`.movie-card__buttons .btn--play`);
     playButtonClick.simulate(`click`);
     expect(handlePlayButtonClick).toHaveBeenCalledTimes(1);
+  });
+
+  it(`should MainPage be able to add promo film in MyList`, () => {
+    const handleSetMyListStatus = jest.fn();
+
+    const wrapper = mount(
+        <Provider store={mockedStore}>
+          <BrowserRouter>
+            <MainPage
+              onPlayButtonClick={noop}
+              promoFilm={filmListMock[0]}
+              activeGenre={`All genres`}
+              films={filmListMock}
+              shownFilmsCount={8}
+              onGenreChange={noop}
+              onShowMoreButtonClick={noop}
+              loadPromoFilm={noop}
+              setMyListFilmStatus={handleSetMyListStatus}
+            />
+          </BrowserRouter>
+        </Provider>
+    );
+
+    const setMyListStatusButton = wrapper.find(`.movie-card__buttons .btn--list`);
+    setMyListStatusButton.simulate(`click`);
+    expect(handleSetMyListStatus).toHaveBeenCalledTimes(1);
   });
 
   it(`should MainPage be able to press on Show More Button`, () => {
@@ -50,6 +77,7 @@ describe(`MainPage interactions`, () => {
               onPlayButtonClick={noop}
               onGenreChange={noop}
               loadPromoFilm={noop}
+              setMyListFilmStatus={noop}
             />
           </BrowserRouter>
         </Provider>

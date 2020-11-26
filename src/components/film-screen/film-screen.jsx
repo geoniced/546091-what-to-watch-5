@@ -6,6 +6,7 @@ import LogoBlock from "../logo-block/logo-block";
 import UserBlock from "../user-block/user-block";
 import FilmScreenTabs from "../film-screen-tabs/film-screen-tabs";
 import FilmCardList from "../film-card-list/film-card-list";
+import MyListButton from "../my-list-button/my-list-button";
 
 import {AppRoute, AuthorizationStatus} from "../../const";
 import {connect} from "react-redux";
@@ -18,22 +19,6 @@ const useReviewsData = (filmId, loadReviews) => {
   useEffect(() => {
     loadReviews(filmId);
   }, [filmId]);
-};
-
-const getMyListIconTemplate = (isFavorite) => {
-  if (isFavorite) {
-    return (
-      <svg viewBox="0 0 18 14" width="18" height="14">
-        <use xlinkHref="#in-list"></use>
-      </svg>
-    );
-  }
-
-  return (
-    <svg viewBox="0 0 19 20" width="19" height="20">
-      <use xlinkHref="#add"></use>
-    </svg>
-  );
 };
 
 const FilmScreen = (props) => {
@@ -104,14 +89,10 @@ const FilmScreen = (props) => {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button
-                  className="btn btn--list movie-card__button"
-                  type="button"
+                <MyListButton
                   onClick={onMyListButtonClick}
-                >
-                  {getMyListIconTemplate(isFavorite)}
-                  <span>My list</span>
-                </button>
+                  isFavorite={isFavorite}
+                />
                 {authorizationStatus === AuthorizationStatus.AUTH && (
                   <Link to={`${AppRoute.FILMS}/${id}/review`} className="btn movie-card__button">
                     Add review

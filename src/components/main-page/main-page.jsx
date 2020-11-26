@@ -9,7 +9,8 @@ import GenresList from "../genres-list/genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
 import {changeGenre, resetShownFilmCards, increaseShownFilmCards} from "../../store/actions";
 import {getActiveGenre, getShownFilmsCount, getFilmsByGenre, getPromoFilm} from "../../store/selectors";
-import {fetchPromoFilm} from "../../store/api-actions";
+import {fetchPromoFilm, submitMyListFilmStatus} from "../../store/api-actions";
+import MyListButton from "../my-list-button/my-list-button";
 
 const usePromoFilmLoader = (loadPromoFilm) => {
   useEffect(() => {
@@ -27,6 +28,7 @@ const MainPage = (props) => {
     onGenreChange,
     onShowMoreButtonClick,
     loadPromoFilm,
+    setMyListFilmStatus,
   } = props;
 
   const {
@@ -37,9 +39,15 @@ const MainPage = (props) => {
     posterImage,
     backgroundImage,
     backgroundColor,
+    isFavorite,
   } = promoFilm;
 
   usePromoFilmLoader(loadPromoFilm);
+
+  const onMyListButtonClick = () => {
+    setMyListFilmStatus(id, Number(!isFavorite));
+    loadPromoFilm();
+  };
 
   const shownFilms = films.slice(0, shownFilmsCount);
 
@@ -83,12 +91,10 @@ const MainPage = (props) => {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                </button>
+                <MyListButton
+                  onClick={onMyListButtonClick}
+                  isFavorite={isFavorite}
+                />
               </div>
             </div>
           </div>
@@ -135,6 +141,7 @@ MainPage.propTypes = {
   onGenreChange: PropTypes.func.isRequired,
   onShowMoreButtonClick: PropTypes.func.isRequired,
   loadPromoFilm: PropTypes.func.isRequired,
+  setMyListFilmStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -155,6 +162,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   loadPromoFilm() {
     dispatch(fetchPromoFilm());
+  },
+  setMyListFilmStatus(filmId, status) {
+    dispatch(submitMyListFilmStatus(filmId, status));
   },
 });
 
