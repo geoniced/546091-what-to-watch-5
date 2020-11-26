@@ -26,7 +26,7 @@ const useVideoPlayer = (videoRef, onCurrentTimeChange, resetAfterPause, isPlayin
         video.load();
       }
     }
-  });
+  }, [isPlaying, resetAfterPause]);
 };
 
 const VideoPlayer = (props) => {
