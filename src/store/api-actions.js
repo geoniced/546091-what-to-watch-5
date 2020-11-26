@@ -1,10 +1,12 @@
 import {
   changeFilmIsFavorite,
+  changePromoFilmIsFavorite,
   loadFilms,
   loadPromoFilm,
   loadReviewsForFilm,
   redirectToRoute,
-  requireAuthorization
+  requireAuthorization,
+  setError
 } from "./actions";
 
 import {APIRoute, AppRoute, AuthorizationStatus} from "../const";
@@ -38,6 +40,7 @@ export const login = ({email, password}) => (dispatch, _getStore, api) => (
   api.post(APIRoute.LOGIN, {email, password})
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
     .then(() => dispatch(redirectToRoute(AppRoute.ROOT)))
+    .catch(() => dispatch(setError({text: `Error: Email address should follow this pattern: "example@domain.com"`})))
 );
 
 export const submitReview = ({rating, comment, filmId}) => (dispatch, _getStore, api) => (
@@ -48,4 +51,9 @@ export const submitReview = ({rating, comment, filmId}) => (dispatch, _getStore,
 export const submitMyListFilmStatus = (filmId, filmStatus) => (dispatch, _getStore, api) => (
   api.post(`${APIRoute.FAVORITE}/${filmId}/${filmStatus}`)
     .then(({data}) => dispatch(changeFilmIsFavorite(filmId, data)))
+);
+
+export const submitMyListPromoFilmStatus = (filmId, filmStatus) => (dispatch, _getStore, api) => (
+  api.post(`${APIRoute.FAVORITE}/${filmId}/${filmStatus}`)
+    .then(({data}) => dispatch(changePromoFilmIsFavorite(filmId, data)))
 );

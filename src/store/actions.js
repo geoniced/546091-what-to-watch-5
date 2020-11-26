@@ -1,12 +1,14 @@
 export const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   CHANGE_FILM_IS_FAVORITE: `CHANGE_FILM_IS_FAVORITE`,
+  CHANGE_PROMO_FILM_IS_FAVORITE: `CHANGE_PROMO_FILM_IS_FAVORITE`,
   INCREASE_SHOWN_FILM_CARDS: `INCREASE_SHOWN_FILM_CARDS`,
   RESET_SHOWN_FILM_CARDS: `RESET_SHOWN_FILM_CARDS`,
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_REVIEWS_FOR_FILM: `LOAD_REVIEWS_FOR_FILM`,
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  SET_ERROR: `SET_ERROR`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
 };
 
@@ -17,6 +19,11 @@ export const changeGenre = (genre) => ({
 
 export const changeFilmIsFavorite = (filmId, filmData) => ({
   type: ActionType.CHANGE_FILM_IS_FAVORITE,
+  payload: filmData,
+});
+
+export const changePromoFilmIsFavorite = (filmId, filmData) => ({
+  type: ActionType.CHANGE_PROMO_FILM_IS_FAVORITE,
   payload: filmData,
 });
 
@@ -49,6 +56,11 @@ export const loadPromoFilm = (promoFilm) => ({
 export const requireAuthorization = (status) => ({
   type: ActionType.REQUIRED_AUTHORIZATION,
   payload: status,
+});
+
+export const setError = (errorObject) => ({
+  type: ActionType.SET_ERROR,
+  payload: errorObject,
 });
 
 export const redirectToRoute = (url) => ({
