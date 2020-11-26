@@ -12,6 +12,7 @@ describe(`user reducer sync operations`, () => {
   it(`user reducer without additional parameters should return initial state`, () => {
     expect(user(undefined, {})).toEqual({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
+      error: null,
     });
   });
 

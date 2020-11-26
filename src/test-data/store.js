@@ -14,6 +14,7 @@ const mockedStore = configuredStore({
   },
   [NameSpace.USER]: {
     authorizationStatus: AuthorizationStatus.AUTH,
+    error: null,
   }
 });
 
