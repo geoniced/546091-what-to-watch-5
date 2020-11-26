@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorNotification render renders ErrorNotification component when there is an error 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "#ff9898",
+      "border": "3px solid red",
+      "borderRadius": "5px",
+      "left": "50%",
+      "padding": "10px 20px",
+      "position": "fixed",
+      "textAlign": "center",
+      "top": "10px",
+      "transform": "translateX(-50%)",
+      "zIndex": 10000,
+    }
+  }
+>
+  i am an error
+</div>
+`;
+
+exports[`ErrorNotification render renders ErrorNotification component when there is no error 1`] = `null`;

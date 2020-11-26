@@ -9,6 +9,7 @@ import {
   redirectToRoute,
   loadPromoFilm,
   changeFilmIsFavorite,
+  setError,
 } from "./actions";
 import {filmListMock, mockReviews} from "../test-data/test-data";
 import {AuthorizationStatus} from "../const";
@@ -75,6 +76,13 @@ describe(`Action creators work correctly`, () => {
     expect(changeFilmIsFavorite(1, filmListMock[0])).toEqual({
       type: ActionType.CHANGE_FILM_IS_FAVORITE,
       payload: filmListMock[0],
+    });
+  });
+
+  it(`Action creator setError works correctly`, () => {
+    expect(setError({test: `sometext`})).toEqual({
+      type: ActionType.SET_ERROR,
+      payload: {test: `sometext`},
     });
   });
 });

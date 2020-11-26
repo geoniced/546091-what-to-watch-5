@@ -27,6 +27,18 @@ describe(`user reducer sync operations`, () => {
         authorizationStatus: AuthorizationStatus.AUTH,
       });
   });
+
+  it(`user reducer should change error message`, () => {
+    expect(user({
+      error: null,
+    }, {
+      type: ActionType.SET_ERROR,
+      payload: {text: `some error`},
+    }))
+      .toEqual({
+        error: {text: `some error`},
+      });
+  });
 });
 
 describe(`user reducer async operations`, () => {

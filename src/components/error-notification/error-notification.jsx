@@ -66,4 +66,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
+export {ErrorNotification};
 export default connect(mapStateToProps, mapDispatchToProps)(ErrorNotification);
