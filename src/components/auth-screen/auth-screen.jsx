@@ -1,15 +1,18 @@
 import React, {createRef, useState} from "react";
 import PropTypes from "prop-types";
+import {Redirect} from "react-router-dom";
 import LogoBlock from "../logo-block/logo-block";
 import {connect} from "react-redux";
 import {login} from "../../store/api-actions";
 import {isValidEmail} from "../../utils";
+import {getAuthorizationStatus} from "../../store/selectors";
+import {AppRoute, AuthorizationStatus} from "../../const";
 
 const AuthScreen = (props) => {
   const emailRef = createRef();
   const passwordRef = createRef();
 
-  const {onSubmit} = props;
+  const {authorizationStatus, onSubmit} = props;
   const [errors, setErrors] = useState({});
 
   const errorInputStyles = {
@@ -46,6 +49,12 @@ const AuthScreen = (props) => {
       });
     }
   };
+
+  if (authorizationStatus === AuthorizationStatus.AUTH) {
+    return (
+      <Redirect to={AppRoute.ROOT} />
+    );
+  }
 
   return (
     <div className="user-page">
@@ -104,8 +113,13 @@ const AuthScreen = (props) => {
 };
 
 AuthScreen.propTypes = {
+  authorizationStatus: PropTypes.string,
   onSubmit: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(authData) {
@@ -114,4 +128,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {AuthScreen};
-export default connect(null, mapDispatchToProps)(AuthScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthScreen);
