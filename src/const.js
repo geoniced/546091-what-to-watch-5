@@ -65,3 +65,7 @@ export const VALIDATION_MESSAGES = {
   REVIEW_TEXT: `Review text should contain more than 50 and less than 400 symbols`,
 };
 
+export const ERROR_MESSAGES = {
+  EMAIL_ERROR_PATTERN: `Error: Email address should follow this pattern: "example@domain.com"`,
+};
+

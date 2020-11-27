@@ -9,6 +9,7 @@ export const ActionType = {
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   SET_ERROR: `SET_ERROR`,
+  SET_REVIEW_SUBMITION_LOADING: `SET_REVIEW_SUBMITION_LOADING`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
 };
 
@@ -61,6 +62,11 @@ export const requireAuthorization = (status) => ({
 export const setError = (errorObject) => ({
   type: ActionType.SET_ERROR,
   payload: errorObject,
+});
+
+export const setReviewSubmitionLoading = (isLoading) => ({
+  type: ActionType.SET_REVIEW_SUBMITION_LOADING,
+  payload: isLoading,
 });
 
 export const redirectToRoute = (url) => ({

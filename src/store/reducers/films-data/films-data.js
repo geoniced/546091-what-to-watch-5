@@ -9,6 +9,7 @@ const initialState = {
   isLoading: true,
   currentFilmReviews: [],
   promoFilm: EMPTY_FILM,
+  isReviewSubmitting: false,
 };
 
 const filmsData = (state = initialState, action) => {
@@ -61,6 +62,11 @@ const filmsData = (state = initialState, action) => {
 
       return extend(state, {
         promoFilm,
+      });
+
+    case ActionType.SET_REVIEW_SUBMITION_LOADING:
+      return extend(state, {
+        isReviewSubmitting: action.payload,
       });
   }
 

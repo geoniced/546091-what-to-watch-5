@@ -11,6 +11,7 @@ const mockedStore = configuredStore({
     shownFilmsCount: 8,
     isLoading: false,
     promoFilm: filmListMock[0],
+    isReviewSubmitting: false,
   },
   [NameSpace.USER]: {
     authorizationStatus: AuthorizationStatus.AUTH,

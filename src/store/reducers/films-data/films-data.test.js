@@ -34,6 +34,7 @@ describe(`filmsData reducer sync operations`, () => {
       isLoading: true,
       currentFilmReviews: [],
       promoFilm: EMPTY_FILM,
+      isReviewSubmitting: false,
     });
   });
 
@@ -207,7 +208,7 @@ describe(`filmsData reducer async operations`, () => {
 
     return submitReviewLoader(dispatch, noop, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.REDIRECT_TO_ROUTE,
           payload: `${AppRoute.FILMS}/${filmId}`,

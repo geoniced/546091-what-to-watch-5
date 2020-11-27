@@ -6,13 +6,16 @@ import {submitReview} from "../../store/api-actions";
 import {extend, isValidRatingStars, isValidReviewText} from "../../utils";
 import FormErrorBlock from "../form-error-block/form-error-block";
 import {MAX_REVIEW_TEXT_LENGTH, MIN_REVIEW_TEXT_LENGTH, VALIDATION_MESSAGES} from "../../const";
+import {setReviewSubmitionLoading} from "../../store/actions";
+import {getIsReviewSubmitting} from "../../store/selectors";
 
 const STARS_COUNT = 5;
 
 const AddReviewBlock = (props) => {
   const {
     filmId,
-    onSubmit
+    isReviewSubmitting,
+    onSubmit,
   } = props;
 
   const [ratingStars, setRatingStars] = useState(0);
@@ -78,7 +81,7 @@ const AddReviewBlock = (props) => {
   };
 
   const isSubmitButtonDisabled = () => {
-    return isValidRatingStars(ratingStars) || isValidReviewText(reviewText);
+    return isReviewSubmitting || isValidRatingStars(ratingStars) || isValidReviewText(reviewText);
   };
 
   return (
@@ -99,6 +102,7 @@ const AddReviewBlock = (props) => {
                   starIndex={currentStarIndex}
                   checked={currentStarIndex === ratingStars}
                   onRatingChange={handleRatingChange}
+                  disabled={isReviewSubmitting}
                 />
               );
             })}
@@ -116,6 +120,7 @@ const AddReviewBlock = (props) => {
             maxLength={MAX_REVIEW_TEXT_LENGTH}
             onChange={handleReviewChange}
             value={reviewText}
+            disabled={isReviewSubmitting}
           />
           <div className="add-review__submit">
             <button
@@ -136,14 +141,20 @@ const AddReviewBlock = (props) => {
 AddReviewBlock.propTypes = {
   filmId: PropTypes.number.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  isReviewSubmitting: PropTypes.bool,
 };
+
+const mapStateToProps = (state) => ({
+  isReviewSubmitting: getIsReviewSubmitting(state),
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(formData) {
+    dispatch(setReviewSubmitionLoading(true));
     dispatch(submitReview(formData));
   },
 });
 
 export {AddReviewBlock};
 
-export default connect(null, mapDispatchToProps)(AddReviewBlock);
+export default connect(mapStateToProps, mapDispatchToProps)(AddReviewBlock);

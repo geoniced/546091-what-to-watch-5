@@ -21,6 +21,28 @@ Array [
 ]
 `;
 
+exports[`AddReviewRatingStar render renders AddReviewRatingStar component in disabled state 1`] = `
+Array [
+  <input
+    checked={true}
+    className="rating__input"
+    disabled={true}
+    id="star-1"
+    name="rating"
+    onChange={[Function]}
+    type="radio"
+    value={1}
+  />,
+  <label
+    className="rating__label"
+    htmlFor="star-1"
+  >
+    Rating 
+    1
+  </label>,
+]
+`;
+
 exports[`AddReviewRatingStar render renders AddReviewRatingStar component in unchecked state 1`] = `
 Array [
   <input
