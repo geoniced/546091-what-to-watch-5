@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import AddReviewRatingStar from "../add-review-rating-star/add-review-rating-star";
 import {submitReview} from "../../store/api-actions";
-import {checkFieldValidity, isValidRatingStars, isValidReviewText} from "../../utils";
+import {checkFieldValidity, isInvalidValidation, isValidRatingStars, isValidReviewText} from "../../utils";
 import FormErrorBlock from "../form-error-block/form-error-block";
 import {MAX_REVIEW_TEXT_LENGTH, MIN_REVIEW_TEXT_LENGTH, VALIDATION_MESSAGES} from "../../const";
 import {setReviewSubmitionLoading} from "../../store/actions";
@@ -50,7 +50,12 @@ const AddReviewBlock = (props) => {
       errorMessage: VALIDATION_MESSAGES.REVIEW_TEXT,
     };
 
-    if (!checkFieldValidity(ratingStarsValidity) || !checkFieldValidity(reviewTextValidity)) {
+    const validations = [
+      checkFieldValidity(ratingStarsValidity),
+      checkFieldValidity(reviewTextValidity),
+    ];
+
+    if (validations.some(isInvalidValidation)) {
       formIsValid = false;
     }
 

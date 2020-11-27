@@ -4,7 +4,7 @@ import {Redirect} from "react-router-dom";
 import LogoBlock from "../logo-block/logo-block";
 import {connect} from "react-redux";
 import {login} from "../../store/api-actions";
-import {checkFieldValidity, isValidEmail, isValidPassword} from "../../utils";
+import {checkFieldValidity, isInvalidValidation, isValidEmail, isValidPassword} from "../../utils";
 import {getAuthorizationStatus} from "../../store/selectors";
 import {AppRoute, AuthorizationStatus, VALIDATION_MESSAGES} from "../../const";
 import FormErrorBlock from "../form-error-block/form-error-block";
@@ -41,7 +41,12 @@ const AuthScreen = (props) => {
       errorMessage: VALIDATION_MESSAGES.PASSWORD,
     };
 
-    if (!checkFieldValidity(emailValidity) || !checkFieldValidity(passwordValidity)) {
+    const validations = [
+      checkFieldValidity(emailValidity),
+      checkFieldValidity(passwordValidity),
+    ];
+
+    if (validations.some(isInvalidValidation)) {
       isFormValid = false;
     }
 

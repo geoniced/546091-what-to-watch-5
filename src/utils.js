@@ -140,6 +140,8 @@ export const isValidRatingStars = (ratingStars) => {
   return ratingStars > 0;
 };
 
+export const isInvalidValidation = (validation) => validation === false;
+
 export const checkFieldValidity = ({field, value, setter, validationFunction, errorMessage}) => {
   let isValid = true;
 
