@@ -28,7 +28,6 @@ const AuthScreen = (props) => {
     const emailValidity = {
       field: `email`,
       value: email.value,
-      formErrors,
       setter: setFormErrors,
       validationFunction: isValidEmail,
       errorMessage: VALIDATION_MESSAGES.EMAIL,
@@ -37,7 +36,6 @@ const AuthScreen = (props) => {
     const passwordValidity = {
       field: `password`,
       value: password.value,
-      formErrors,
       setter: setFormErrors,
       validationFunction: isValidPassword,
       errorMessage: VALIDATION_MESSAGES.PASSWORD,

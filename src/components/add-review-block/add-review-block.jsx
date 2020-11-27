@@ -37,7 +37,6 @@ const AddReviewBlock = (props) => {
     const ratingStarsValidity = {
       field: `ratingStars`,
       value: ratingStars,
-      formErrors,
       setter: setFormErrors,
       validationFunction: isValidRatingStars,
       errorMessage: VALIDATION_MESSAGES.RATING_STARS,
@@ -46,7 +45,6 @@ const AddReviewBlock = (props) => {
     const reviewTextValidity = {
       field: `reviewText`,
       value: reviewText,
-      formErrors,
       setter: setFormErrors,
       validationFunction: isValidReviewText,
       errorMessage: VALIDATION_MESSAGES.REVIEW_TEXT,

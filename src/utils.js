@@ -140,18 +140,22 @@ export const isValidRatingStars = (ratingStars) => {
   return ratingStars > 0;
 };
 
-export const checkFieldValidity = ({field, value, formErrors, setter, validationFunction, errorMessage}) => {
+export const checkFieldValidity = ({field, value, setter, validationFunction, errorMessage}) => {
   let isValid = true;
 
   if (validationFunction(value)) {
-    setter(extend(formErrors, {
-      reviewText: ``,
-    }));
+    setter((prevState) => {
+      return extend(prevState, {
+        [field]: ``,
+      });
+    });
   } else {
     isValid = false;
-    setter(extend(formErrors, {
-      [field]: errorMessage,
-    }));
+    setter((prevState) => {
+      return extend(prevState, {
+        [field]: errorMessage,
+      });
+    });
   }
 
   return isValid;
