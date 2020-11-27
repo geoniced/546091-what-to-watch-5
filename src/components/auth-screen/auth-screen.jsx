@@ -1,22 +1,50 @@
-import React, {createRef} from "react";
+import React, {createRef, useState} from "react";
 import PropTypes from "prop-types";
 import LogoBlock from "../logo-block/logo-block";
 import {connect} from "react-redux";
 import {login} from "../../store/api-actions";
+import {isValidEmail} from "../../utils";
 
 const AuthScreen = (props) => {
   const emailRef = createRef();
   const passwordRef = createRef();
 
   const {onSubmit} = props;
+  const [errors, setErrors] = useState({});
+
+  const errorInputStyles = {
+    border: `2px solid red`,
+  };
+
+  const validateForm = () => {
+    let isFormValid = true;
+    const formErrors = {};
+    const email = emailRef.current;
+    const password = passwordRef.current;
+
+    if (!isValidEmail(email.value)) {
+      isFormValid = false;
+      formErrors[`email`] = `Enter a valid email`;
+    }
+
+    if (password.value.length === 0) {
+      isFormValid = false;
+      formErrors[`password`] = `Enter the password field`;
+    }
+
+    setErrors(formErrors);
+    return isFormValid;
+  };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
-    onSubmit({
-      email: emailRef.current.value,
-      password: passwordRef.current.value,
-    });
+    if (validateForm()) {
+      onSubmit({
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      });
+    }
   };
 
   return (
@@ -41,6 +69,7 @@ const AuthScreen = (props) => {
                 placeholder="Email address"
                 name="user-email"
                 id="user-email"
+                style={errors[`email `] ? errorInputStyles : {}}
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
             </div>
@@ -49,9 +78,10 @@ const AuthScreen = (props) => {
                 ref={passwordRef}
                 className="sign-in__input"
                 type="password"
-                placeholder="Password"
+                placeholder={errors[`password`] || `Password`}
                 name="user-password"
                 id="user-password"
+                style={errors[`password`] ? errorInputStyles : {}}
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
             </div>

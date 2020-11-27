@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
-import {ALL_GENRES_FILTER, Rating} from "./const";
+import {ALL_GENRES_FILTER, EMAIL_REGEXP, Rating} from "./const";
 
 dayjs.extend(duration);
 
@@ -125,3 +125,5 @@ export const getRatingDescription = (rating) => {
 
   return ratingDescription;
 };
+
+export const isValidEmail = (email) => EMAIL_REGEXP.test(email);
