@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import AddReviewRatingStar from "../add-review-rating-star/add-review-rating-star";
 import {submitReview} from "../../store/api-actions";
-import {extend, isValidRatingStars, isValidReviewText} from "../../utils";
+import {checkFieldValidity, isValidRatingStars, isValidReviewText} from "../../utils";
 import FormErrorBlock from "../form-error-block/form-error-block";
 import {MAX_REVIEW_TEXT_LENGTH, MIN_REVIEW_TEXT_LENGTH, VALIDATION_MESSAGES} from "../../const";
 import {setReviewSubmitionLoading} from "../../store/actions";
@@ -30,48 +30,29 @@ const AddReviewBlock = (props) => {
     setReviewText(evt.target.value);
   };
 
-  const checkReviewTextValidity = () => {
-    let isValid = true;
-
-    if (isValidReviewText(reviewText)) {
-      isValid = false;
-      setFormErrors(extend(formErrors, {
-        reviewText: VALIDATION_MESSAGES.REVIEW_TEXT,
-      }));
-    } else {
-      const formErrorsPrev = extend(formErrors, {});
-      delete formErrorsPrev.reviewText;
-
-      setFormErrors(formErrorsPrev);
-    }
-
-    return isValid;
-  };
-
-  const checkRatingStarsValidity = () => {
-    let isValid = true;
-
-    if (isValidRatingStars(ratingStars)) {
-      isValid = false;
-
-      setFormErrors(extend(formErrors, {
-        ratingStars: VALIDATION_MESSAGES.RATING_STARS,
-      }));
-    } else {
-      const formErrorsPrev = extend(formErrors, {});
-      delete formErrorsPrev.ratingStars;
-
-      setFormErrors(formErrorsPrev);
-    }
-
-    return isValid;
-  };
-
   const onReviewSubmit = (evt) => {
     evt.preventDefault();
     let formIsValid = true;
 
-    if (!checkRatingStarsValidity() || !checkReviewTextValidity()) {
+    const ratingStarsValidity = {
+      field: `ratingStars`,
+      value: ratingStars,
+      formErrors,
+      setter: setFormErrors,
+      validationFunction: isValidRatingStars,
+      errorMessage: VALIDATION_MESSAGES.RATING_STARS,
+    };
+
+    const reviewTextValidity = {
+      field: `reviewText`,
+      value: reviewText,
+      formErrors,
+      setter: setFormErrors,
+      validationFunction: isValidReviewText,
+      errorMessage: VALIDATION_MESSAGES.REVIEW_TEXT,
+    };
+
+    if (!checkFieldValidity(ratingStarsValidity) || !checkFieldValidity(reviewTextValidity)) {
       formIsValid = false;
     }
 
@@ -81,7 +62,7 @@ const AddReviewBlock = (props) => {
   };
 
   const isSubmitButtonDisabled = () => {
-    return isReviewSubmitting || isValidRatingStars(ratingStars) || isValidReviewText(reviewText);
+    return isReviewSubmitting || !isValidRatingStars(ratingStars) || !isValidReviewText(reviewText);
   };
 
   return (

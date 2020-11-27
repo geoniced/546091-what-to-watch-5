@@ -63,6 +63,8 @@ export const MAX_REVIEW_TEXT_LENGTH = 400;
 export const VALIDATION_MESSAGES = {
   RATING_STARS: `Fill the rating`,
   REVIEW_TEXT: `Review text should contain more than 50 and less than 400 symbols`,
+  EMAIL: `Enter a valid email`,
+  PASSWORD: `Enter the password field`,
 };
 
 export const ERROR_MESSAGES = {

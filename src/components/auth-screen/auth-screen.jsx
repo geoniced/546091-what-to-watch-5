@@ -4,16 +4,17 @@ import {Redirect} from "react-router-dom";
 import LogoBlock from "../logo-block/logo-block";
 import {connect} from "react-redux";
 import {login} from "../../store/api-actions";
-import {isValidEmail} from "../../utils";
+import {checkFieldValidity, isValidEmail, isValidPassword} from "../../utils";
 import {getAuthorizationStatus} from "../../store/selectors";
-import {AppRoute, AuthorizationStatus} from "../../const";
+import {AppRoute, AuthorizationStatus, VALIDATION_MESSAGES} from "../../const";
+import FormErrorBlock from "../form-error-block/form-error-block";
 
 const AuthScreen = (props) => {
   const emailRef = createRef();
   const passwordRef = createRef();
 
   const {authorizationStatus, onSubmit} = props;
-  const [errors, setErrors] = useState({});
+  const [formErrors, setFormErrors] = useState({});
 
   const errorInputStyles = {
     border: `2px solid red`,
@@ -21,21 +22,31 @@ const AuthScreen = (props) => {
 
   const validateForm = () => {
     let isFormValid = true;
-    const formErrors = {};
     const email = emailRef.current;
     const password = passwordRef.current;
 
-    if (!isValidEmail(email.value)) {
+    const emailValidity = {
+      field: `email`,
+      value: email.value,
+      formErrors,
+      setter: setFormErrors,
+      validationFunction: isValidEmail,
+      errorMessage: VALIDATION_MESSAGES.EMAIL,
+    };
+
+    const passwordValidity = {
+      field: `password`,
+      value: password.value,
+      formErrors,
+      setter: setFormErrors,
+      validationFunction: isValidPassword,
+      errorMessage: VALIDATION_MESSAGES.PASSWORD,
+    };
+
+    if (!checkFieldValidity(emailValidity) || !checkFieldValidity(passwordValidity)) {
       isFormValid = false;
-      formErrors[`email`] = `Enter a valid email`;
     }
 
-    if (password.value.length === 0) {
-      isFormValid = false;
-      formErrors[`password`] = `Enter the password field`;
-    }
-
-    setErrors(formErrors);
     return isFormValid;
   };
 
@@ -78,21 +89,23 @@ const AuthScreen = (props) => {
                 placeholder="Email address"
                 name="user-email"
                 id="user-email"
-                style={errors[`email `] ? errorInputStyles : {}}
+                style={formErrors[`email`] ? errorInputStyles : {}}
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
+              <FormErrorBlock error={formErrors.email} />
             </div>
             <div className="sign-in__field">
               <input
                 ref={passwordRef}
                 className="sign-in__input"
                 type="password"
-                placeholder={errors[`password`] || `Password`}
+                placeholder={formErrors[`password`] || `Password`}
                 name="user-password"
                 id="user-password"
-                style={errors[`password`] ? errorInputStyles : {}}
+                style={formErrors[`password`] ? errorInputStyles : {}}
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
+              <FormErrorBlock error={formErrors.password} />
             </div>
           </div>
           <div className="sign-in__submit">

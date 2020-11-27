@@ -128,10 +128,31 @@ export const getRatingDescription = (rating) => {
 
 export const isValidEmail = (email) => EMAIL_REGEXP.test(email);
 
+export const isValidPassword = (passwordValue) => {
+  return passwordValue.length > 0;
+};
+
 export const isValidReviewText = (reviewText) => {
-  return reviewText.length < MIN_REVIEW_TEXT_LENGTH || reviewText.length > MAX_REVIEW_TEXT_LENGTH;
+  return reviewText.length >= MIN_REVIEW_TEXT_LENGTH && reviewText.length <= MAX_REVIEW_TEXT_LENGTH;
 };
 
 export const isValidRatingStars = (ratingStars) => {
-  return ratingStars === 0;
+  return ratingStars > 0;
+};
+
+export const checkFieldValidity = ({field, value, formErrors, setter, validationFunction, errorMessage}) => {
+  let isValid = true;
+
+  if (validationFunction(value)) {
+    setter(extend(formErrors, {
+      reviewText: ``,
+    }));
+  } else {
+    isValid = false;
+    setter(extend(formErrors, {
+      [field]: errorMessage,
+    }));
+  }
+
+  return isValid;
 };
