@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
-import {ALL_GENRES_FILTER, EMAIL_REGEXP, Rating} from "./const";
+import {ALL_GENRES_FILTER, EMAIL_REGEXP, MAX_REVIEW_TEXT_LENGTH, MIN_REVIEW_TEXT_LENGTH, Rating} from "./const";
 
 dayjs.extend(duration);
 
@@ -127,3 +127,11 @@ export const getRatingDescription = (rating) => {
 };
 
 export const isValidEmail = (email) => EMAIL_REGEXP.test(email);
+
+export const isValidReviewText = (reviewText) => {
+  return reviewText.length < MIN_REVIEW_TEXT_LENGTH || reviewText.length > MAX_REVIEW_TEXT_LENGTH;
+};
+
+export const isValidRatingStars = (ratingStars) => {
+  return ratingStars === 0;
+};

@@ -103,6 +103,8 @@ exports[`AddReviewBlock render renders AddReviewBlock component with 0 stars and
       <textarea
         className="add-review__textarea"
         id="review-text"
+        maxLength={400}
+        minLength={50}
         name="review-text"
         onChange={[Function]}
         placeholder="Review text"
@@ -113,6 +115,7 @@ exports[`AddReviewBlock render renders AddReviewBlock component with 0 stars and
       >
         <button
           className="add-review__btn"
+          disabled={true}
           type="submit"
         >
           Post
