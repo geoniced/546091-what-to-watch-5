@@ -57,6 +57,7 @@ exports[`renders AuthScreen component 1`] = `
             id="user-email"
             name="user-email"
             placeholder="Email address"
+            style={Object {}}
             type="email"
           />
           <label
@@ -74,6 +75,7 @@ exports[`renders AuthScreen component 1`] = `
             id="user-password"
             name="user-password"
             placeholder="Password"
+            style={Object {}}
             type="password"
           />
           <label
