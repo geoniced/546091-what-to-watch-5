@@ -27,6 +27,15 @@ const filmsData = (state = initialState, action) => {
         films: updatedFilms,
       });
 
+    case ActionType.CHANGE_PROMO_FILM_IS_FAVORITE:
+      const changedPromoFilmAdapted = adaptFilmToClient(action.payload);
+      const updatedFilmsWithPromoFilm = setFilmForFilms(state.films, changedPromoFilmAdapted);
+
+      return extend(state, {
+        films: updatedFilmsWithPromoFilm,
+        promoFilm: changedPromoFilmAdapted
+      });
+
     case ActionType.INCREASE_SHOWN_FILM_CARDS:
       return extend(state, {
         shownFilmsCount: Math.min(state.shownFilmsCount + FILM_CARDS_PER_STEP, state.films.length),

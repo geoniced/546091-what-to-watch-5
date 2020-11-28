@@ -25,7 +25,7 @@ describe(`MainPage interactions`, () => {
               onGenreChange={noop}
               onShowMoreButtonClick={noop}
               loadPromoFilm={noop}
-              setMyListFilmStatus={noop}
+              setMyListPromoFilmStatus={noop}
             />
           </BrowserRouter>
         </Provider>
@@ -51,7 +51,7 @@ describe(`MainPage interactions`, () => {
               onGenreChange={noop}
               onShowMoreButtonClick={noop}
               loadPromoFilm={noop}
-              setMyListFilmStatus={handleSetMyListStatus}
+              setMyListPromoFilmStatus={handleSetMyListStatus}
             />
           </BrowserRouter>
         </Provider>
@@ -77,7 +77,7 @@ describe(`MainPage interactions`, () => {
               onPlayButtonClick={noop}
               onGenreChange={noop}
               loadPromoFilm={noop}
-              setMyListFilmStatus={noop}
+              setMyListPromoFilmStatus={noop}
             />
           </BrowserRouter>
         </Provider>

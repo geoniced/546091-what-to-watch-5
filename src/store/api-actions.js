@@ -1,5 +1,6 @@
 import {
   changeFilmIsFavorite,
+  changePromoFilmIsFavorite,
   loadFilms,
   loadPromoFilm,
   loadReviewsForFilm,
@@ -51,3 +52,7 @@ export const submitMyListFilmStatus = (filmId, filmStatus) => (dispatch, _getSto
     .then(({data}) => dispatch(changeFilmIsFavorite(data)))
 );
 
+export const submitMyListPromoFilmStatus = (filmId, filmStatus) => (dispatch, _getStore, api) => (
+  api.post(`${APIRoute.FAVORITE}/${filmId}/${filmStatus}`)
+    .then(({data}) => dispatch(changePromoFilmIsFavorite(data)))
+);

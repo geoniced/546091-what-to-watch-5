@@ -9,7 +9,7 @@ import GenresList from "../genres-list/genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
 import {changeGenre, resetShownFilmCards, increaseShownFilmCards} from "../../store/actions";
 import {getActiveGenre, getShownFilmsCount, getFilmsByGenre, getPromoFilm} from "../../store/selectors";
-import {fetchPromoFilm, submitMyListFilmStatus} from "../../store/api-actions";
+import {fetchPromoFilm, submitMyListPromoFilmStatus} from "../../store/api-actions";
 import MyListButton from "../my-list-button/my-list-button";
 import {usePromoFilmLoader} from "../../hooks/use-promo-film-loader/use-promo-film-loader";
 
@@ -23,7 +23,7 @@ const MainPage = (props) => {
     onGenreChange,
     onShowMoreButtonClick,
     loadPromoFilm,
-    setMyListFilmStatus,
+    setMyListPromoFilmStatus,
   } = props;
 
   const {
@@ -40,8 +40,7 @@ const MainPage = (props) => {
   usePromoFilmLoader(loadPromoFilm);
 
   const onMyListButtonClick = () => {
-    setMyListFilmStatus(id, Number(!isFavorite));
-    loadPromoFilm();
+    setMyListPromoFilmStatus(id, Number(!isFavorite));
   };
 
   const shownFilms = films.slice(0, shownFilmsCount);
@@ -136,7 +135,7 @@ MainPage.propTypes = {
   onGenreChange: PropTypes.func.isRequired,
   onShowMoreButtonClick: PropTypes.func.isRequired,
   loadPromoFilm: PropTypes.func.isRequired,
-  setMyListFilmStatus: PropTypes.func.isRequired,
+  setMyListPromoFilmStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -158,8 +157,8 @@ const mapDispatchToProps = (dispatch) => ({
   loadPromoFilm() {
     dispatch(fetchPromoFilm());
   },
-  setMyListFilmStatus(filmId, status) {
-    dispatch(submitMyListFilmStatus(filmId, status));
+  setMyListPromoFilmStatus(filmId, status) {
+    dispatch(submitMyListPromoFilmStatus(filmId, status));
   },
 });
 

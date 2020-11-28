@@ -10,6 +10,7 @@ import {
   loadPromoFilm,
   changeFilmIsFavorite,
   setError,
+  changePromoFilmIsFavorite,
 } from "./actions";
 import {filmListMock, mockReviews} from "../test-data/test-data";
 import {AuthorizationStatus} from "../const";
@@ -72,9 +73,16 @@ describe(`Action creators work correctly`, () => {
     });
   });
 
-  it(`Action creator loadPromoFilm works correctly`, () => {
+  it(`Action creator changeFilmIsFavorite works correctly`, () => {
     expect(changeFilmIsFavorite(filmListMock[0])).toEqual({
       type: ActionType.CHANGE_FILM_IS_FAVORITE,
+      payload: filmListMock[0],
+    });
+  });
+
+  it(`Action creator changePromoFilmIsFavorite works correctly`, () => {
+    expect(changePromoFilmIsFavorite(filmListMock[0])).toEqual({
+      type: ActionType.CHANGE_PROMO_FILM_IS_FAVORITE,
       payload: filmListMock[0],
     });
   });

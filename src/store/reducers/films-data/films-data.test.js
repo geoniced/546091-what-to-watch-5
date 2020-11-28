@@ -5,7 +5,7 @@ import {ALL_GENRES_FILTER, APIRoute, AppRoute, EMPTY_FILM} from "../../../const"
 import {ActionType} from "../../actions";
 import {filmListMock, noop} from "../../../test-data/test-data";
 import {filmsFromServer} from "../../../test-data/server-data";
-import {fetchFilmList, fetchPromoFilm, fetchReviewsById, submitMyListFilmStatus, submitReview} from "../../api-actions";
+import {fetchFilmList, fetchPromoFilm, fetchReviewsById, submitMyListFilmStatus, submitMyListPromoFilmStatus, submitReview} from "../../api-actions";
 import {adaptFilmToClient, extend, setFilmForFilms} from "../../../utils";
 
 const api = createAPI(noop);
@@ -151,6 +151,23 @@ describe(`filmsData reducer sync operations`, () => {
       });
   });
 
+  it(`filmsData reducer should change isFavorite property of the promo film`, () => {
+    const favoriteFilm = extend(filmsFromServer[0], {"is_favorite": true});
+    const filmsWithFavoriteFilm = setFilmForFilms(filmListMock, adaptFilmToClient(favoriteFilm));
+
+    expect(filmsData({
+      films: filmListMock,
+      promoFilm: filmListMock[0],
+    }, {
+      type: ActionType.CHANGE_PROMO_FILM_IS_FAVORITE,
+      payload: favoriteFilm,
+    }))
+      .toEqual({
+        films: filmsWithFavoriteFilm,
+        promoFilm: filmsWithFavoriteFilm[0],
+      });
+  });
+
   it(`filmsData reducer should change isReviewSubmitting property of the state`, () => {
     expect(filmsData({
       isReviewSubmitting: false,
@@ -246,7 +263,7 @@ describe(`filmsData reducer async operations`, () => {
       });
   });
 
-  it(`should make a correct API call to /favorite/:id/:status`, () => {
+  it(`should make a correct API call to /favorite/:id/:status for a film`, () => {
     const dispatch = jest.fn();
     const filmId = 1;
     const isFavorite = 1;
@@ -263,6 +280,28 @@ describe(`filmsData reducer async operations`, () => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.CHANGE_FILM_IS_FAVORITE,
+          payload: filmWithIsFavoriteEqTrue,
+        });
+      });
+  });
+
+  it(`should make a correct API call to /favorite/:id/:status for a promo film`, () => {
+    const dispatch = jest.fn();
+    const filmId = 1;
+    const isFavorite = 1;
+    const myListPromoFilmStatusLoader = submitMyListPromoFilmStatus(filmId, isFavorite);
+    const filmWithIsFavoriteEqTrue = extend(filmsFromServer[0], {"is_favorite": true});
+
+    apiMock
+      .onPost(`${APIRoute.FAVORITE}/${filmId}/${isFavorite}`)
+      .reply(200, filmWithIsFavoriteEqTrue);
+
+
+    return myListPromoFilmStatusLoader(dispatch, noop, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.CHANGE_PROMO_FILM_IS_FAVORITE,
           payload: filmWithIsFavoriteEqTrue,
         });
       });
