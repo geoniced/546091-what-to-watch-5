@@ -57,8 +57,10 @@ export const EMPTY_FILM = {
 
 export const EMAIL_REGEXP = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-export const MIN_REVIEW_TEXT_LENGTH = 50;
-export const MAX_REVIEW_TEXT_LENGTH = 400;
+export const ReviewTextLength = {
+  MIN: 50,
+  MAX: 400,
+};
 
 export const VALIDATION_MESSAGES = {
   RATING_STARS: `Fill the rating`,

@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
-import {ALL_GENRES_FILTER, EMAIL_REGEXP, MAX_REVIEW_TEXT_LENGTH, MIN_REVIEW_TEXT_LENGTH, Rating} from "./const";
+import {ALL_GENRES_FILTER, EMAIL_REGEXP, Rating, ReviewTextLength} from "./const";
 
 dayjs.extend(duration);
 
@@ -133,7 +133,7 @@ export const isValidPassword = (passwordValue) => {
 };
 
 export const isValidReviewText = (reviewText) => {
-  return reviewText.length >= MIN_REVIEW_TEXT_LENGTH && reviewText.length <= MAX_REVIEW_TEXT_LENGTH;
+  return reviewText.length >= ReviewTextLength.MIN && reviewText.length <= ReviewTextLength.MAX;
 };
 
 export const isValidRatingStars = (ratingStars) => {

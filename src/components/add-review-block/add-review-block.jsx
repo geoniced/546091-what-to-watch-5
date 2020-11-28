@@ -5,7 +5,7 @@ import AddReviewRatingStar from "../add-review-rating-star/add-review-rating-sta
 import {submitReview} from "../../store/api-actions";
 import {checkFieldValidity, isInvalidValidation, isValidRatingStars, isValidReviewText} from "../../utils";
 import FormErrorBlock from "../form-error-block/form-error-block";
-import {MAX_REVIEW_TEXT_LENGTH, MIN_REVIEW_TEXT_LENGTH, VALIDATION_MESSAGES} from "../../const";
+import {ReviewTextLength, VALIDATION_MESSAGES} from "../../const";
 import {setReviewSubmitionLoading} from "../../store/actions";
 import {getIsReviewSubmitting} from "../../store/selectors";
 
@@ -100,8 +100,8 @@ const AddReviewBlock = (props) => {
             name="review-text"
             id="review-text"
             placeholder="Review text"
-            minLength={MIN_REVIEW_TEXT_LENGTH}
-            maxLength={MAX_REVIEW_TEXT_LENGTH}
+            minLength={ReviewTextLength.MIN}
+            maxLength={ReviewTextLength.MAX}
             onChange={handleReviewChange}
             value={reviewText}
             disabled={isReviewSubmitting}
