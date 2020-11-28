@@ -16,7 +16,7 @@ const AuthScreen = (props) => {
   const {authorizationStatus, onSubmit} = props;
   const [formErrors, setFormErrors] = useState({});
 
-  const errorInputStyles = {
+  const ERROR_INPUT_STYLES = {
     border: `2px solid red`,
   };
 
@@ -92,7 +92,7 @@ const AuthScreen = (props) => {
                 placeholder="Email address"
                 name="user-email"
                 id="user-email"
-                style={formErrors[`email`] ? errorInputStyles : {}}
+                style={formErrors[`email`] ? ERROR_INPUT_STYLES : {}}
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
               <FormErrorBlock error={formErrors.email} />
@@ -105,7 +105,7 @@ const AuthScreen = (props) => {
                 placeholder={formErrors[`password`] || `Password`}
                 name="user-password"
                 id="user-password"
-                style={formErrors[`password`] ? errorInputStyles : {}}
+                style={formErrors[`password`] ? ERROR_INPUT_STYLES : {}}
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
               <FormErrorBlock error={formErrors.password} />
