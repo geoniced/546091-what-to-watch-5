@@ -150,6 +150,18 @@ describe(`filmsData reducer sync operations`, () => {
         films: filmsWithFavoriteFilm,
       });
   });
+
+  it(`filmsData reducer should change isReviewSubmitting property of the state`, () => {
+    expect(filmsData({
+      isReviewSubmitting: false,
+    }, {
+      type: ActionType.SET_REVIEW_SUBMITION_LOADING,
+      payload: true,
+    }))
+      .toEqual({
+        isReviewSubmitting: true,
+      });
+  });
 });
 
 describe(`filmsData reducer async operations`, () => {
@@ -216,7 +228,7 @@ describe(`filmsData reducer async operations`, () => {
       });
   });
 
-  it(`should make a correct API call to /films`, () => {
+  it(`should make a correct API call to /films/promo`, () => {
     const dispatch = jest.fn();
     const promoFilmLoader = fetchPromoFilm();
 

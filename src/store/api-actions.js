@@ -1,6 +1,5 @@
 import {
   changeFilmIsFavorite,
-  changePromoFilmIsFavorite,
   loadFilms,
   loadPromoFilm,
   loadReviewsForFilm,
@@ -15,10 +14,6 @@ import {APIRoute, AppRoute, AuthorizationStatus, ERROR_MESSAGES, VALIDATION_MESS
 export const fetchFilmList = () => (dispatch, _getStore, api) => (
   api.get(APIRoute.FILMS)
     .then(({data}) => dispatch(loadFilms(data)))
-);
-
-export const fetchFilmCard = (filmId) => (dispatch, _getStore, api) => (
-  api.get(`${APIRoute.FILMS}/${filmId}`)
 );
 
 export const fetchReviewsById = (filmId) => (dispatch, _getStore, api) => (
@@ -53,10 +48,6 @@ export const submitReview = ({rating, comment, filmId}) => (dispatch, _getStore,
 
 export const submitMyListFilmStatus = (filmId, filmStatus) => (dispatch, _getStore, api) => (
   api.post(`${APIRoute.FAVORITE}/${filmId}/${filmStatus}`)
-    .then(({data}) => dispatch(changeFilmIsFavorite(filmId, data)))
+    .then(({data}) => dispatch(changeFilmIsFavorite(data)))
 );
 
-export const submitMyListPromoFilmStatus = (filmId, filmStatus) => (dispatch, _getStore, api) => (
-  api.post(`${APIRoute.FAVORITE}/${filmId}/${filmStatus}`)
-    .then(({data}) => dispatch(changePromoFilmIsFavorite(filmId, data)))
-);

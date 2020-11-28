@@ -73,7 +73,7 @@ describe(`Action creators work correctly`, () => {
   });
 
   it(`Action creator loadPromoFilm works correctly`, () => {
-    expect(changeFilmIsFavorite(1, filmListMock[0])).toEqual({
+    expect(changeFilmIsFavorite(filmListMock[0])).toEqual({
       type: ActionType.CHANGE_FILM_IS_FAVORITE,
       payload: filmListMock[0],
     });
