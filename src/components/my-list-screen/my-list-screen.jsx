@@ -6,10 +6,6 @@ import LogoBlock from "../logo-block/logo-block";
 import UserBlock from "../user-block/user-block";
 import {getFavoriteFilms} from "../../store/selectors";
 
-import withActivePlayer from "../../hocs/with-active-player/with-active-player";
-
-const FilmCardListWithActiveItem = withActivePlayer(FilmCardList);
-
 const MyListScreen = (props) => {
   const {films} = props;
 
@@ -26,7 +22,7 @@ const MyListScreen = (props) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <FilmCardListWithActiveItem
+        <FilmCardList
           films={films}
         />
       </section>

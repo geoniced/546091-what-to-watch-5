@@ -31,4 +31,19 @@ describe(`AddReviewRatingStar render`, () => {
 
     expect(tree).toMatchSnapshot();
   });
+
+  it(`renders AddReviewRatingStar component in disabled state`, () => {
+    const tree = renderer
+      .create(
+          <AddReviewRatingStar
+            checked={true}
+            starIndex={1}
+            onRatingChange={noop}
+            disabled={true}
+          />
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });

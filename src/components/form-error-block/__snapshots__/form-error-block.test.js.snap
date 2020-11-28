@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormErrorBlock render renders FormErrorBlock component when there is error 1`] = `
+<div
+  style={
+    Object {
+      "color": "red",
+      "padding": "10px 20px",
+      "textAlign": "center",
+    }
+  }
+>
+  There is an error
+</div>
+`;
+
+exports[`FormErrorBlock render renders FormErrorBlock component when there is no error 1`] = `null`;

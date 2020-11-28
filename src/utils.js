@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
-import {ALL_GENRES_FILTER, Rating} from "./const";
+import {ALL_GENRES_FILTER, EMAIL_REGEXP, Rating, ReviewTextLength} from "./const";
 
 dayjs.extend(duration);
 
@@ -91,6 +91,23 @@ export const getFilmById = (films, id) => {
   return films.find((filmItem) => Number(id) === filmItem.id);
 };
 
+export const getFilmIndexById = (films, filmId) => {
+  return films.findIndex((film) => film.id === filmId);
+};
+
+export const setFilmForFilms = (films, updatedFilm) => {
+  const changedFilmIndex = getFilmIndexById(films, updatedFilm.id);
+
+  const copiedFilms = films.slice();
+  const updatedFilms = [
+    ...copiedFilms.slice(0, changedFilmIndex),
+    updatedFilm,
+    ...copiedFilms.slice(changedFilmIndex + 1)
+  ];
+
+  return updatedFilms;
+};
+
 export const getRatingDescription = (rating) => {
   let ratingDescription = ``;
 
@@ -107,4 +124,41 @@ export const getRatingDescription = (rating) => {
   }
 
   return ratingDescription;
+};
+
+export const isValidEmail = (email) => EMAIL_REGEXP.test(email);
+
+export const isValidPassword = (passwordValue) => {
+  return passwordValue.length > 0;
+};
+
+export const isValidReviewText = (reviewText) => {
+  return reviewText.length >= ReviewTextLength.MIN && reviewText.length <= ReviewTextLength.MAX;
+};
+
+export const isValidRatingStars = (ratingStars) => {
+  return ratingStars > 0;
+};
+
+export const isInvalidValidation = (validation) => validation === false;
+
+export const checkFieldValidity = ({field, value, setter, validationFunction, errorMessage}) => {
+  let isValid = true;
+
+  if (validationFunction(value)) {
+    setter((prevState) => {
+      return extend(prevState, {
+        [field]: ``,
+      });
+    });
+  } else {
+    isValid = false;
+    setter((prevState) => {
+      return extend(prevState, {
+        [field]: errorMessage,
+      });
+    });
+  }
+
+  return isValid;
 };

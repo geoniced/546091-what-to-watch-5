@@ -4,10 +4,6 @@ import LogoBlock from "../logo-block/logo-block";
 import UserBlock from "../user-block/user-block";
 import AddReviewBlock from "../add-review-block/add-review-block";
 
-import withReviewForm from "../../hocs/with-review-form/with-review-form";
-
-const AddReviewWithForm = withReviewForm(AddReviewBlock);
-
 const FilmAddReviewScreen = (props) => {
   const {film} = props;
 
@@ -44,7 +40,7 @@ const FilmAddReviewScreen = (props) => {
         </div>
       </div>
 
-      <AddReviewWithForm filmId={id} />
+      <AddReviewBlock filmId={id} />
 
     </section>
   );

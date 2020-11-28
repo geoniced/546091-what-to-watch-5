@@ -4,7 +4,7 @@ import {BrowserRouter} from "react-router-dom";
 import {configure, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import {MainPage} from "./main-page";
-import {filmListMock, movieCard, noop} from "../../test-data/test-data";
+import {filmListMock, noop} from "../../test-data/test-data";
 import {mockedStore} from "../../test-data/store";
 
 configure({adapter: new Adapter()});
@@ -18,12 +18,14 @@ describe(`MainPage interactions`, () => {
           <BrowserRouter>
             <MainPage
               onPlayButtonClick={handlePlayButtonClick}
-              movieCard={movieCard}
+              promoFilm={filmListMock[0]}
               activeGenre={`All genres`}
               films={filmListMock}
               shownFilmsCount={8}
               onGenreChange={noop}
               onShowMoreButtonClick={noop}
+              loadPromoFilm={noop}
+              setMyListPromoFilmStatus={noop}
             />
           </BrowserRouter>
         </Provider>
@@ -34,6 +36,32 @@ describe(`MainPage interactions`, () => {
     expect(handlePlayButtonClick).toHaveBeenCalledTimes(1);
   });
 
+  it(`should MainPage be able to add promo film in MyList`, () => {
+    const handleSetMyListStatus = jest.fn();
+
+    const wrapper = mount(
+        <Provider store={mockedStore}>
+          <BrowserRouter>
+            <MainPage
+              onPlayButtonClick={noop}
+              promoFilm={filmListMock[0]}
+              activeGenre={`All genres`}
+              films={filmListMock}
+              shownFilmsCount={8}
+              onGenreChange={noop}
+              onShowMoreButtonClick={noop}
+              loadPromoFilm={noop}
+              setMyListPromoFilmStatus={handleSetMyListStatus}
+            />
+          </BrowserRouter>
+        </Provider>
+    );
+
+    const setMyListStatusButton = wrapper.find(`.movie-card__buttons .btn--list`);
+    setMyListStatusButton.simulate(`click`);
+    expect(handleSetMyListStatus).toHaveBeenCalledTimes(1);
+  });
+
   it(`should MainPage be able to press on Show More Button`, () => {
     const handleShowMoreButtonClick = jest.fn();
 
@@ -42,12 +70,14 @@ describe(`MainPage interactions`, () => {
           <BrowserRouter>
             <MainPage
               onShowMoreButtonClick={handleShowMoreButtonClick}
-              movieCard={movieCard}
+              promoFilm={filmListMock[0]}
               activeGenre={`All genres`}
               films={filmListMock}
               shownFilmsCount={8}
               onPlayButtonClick={noop}
               onGenreChange={noop}
+              loadPromoFilm={noop}
+              setMyListPromoFilmStatus={noop}
             />
           </BrowserRouter>
         </Provider>

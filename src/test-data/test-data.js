@@ -1,9 +1,15 @@
 export const noop = () => {};
 
-export const movieCard = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  releaseDate: 2014,
+export const createNodeMockWithVideo = (element) => {
+  if (element.type === `video`) {
+    return {
+      play() {},
+      pause() {},
+      load() {},
+    };
+  }
+
+  return {};
 };
 
 export const filmListMock = [

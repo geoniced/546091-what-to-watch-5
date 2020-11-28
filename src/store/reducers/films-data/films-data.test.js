@@ -1,13 +1,16 @@
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../../services/api";
 import {filmsData} from "./films-data";
-import {ALL_GENRES_FILTER, APIRoute, AppRoute} from "../../../const";
+import {ALL_GENRES_FILTER, APIRoute, AppRoute, EMPTY_FILM} from "../../../const";
 import {ActionType} from "../../actions";
 import {filmListMock, noop} from "../../../test-data/test-data";
 import {filmsFromServer} from "../../../test-data/server-data";
-import {fetchFilmList, fetchReviewsById, submitReview} from "../../api-actions";
+import {fetchFilmList, fetchPromoFilm, fetchReviewsById, submitMyListFilmStatus, submitMyListPromoFilmStatus, submitReview} from "../../api-actions";
+import {adaptFilmToClient, extend, setFilmForFilms} from "../../../utils";
 
 const api = createAPI(noop);
+
+const apiMock = new MockAdapter(api);
 
 const mockReviewFromServer = [
   {
@@ -30,6 +33,8 @@ describe(`filmsData reducer sync operations`, () => {
       shownFilmsCount: 0,
       isLoading: true,
       currentFilmReviews: [],
+      promoFilm: EMPTY_FILM,
+      isReviewSubmitting: false,
     });
   });
 
@@ -118,11 +123,66 @@ describe(`filmsData reducer sync operations`, () => {
         }],
       });
   });
+
+  it(`filmsData reducer should load promo film`, () => {
+    expect(filmsData({
+      promoFilm: EMPTY_FILM,
+    }, {
+      type: ActionType.LOAD_PROMO_FILM,
+      payload: filmsFromServer[0],
+    }))
+      .toEqual({
+        promoFilm: filmListMock[0],
+      });
+  });
+
+  it(`filmsData reducer should change isFavorite property of the film`, () => {
+    const favoriteFilm = extend(filmsFromServer[0], {"is_favorite": true});
+    const filmsWithFavoriteFilm = setFilmForFilms(filmListMock, adaptFilmToClient(favoriteFilm));
+
+    expect(filmsData({
+      films: filmListMock
+    }, {
+      type: ActionType.CHANGE_FILM_IS_FAVORITE,
+      payload: favoriteFilm,
+    }))
+      .toEqual({
+        films: filmsWithFavoriteFilm,
+      });
+  });
+
+  it(`filmsData reducer should change isFavorite property of the promo film`, () => {
+    const favoriteFilm = extend(filmsFromServer[0], {"is_favorite": true});
+    const filmsWithFavoriteFilm = setFilmForFilms(filmListMock, adaptFilmToClient(favoriteFilm));
+
+    expect(filmsData({
+      films: filmListMock,
+      promoFilm: filmListMock[0],
+    }, {
+      type: ActionType.CHANGE_PROMO_FILM_IS_FAVORITE,
+      payload: favoriteFilm,
+    }))
+      .toEqual({
+        films: filmsWithFavoriteFilm,
+        promoFilm: filmsWithFavoriteFilm[0],
+      });
+  });
+
+  it(`filmsData reducer should change isReviewSubmitting property of the state`, () => {
+    expect(filmsData({
+      isReviewSubmitting: false,
+    }, {
+      type: ActionType.SET_REVIEW_SUBMITION_LOADING,
+      payload: true,
+    }))
+      .toEqual({
+        isReviewSubmitting: true,
+      });
+  });
 });
 
 describe(`filmsData reducer async operations`, () => {
   it(`should make a correct API call to /films`, () => {
-    const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
     const filmsLoader = fetchFilmList();
 
@@ -141,7 +201,6 @@ describe(`filmsData reducer async operations`, () => {
   });
 
   it(`should make a correct API call to get a review: GET /comments/:id`, () => {
-    const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
     const filmId = 1;
     const commentsLoader = fetchReviewsById(filmId);
@@ -164,7 +223,6 @@ describe(`filmsData reducer async operations`, () => {
   });
 
   it(`should make a correct API call to submit a review: POST /comments/:id`, () => {
-    const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
     const filmId = 1;
     const submitReviewLoader = submitReview({
@@ -179,10 +237,72 @@ describe(`filmsData reducer async operations`, () => {
 
     return submitReviewLoader(dispatch, noop, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.REDIRECT_TO_ROUTE,
           payload: `${AppRoute.FILMS}/${filmId}`,
+        });
+      });
+  });
+
+  it(`should make a correct API call to /films/promo`, () => {
+    const dispatch = jest.fn();
+    const promoFilmLoader = fetchPromoFilm();
+
+    apiMock
+      .onGet(`${APIRoute.FILMS}/promo`)
+      .reply(200, filmsFromServer[0]);
+
+    return promoFilmLoader(dispatch, noop, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_PROMO_FILM,
+          payload: filmsFromServer[0],
+        });
+      });
+  });
+
+  it(`should make a correct API call to /favorite/:id/:status for a film`, () => {
+    const dispatch = jest.fn();
+    const filmId = 1;
+    const isFavorite = 1;
+    const myListFilmStatusLoader = submitMyListFilmStatus(filmId, isFavorite);
+    const filmWithIsFavoriteEqTrue = extend(filmsFromServer[0], {"is_favorite": true});
+
+    apiMock
+      .onPost(`${APIRoute.FAVORITE}/${filmId}/${isFavorite}`)
+      .reply(200, filmWithIsFavoriteEqTrue);
+
+
+    return myListFilmStatusLoader(dispatch, noop, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.CHANGE_FILM_IS_FAVORITE,
+          payload: filmWithIsFavoriteEqTrue,
+        });
+      });
+  });
+
+  it(`should make a correct API call to /favorite/:id/:status for a promo film`, () => {
+    const dispatch = jest.fn();
+    const filmId = 1;
+    const isFavorite = 1;
+    const myListPromoFilmStatusLoader = submitMyListPromoFilmStatus(filmId, isFavorite);
+    const filmWithIsFavoriteEqTrue = extend(filmsFromServer[0], {"is_favorite": true});
+
+    apiMock
+      .onPost(`${APIRoute.FAVORITE}/${filmId}/${isFavorite}`)
+      .reply(200, filmWithIsFavoriteEqTrue);
+
+
+    return myListPromoFilmStatusLoader(dispatch, noop, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.CHANGE_PROMO_FILM_IS_FAVORITE,
+          payload: filmWithIsFavoriteEqTrue,
         });
       });
   });

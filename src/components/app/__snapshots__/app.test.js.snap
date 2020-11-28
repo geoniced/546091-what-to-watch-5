@@ -9,8 +9,13 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        alt="Bronson"
+        src="https://assets.htmlacademy.ru/intensives/javascript-3/film/background/bronson.jpg"
+        style={
+          Object {
+            "backgroundColor": "#73B39A",
+          }
+        }
       />
     </div>
     <h1
@@ -74,9 +79,9 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="Bronson"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/bronson.jpg"
             width="218"
           />
         </div>
@@ -86,7 +91,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            The Grand Budapest Hotel
+            Bronson
           </h2>
           <p
             className="movie-card__meta"
@@ -94,12 +99,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Drama
+              Action
             </span>
             <span
               className="movie-card__year"
             >
-              2014
+              2008
             </span>
           </p>
           <div
@@ -125,6 +130,7 @@ Array [
             </button>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg

@@ -4,7 +4,8 @@ import {BrowserRouter} from "react-router-dom";
 import renderer from "react-test-renderer";
 import {AuthorizationStatus} from "../../const";
 import {mockedStore} from "../../test-data/store";
-import {filmListMock, mockReviews, noop} from "../../test-data/test-data";
+import {createNodeMockWithVideo, filmListMock, mockReviews, noop} from "../../test-data/test-data";
+import {extend} from "../../utils";
 import {FilmScreen} from "./film-screen";
 
 describe(`FilmScreen render`, () => {
@@ -20,13 +21,37 @@ describe(`FilmScreen render`, () => {
                 reviews={mockReviews}
                 onPlayButtonClick={noop}
                 loadReviews={noop}
+                setMyListFilmStatus={noop}
               />
             </BrowserRouter>
           </Provider>,
           {
-            createNodeMock: () => {
-              return {};
-            }
+            createNodeMock: createNodeMockWithVideo,
+          }
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`renders FilmScreen component when user is authorized and the film is in MyList`, () => {
+    const tree = renderer
+      .create(
+          <Provider store={mockedStore}>
+            <BrowserRouter>
+              <FilmScreen
+                film={extend(filmListMock[0], {isFavorite: true})}
+                films={filmListMock}
+                authorizationStatus={AuthorizationStatus.AUTH}
+                reviews={mockReviews}
+                onPlayButtonClick={noop}
+                loadReviews={noop}
+                setMyListFilmStatus={noop}
+              />
+            </BrowserRouter>
+          </Provider>,
+          {
+            createNodeMock: createNodeMockWithVideo,
           }
       )
       .toJSON();
@@ -46,13 +71,12 @@ describe(`FilmScreen render`, () => {
                 reviews={mockReviews}
                 onPlayButtonClick={noop}
                 loadReviews={noop}
+                setMyListFilmStatus={noop}
               />
             </BrowserRouter>
           </Provider>,
           {
-            createNodeMock: () => {
-              return {};
-            }
+            createNodeMock: createNodeMockWithVideo,
           }
       )
       .toJSON();

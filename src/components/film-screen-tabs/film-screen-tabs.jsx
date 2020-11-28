@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, {useState} from "react";
 import {FilmTypes, ReviewTypes} from "../../prop-types-validations";
 import FilmCardDetailsTab from "../film-card-details-tab/film-card-details-tab";
 import FilmCardReviewTab from "../film-card-review-tab/film-card-review-tab";
@@ -36,8 +35,17 @@ const getTabContentByType = (tabType, film, reviews) => {
 };
 
 const FilmScreenTabs = (props) => {
-  const {currentTab, film, reviews, onTabClick} = props;
+  const {film, reviews} = props;
   const tabs = Object.values(TABS);
+
+  const [currentTab, setCurrentTab] = useState(Tab.OVERVIEW);
+
+  const onTabClick = (evt) => {
+    evt.preventDefault();
+    const tabType = evt.currentTarget.dataset.tabType;
+
+    setCurrentTab(tabType);
+  };
 
   return (
     <div className="movie-card__desc">
@@ -61,10 +69,8 @@ const FilmScreenTabs = (props) => {
 };
 
 FilmScreenTabs.propTypes = {
-  currentTab: PropTypes.oneOf([...Object.values(Tab)]).isRequired,
   film: FilmTypes.filmCard,
   reviews: ReviewTypes.reviewsList,
-  onTabClick: PropTypes.func.isRequired,
 };
 
 export default FilmScreenTabs;

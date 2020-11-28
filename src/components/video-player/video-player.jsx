@@ -1,66 +1,38 @@
-import React, {PureComponent, createRef} from "react";
+import React, {createRef} from "react";
 import PropTypes from "prop-types";
+import {useVideoPlayer} from "../../hooks/use-video-player/use-video-player";
 
-class VideoPlayer extends PureComponent {
-  constructor(props) {
-    super(props);
+const VideoPlayer = (props) => {
+  const {
+    isMuted = false,
+    src,
+    poster,
+    width,
+    height,
+    videoStyles,
+    additionalClasses,
+    onCurrentTimeChange,
+    resetAfterPause,
+    isPlaying
+  } = props;
 
-    this._videoRef = createRef();
-  }
+  const videoRef = createRef();
 
-  componentDidMount() {
-    const video = this._videoRef.current;
-    const {onCurrentTimeChange} = this.props;
+  useVideoPlayer(videoRef, onCurrentTimeChange, resetAfterPause, isPlaying);
 
-    video.ontimeupdate = () => {
-      const currentTime = Math.floor(video.currentTime);
-
-      if (onCurrentTimeChange) {
-        onCurrentTimeChange(currentTime);
-      }
-    };
-  }
-
-  componentDidUpdate() {
-    const video = this._videoRef.current;
-    const {resetAfterPause} = this.props;
-
-    if (this.props.isPlaying) {
-      video.play();
-    } else {
-      video.pause();
-
-      if (resetAfterPause) {
-        video.load();
-      }
-    }
-  }
-
-  render() {
-    const {
-      isMuted = false,
-      src,
-      poster,
-      width,
-      height,
-      videoStyles,
-      additionalClasses,
-    } = this.props;
-
-    return (
-      <video
-        className={additionalClasses}
-        src={src}
-        poster={poster}
-        muted={isMuted}
-        width={width}
-        height={height}
-        style={videoStyles}
-        ref={this._videoRef}
-      />
-    );
-  }
-}
+  return (
+    <video
+      className={additionalClasses}
+      src={src}
+      poster={poster}
+      muted={isMuted}
+      width={width}
+      height={height}
+      style={videoStyles}
+      ref={videoRef}
+    />
+  );
+};
 
 VideoPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,

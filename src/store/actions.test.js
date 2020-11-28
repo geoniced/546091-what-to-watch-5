@@ -7,6 +7,10 @@ import {
   loadReviewsForFilm,
   requireAuthorization,
   redirectToRoute,
+  loadPromoFilm,
+  changeFilmIsFavorite,
+  setError,
+  changePromoFilmIsFavorite,
 } from "./actions";
 import {filmListMock, mockReviews} from "../test-data/test-data";
 import {AuthorizationStatus} from "../const";
@@ -59,6 +63,34 @@ describe(`Action creators work correctly`, () => {
     expect(redirectToRoute(`/test-path`)).toEqual({
       type: ActionType.REDIRECT_TO_ROUTE,
       payload: `/test-path`,
+    });
+  });
+
+  it(`Action creator loadPromoFilm works correctly`, () => {
+    expect(loadPromoFilm(filmListMock[0])).toEqual({
+      type: ActionType.LOAD_PROMO_FILM,
+      payload: filmListMock[0],
+    });
+  });
+
+  it(`Action creator changeFilmIsFavorite works correctly`, () => {
+    expect(changeFilmIsFavorite(filmListMock[0])).toEqual({
+      type: ActionType.CHANGE_FILM_IS_FAVORITE,
+      payload: filmListMock[0],
+    });
+  });
+
+  it(`Action creator changePromoFilmIsFavorite works correctly`, () => {
+    expect(changePromoFilmIsFavorite(filmListMock[0])).toEqual({
+      type: ActionType.CHANGE_PROMO_FILM_IS_FAVORITE,
+      payload: filmListMock[0],
+    });
+  });
+
+  it(`Action creator setError works correctly`, () => {
+    expect(setError({test: `sometext`})).toEqual({
+      type: ActionType.SET_ERROR,
+      payload: {test: `sometext`},
     });
   });
 });

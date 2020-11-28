@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {Router as BrowserRouter, Switch, Route} from "react-router-dom";
 import {connect} from "react-redux";
@@ -16,28 +16,27 @@ import {AppRoute} from "../../const";
 import {getFilms, getIsLoading} from "../../store/selectors";
 import {fetchFilmList} from "../../store/api-actions";
 import Preloader from "../preloader/preloader";
+import {useFilmListLoader} from "../../hooks/use-film-list-loader/use-film-list-loader";
+import ErrorNotification from "../error-notification/error-notification";
 
-class App extends PureComponent {
-  componentDidMount() {
-    this.props.loadFilmList();
+const App = (props) => {
+  const {films, isLoading, loadFilmList} = props;
+
+  useFilmListLoader(loadFilmList);
+
+  if (isLoading) {
+    return <Preloader />;
   }
 
-  render() {
-    const {movieCard, films, isLoading} = this.props;
-
-    if (isLoading) {
-      return <Preloader />;
-    }
-
-    return (
+  return (
+    <>
       <BrowserRouter history={browserHistory}>
         <Switch>
           <Route exact
             path={AppRoute.ROOT}
             render={({history}) => (
               <MainPage
-                movieCard={movieCard}
-                onPlayButtonClick={() => history.push(`${AppRoute.PLAYER}/1`)}
+                onPlayButtonClick={(filmId) => history.push(`${AppRoute.PLAYER}/${filmId}`)}
               />
             )}
           />
@@ -101,16 +100,12 @@ class App extends PureComponent {
           />
         </Switch>
       </BrowserRouter>
-    );
-  }
-}
+      <ErrorNotification />
+    </>
+  );
+};
 
 App.propTypes = {
-  movieCard: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseDate: PropTypes.number.isRequired,
-  }).isRequired,
   films: FilmTypes.films,
   loadFilmList: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
@@ -124,7 +119,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   loadFilmList() {
     dispatch(fetchFilmList());
-  }
+  },
 });
 
 export {App};

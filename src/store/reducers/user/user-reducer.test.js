@@ -12,6 +12,7 @@ describe(`user reducer sync operations`, () => {
   it(`user reducer without additional parameters should return initial state`, () => {
     expect(user(undefined, {})).toEqual({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
+      error: null,
     });
   });
 
@@ -24,6 +25,18 @@ describe(`user reducer sync operations`, () => {
     }))
       .toEqual({
         authorizationStatus: AuthorizationStatus.AUTH,
+      });
+  });
+
+  it(`user reducer should change error message`, () => {
+    expect(user({
+      error: null,
+    }, {
+      type: ActionType.SET_ERROR,
+      payload: {text: `some error`},
+    }))
+      .toEqual({
+        error: {text: `some error`},
       });
   });
 });
