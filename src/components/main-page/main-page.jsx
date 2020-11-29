@@ -8,7 +8,7 @@ import UserBlock from "../user-block/user-block";
 import GenresList from "../genres-list/genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
 import {changeGenre, resetShownFilmCards, increaseShownFilmCards} from "../../store/actions";
-import {getActiveGenre, getShownFilmsCount, getFilmsByGenre, getPromoFilm} from "../../store/selectors";
+import {getActiveGenre, getShownFilmsCount, getFilmsByGenre, getPromoFilm, getFilms} from "../../store/selectors";
 import {fetchPromoFilm, submitMyListPromoFilmStatus} from "../../store/api-actions";
 import MyListButton from "../my-list-button/my-list-button";
 import {usePromoFilmLoader} from "../../hooks/use-promo-film-loader/use-promo-film-loader";
@@ -17,7 +17,8 @@ const MainPage = (props) => {
   const {
     promoFilm,
     onPlayButtonClick,
-    films,
+    filmsByGenre,
+    allFilms,
     activeGenre,
     shownFilmsCount,
     onGenreChange,
@@ -43,7 +44,7 @@ const MainPage = (props) => {
     setMyListPromoFilmStatus(id, Number(!isFavorite));
   };
 
-  const shownFilms = films.slice(0, shownFilmsCount);
+  const shownFilms = filmsByGenre.slice(0, shownFilmsCount);
 
   return (
     <React.Fragment>
@@ -101,7 +102,7 @@ const MainPage = (props) => {
 
           <GenresList
             activeGenre={activeGenre}
-            films={films}
+            films={allFilms}
             onGenreChange={onGenreChange}
           />
 
@@ -109,7 +110,7 @@ const MainPage = (props) => {
             films={shownFilms}
           />
 
-          {shownFilms.length < films.length
+          {shownFilms.length < filmsByGenre.length
             ? <ShowMoreButton clickHandler={onShowMoreButtonClick} />
             : null}
         </section>
@@ -130,7 +131,8 @@ MainPage.propTypes = {
   promoFilm: FilmTypes.filmCard,
   onPlayButtonClick: PropTypes.func.isRequired,
   activeGenre: PropTypes.string.isRequired,
-  films: FilmTypes.films,
+  filmsByGenre: FilmTypes.films,
+  allFilms: FilmTypes.films,
   shownFilmsCount: PropTypes.number.isRequired,
   onGenreChange: PropTypes.func.isRequired,
   onShowMoreButtonClick: PropTypes.func.isRequired,
@@ -140,7 +142,8 @@ MainPage.propTypes = {
 
 const mapStateToProps = (state) => ({
   activeGenre: getActiveGenre(state),
-  films: getFilmsByGenre(state),
+  filmsByGenre: getFilmsByGenre(state),
+  allFilms: getFilms(state),
   shownFilmsCount: getShownFilmsCount(state),
   promoFilm: getPromoFilm(state),
 });

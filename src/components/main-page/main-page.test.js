@@ -16,7 +16,8 @@ describe(`MainPage render`, () => {
               <MainPage
                 promoFilm={filmListMock[0]}
                 activeGenre={`Action`}
-                films={filmListMock}
+                filmsByGenre={filmListMock}
+                allFilms={filmListMock}
                 shownFilmsCount={8}
                 onPlayButtonClick={noop}
                 onGenreChange={noop}
@@ -43,7 +44,8 @@ describe(`MainPage render`, () => {
               <MainPage
                 promoFilm={filmListMock[0]}
                 activeGenre={`All genres`}
-                films={filmListMock}
+                filmsByGenre={filmListMock}
+                allFilms={filmListMock}
                 shownFilmsCount={16}
                 onPlayButtonClick={noop}
                 onGenreChange={noop}
@@ -70,7 +72,8 @@ describe(`MainPage render`, () => {
               <MainPage
                 promoFilm={extend(filmListMock[0], {"isFavorite": true})}
                 activeGenre={`All genres`}
-                films={filmListMock}
+                filmsByGenre={filmListMock}
+                allFilms={filmListMock}
                 shownFilmsCount={16}
                 onPlayButtonClick={noop}
                 onGenreChange={noop}
