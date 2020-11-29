@@ -6,19 +6,19 @@ exports[`renders FilmCard component 1`] = `
   onMouseLeave={[Function]}
   onMouseOver={[Function]}
 >
-  <div
-    className="small-movie-card__image"
-  />
-  <h3
-    className="small-movie-card__title"
+  <a
+    className="small-movie-card__link"
+    href="/films/1"
+    onClick={[Function]}
   >
-    <a
-      className="small-movie-card__link"
-      href="/films/1"
-      onClick={[Function]}
+    <div
+      className="small-movie-card__image"
+    />
+    <h3
+      className="small-movie-card__title"
     >
       Bronson
-    </a>
-  </h3>
+    </h3>
+  </a>
 </article>
 `;

@@ -73,288 +73,288 @@ exports[`MyListScreen render renders MyListScreen component with 8 items 1`] = `
         onMouseLeave={[Function]}
         onMouseOver={[Function]}
       >
-        <div
-          className="small-movie-card__image"
+        <a
+          className="small-movie-card__link"
+          href="/films/1"
+          onClick={[Function]}
         >
-          <video
-            height={175}
-            muted={true}
-            poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/bronson.jpg"
-            src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-            style={
-              Object {
-                "height": "100%",
-                "objectFit": "cover",
-                "verticalAlign": "top",
-                "width": "100%",
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              height={175}
+              muted={true}
+              poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/bronson.jpg"
+              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+              style={
+                Object {
+                  "height": "100%",
+                  "objectFit": "cover",
+                  "verticalAlign": "top",
+                  "width": "100%",
+                }
               }
-            }
-            width={280}
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="/films/1"
-            onClick={[Function]}
+              width={280}
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
           >
             Bronson
-          </a>
-        </h3>
+          </h3>
+        </a>
       </article>
       <article
         className="small-movie-card catalog__movies-card"
         onMouseLeave={[Function]}
         onMouseOver={[Function]}
       >
-        <div
-          className="small-movie-card__image"
+        <a
+          className="small-movie-card__link"
+          href="/films/2"
+          onClick={[Function]}
         >
-          <video
-            height={175}
-            muted={true}
-            poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/pulp-fiction.jpg"
-            src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-            style={
-              Object {
-                "height": "100%",
-                "objectFit": "cover",
-                "verticalAlign": "top",
-                "width": "100%",
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              height={175}
+              muted={true}
+              poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/pulp-fiction.jpg"
+              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+              style={
+                Object {
+                  "height": "100%",
+                  "objectFit": "cover",
+                  "verticalAlign": "top",
+                  "width": "100%",
+                }
               }
-            }
-            width={280}
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="/films/2"
-            onClick={[Function]}
+              width={280}
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
           >
             Pulp Fiction
-          </a>
-        </h3>
+          </h3>
+        </a>
       </article>
       <article
         className="small-movie-card catalog__movies-card"
         onMouseLeave={[Function]}
         onMouseOver={[Function]}
       >
-        <div
-          className="small-movie-card__image"
+        <a
+          className="small-movie-card__link"
+          href="/films/3"
+          onClick={[Function]}
         >
-          <video
-            height={175}
-            muted={true}
-            poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/midnight-special.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-            style={
-              Object {
-                "height": "100%",
-                "objectFit": "cover",
-                "verticalAlign": "top",
-                "width": "100%",
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              height={175}
+              muted={true}
+              poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/midnight-special.jpg"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+              style={
+                Object {
+                  "height": "100%",
+                  "objectFit": "cover",
+                  "verticalAlign": "top",
+                  "width": "100%",
+                }
               }
-            }
-            width={280}
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="/films/3"
-            onClick={[Function]}
+              width={280}
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
           >
             Midnight Special
-          </a>
-        </h3>
+          </h3>
+        </a>
       </article>
       <article
         className="small-movie-card catalog__movies-card"
         onMouseLeave={[Function]}
         onMouseOver={[Function]}
       >
-        <div
-          className="small-movie-card__image"
+        <a
+          className="small-movie-card__link"
+          href="/films/4"
+          onClick={[Function]}
         >
-          <video
-            height={175}
-            muted={true}
-            poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/matrix.jpg"
-            src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-            style={
-              Object {
-                "height": "100%",
-                "objectFit": "cover",
-                "verticalAlign": "top",
-                "width": "100%",
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              height={175}
+              muted={true}
+              poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/matrix.jpg"
+              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+              style={
+                Object {
+                  "height": "100%",
+                  "objectFit": "cover",
+                  "verticalAlign": "top",
+                  "width": "100%",
+                }
               }
-            }
-            width={280}
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="/films/4"
-            onClick={[Function]}
+              width={280}
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
           >
             Matrix
-          </a>
-        </h3>
+          </h3>
+        </a>
       </article>
       <article
         className="small-movie-card catalog__movies-card"
         onMouseLeave={[Function]}
         onMouseOver={[Function]}
       >
-        <div
-          className="small-movie-card__image"
+        <a
+          className="small-movie-card__link"
+          href="/films/5"
+          onClick={[Function]}
         >
-          <video
-            height={175}
-            muted={true}
-            poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/legend.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-            style={
-              Object {
-                "height": "100%",
-                "objectFit": "cover",
-                "verticalAlign": "top",
-                "width": "100%",
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              height={175}
+              muted={true}
+              poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/legend.jpg"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+              style={
+                Object {
+                  "height": "100%",
+                  "objectFit": "cover",
+                  "verticalAlign": "top",
+                  "width": "100%",
+                }
               }
-            }
-            width={280}
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="/films/5"
-            onClick={[Function]}
+              width={280}
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
           >
             Legend
-          </a>
-        </h3>
+          </h3>
+        </a>
       </article>
       <article
         className="small-movie-card catalog__movies-card"
         onMouseLeave={[Function]}
         onMouseOver={[Function]}
       >
-        <div
-          className="small-movie-card__image"
+        <a
+          className="small-movie-card__link"
+          href="/films/6"
+          onClick={[Function]}
         >
-          <video
-            height={175}
-            muted={true}
-            poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/gangs_of_new_york.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-            style={
-              Object {
-                "height": "100%",
-                "objectFit": "cover",
-                "verticalAlign": "top",
-                "width": "100%",
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              height={175}
+              muted={true}
+              poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/gangs_of_new_york.jpg"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+              style={
+                Object {
+                  "height": "100%",
+                  "objectFit": "cover",
+                  "verticalAlign": "top",
+                  "width": "100%",
+                }
               }
-            }
-            width={280}
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="/films/6"
-            onClick={[Function]}
+              width={280}
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
           >
             Gangs of new york
-          </a>
-        </h3>
+          </h3>
+        </a>
       </article>
       <article
         className="small-movie-card catalog__movies-card"
         onMouseLeave={[Function]}
         onMouseOver={[Function]}
       >
-        <div
-          className="small-movie-card__image"
+        <a
+          className="small-movie-card__link"
+          href="/films/7"
+          onClick={[Function]}
         >
-          <video
-            height={175}
-            muted={true}
-            poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/A_Star_Is_Born.jpg"
-            src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-            style={
-              Object {
-                "height": "100%",
-                "objectFit": "cover",
-                "verticalAlign": "top",
-                "width": "100%",
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              height={175}
+              muted={true}
+              poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/A_Star_Is_Born.jpg"
+              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+              style={
+                Object {
+                  "height": "100%",
+                  "objectFit": "cover",
+                  "verticalAlign": "top",
+                  "width": "100%",
+                }
               }
-            }
-            width={280}
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="/films/7"
-            onClick={[Function]}
+              width={280}
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
           >
             A Star Is Born
-          </a>
-        </h3>
+          </h3>
+        </a>
       </article>
       <article
         className="small-movie-card catalog__movies-card"
         onMouseLeave={[Function]}
         onMouseOver={[Function]}
       >
-        <div
-          className="small-movie-card__image"
+        <a
+          className="small-movie-card__link"
+          href="/films/8"
+          onClick={[Function]}
         >
-          <video
-            height={175}
-            muted={true}
-            poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/beach.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-            style={
-              Object {
-                "height": "100%",
-                "objectFit": "cover",
-                "verticalAlign": "top",
-                "width": "100%",
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              height={175}
+              muted={true}
+              poster="https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/beach.jpg"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+              style={
+                Object {
+                  "height": "100%",
+                  "objectFit": "cover",
+                  "verticalAlign": "top",
+                  "width": "100%",
+                }
               }
-            }
-            width={280}
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="/films/8"
-            onClick={[Function]}
+              width={280}
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
           >
             Beach
-          </a>
-        </h3>
+          </h3>
+        </a>
       </article>
     </div>
   </section>

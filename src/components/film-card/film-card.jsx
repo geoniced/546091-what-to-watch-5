@@ -42,12 +42,14 @@ const FilmCard = (props) => {
       }}
       onMouseLeave={mouseLeaveHandler}
     >
-      <div className="small-movie-card__image">
-        {renderPlayer(videoPlayerSettings)}
-      </div>
-      <h3 className="small-movie-card__title">
-        <Link to={`${AppRoute.FILMS}/${id}`} className="small-movie-card__link">{title}</Link>
-      </h3>
+      <Link to={`${AppRoute.FILMS}/${id}`} className="small-movie-card__link">
+        <div className="small-movie-card__image">
+          {renderPlayer(videoPlayerSettings)}
+        </div>
+        <h3 className="small-movie-card__title">
+          {title}
+        </h3>
+      </Link>
     </article>
   );
 };
